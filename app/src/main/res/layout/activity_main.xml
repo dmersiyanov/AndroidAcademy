@@ -1,18 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical"
+<RelativeLayout android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:focusableInTouchMode="true"
+    android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
+    <ScrollView
+        android:layout_above="@id/btn_send"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="225dp"
+                android:src="@drawable/my_picture" />
+
+            <LinearLayout
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_marginEnd="15dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <TextView
+                    android:text="@string/job_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginStart="32dp"
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_marginEnd="15dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <TextView
+                    android:text="@string/biliionare_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginStart="32dp"
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_marginEnd="15dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <TextView
+                    android:text="@string/philanthropist_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginBottom="16dp"
+                android:background="@android:color/holo_red_dark"
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <TextView
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/my_story"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginBottom="16dp"
+                android:background="@android:color/holo_red_dark"
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <EditText
+                android:layout_marginEnd="16dp"
+                android:textSize="12sp"
+                android:hint="@string/hint_enter_message"
+                android:layout_marginStart="30dp"
+                android:layout_marginBottom="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+
+
+
+
+    </ScrollView>
+
+
+
+    <Button
+        android:id="@+id/btn_send"
+        android:layout_marginEnd="16dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:textSize="13sp"
+        android:textColor="@android:color/holo_red_dark"
+        android:background="@android:color/white"
+        android:layout_gravity="end"
+        android:text="@string/btn_send_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 
 
 
 
-
-
-</LinearLayout>
+</RelativeLayout>
