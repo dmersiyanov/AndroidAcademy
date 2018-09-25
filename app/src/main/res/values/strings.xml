@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">AndroidAcademy</string>
+    <string name="job_title">Android-разработчик в Finch</string>
+    <string name="biliionare_title">Миллионер</string>
+    <string name="philanthropist_title">Филантроп</string>
+    <string name="my_story">Рассказ о себе</string>
+    <string name="hint_enter_message">Введите сообщение</string>
+    <string name="btn_send_message">Отправить сообщение</string>
+</resources>
