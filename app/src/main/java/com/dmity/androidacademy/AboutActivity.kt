@@ -24,7 +24,7 @@ class AboutActivity : AppCompatActivity() {
     }
 
     private fun initUx() {
-        btn_send.setOnClickListener { composeEmail(email_msg.text.toString()) }
+        btn_send.setOnClickListener { composeEmail(message.text.toString()) }
         btn_telegram.setOnClickListener { openTelegram() }
     }
 
