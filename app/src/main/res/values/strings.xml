@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AndroidAcademy</string>
+    <string name="app_name">Moscow Times</string>
     <string name="job_title">Android-разработчик в Finch</string>
     <string name="biliionare_title">Миллионер</string>
     <string name="philanthropist_title">Филантроп</string>
@@ -10,4 +10,6 @@
     <string name="error_no_email_app">Приложение для отправки e-mail не обнаружено</string>
     <string name="error_message_send">Не удалось отправить сообщение</string>
     <string name="my_name">Dmitry Mersiyanov</string>
+    <string name="title_about">About</string>
+    <string name="test_text">A Danish tourist has admitted he took his life in his hands by sitting on a large crocodile in Australia.  + Niels Jensen, 22, was on safari in a wildlife park east of Darwin in northern Australia when he encountered the predator, estimated to be 4.7m (15ft) long and weighing 653kg (1428 lbs).   The wildlife management graduate is filmed enticing the large reptile, which had been relocated to the park after it was caught preying on livestock, with a wallaby carcass. After leaving the bait on the ground and waiting for the crocodile to start eating, he astonishingly straddled the reptile\'s back, sitting just behind its rear legs.   He touched some of the scales on the animal\'s back, and, after a few moments, rose and walked away.   But a man out of shot told him to get back and give a thumbs-up, so he approached the animal for a second time, sat down again, turned towards the camera, smiled and put this thumb in the air.   Mr Jensen admitted he took life in his hands by sitting on a live crocodile for the first time.</string>
 </resources>
