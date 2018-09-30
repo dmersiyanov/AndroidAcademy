@@ -14,9 +14,18 @@ class AboutActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_about)
 
+        setupToolbar()
+        initUx()
+
+    }
+
+    private fun setupToolbar() {
+        supportActionBar?.title = getString(R.string.my_name)
+    }
+
+    private fun initUx() {
         btn_send.setOnClickListener { composeEmail(email_msg.text.toString()) }
         btn_telegram.setOnClickListener { openTelegram() }
-
     }
 
     private fun composeEmail(message: String, email: Array<String> = arrayOf("dmersiyanov@yandex.ru"), subject: String = "Деловое предложение") {
