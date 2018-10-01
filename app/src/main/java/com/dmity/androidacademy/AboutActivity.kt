@@ -3,8 +3,9 @@ package com.dmity.androidacademy
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
-import android.widget.Toast
+import com.dmity.androidacademy.Utils.ThirdPartyIntentUtils
 import kotlinx.android.synthetic.main.activity_about.*
 
 
@@ -28,31 +29,33 @@ class AboutActivity : AppCompatActivity() {
         btn_telegram.setOnClickListener { openTelegram() }
     }
 
-    private fun composeEmail(message: String, email: Array<String> = arrayOf("dmersiyanov@yandex.ru"), subject: String = "Деловое предложение") {
-        val intent = Intent(Intent.ACTION_SENDTO).apply {
-            data = Uri.parse("mailto:")
-            putExtra(Intent.EXTRA_EMAIL, email)
-            putExtra(Intent.EXTRA_SUBJECT, subject)
-            putExtra(Intent.EXTRA_TEXT, message)
-        }
+    private fun composeEmail(message: String, email: Array<String> = arrayOf(EMAIL), subject: String = SUBJECT) {
+        val intent = ThirdPartyIntentUtils.getEmailIntent(message, email, subject, this)
 
         if(intent.resolveActivity(packageManager) != null) {
             startActivity(intent)
         } else
-            Toast.makeText(this, getString(R.string.error_no_email_app), Toast.LENGTH_SHORT).show()
+            Snackbar.make(btn_send, getString(R.string.error_no_email_app), Snackbar.LENGTH_LONG).show()
+
 
     }
 
     private fun openTelegram() {
         try {
             val telegramIntent = Intent(Intent.ACTION_VIEW)
-            telegramIntent.data = Uri.parse("http://telegram.me/dmersiyanov")
+            telegramIntent.data = Uri.parse(TELEGRAM_LINK)
             startActivity(telegramIntent)
 
         } catch (e: Exception) {
-            Toast.makeText(this, getString(R.string.error_message_send), Toast.LENGTH_SHORT).show()
+            Snackbar.make(btn_telegram, getString(R.string.error_message_send), Snackbar.LENGTH_LONG).show()
         }
 
+    }
+
+    companion object {
+        const val EMAIL = "dmersiyanov@yandex.ru"
+        const val SUBJECT = "Деловое предложение"
+        const val TELEGRAM_LINK = "http://telegram.me/dmersiyanov"
     }
 
 }
