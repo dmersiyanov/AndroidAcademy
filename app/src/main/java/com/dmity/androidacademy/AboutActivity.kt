@@ -30,7 +30,7 @@ class AboutActivity : AppCompatActivity() {
     }
 
     private fun composeEmail(message: String, email: Array<String> = arrayOf(EMAIL), subject: String = SUBJECT) {
-        val intent = ThirdPartyIntentUtils.getEmailIntent(message, email, subject, this)
+        val intent = ThirdPartyIntentUtils.getEmailIntent(message, email, subject)
 
         if(intent.resolveActivity(packageManager) != null) {
             startActivity(intent)
@@ -49,6 +49,14 @@ class AboutActivity : AppCompatActivity() {
         } catch (e: Exception) {
             Snackbar.make(btn_telegram, getString(R.string.error_message_send), Snackbar.LENGTH_LONG).show()
         }
+
+        // TODO Здесь студия говорит telegramIntent == null is always false
+//        val telegramIntent = ThirdPartyIntentUtils.getTelegramIntent(TELEGRAM_LINK)
+//        if(telegramIntent == null) {
+//            Snackbar.make(btn_telegram, getString(R.string.error_message_send), Snackbar.LENGTH_LONG).show()
+//        } else {
+//            startActivity(telegramIntent)
+//        }
 
     }
 

@@ -1,13 +1,12 @@
 package com.dmity.androidacademy.Utils
 
-import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import com.dmity.androidacademy.AboutActivity
 
 object ThirdPartyIntentUtils {
 
-     fun getEmailIntent(message: String, email: Array<String> = arrayOf(AboutActivity.EMAIL), subject: String = AboutActivity.SUBJECT, context: Activity): Intent {
+     fun getEmailIntent(message: String, email: Array<String> = arrayOf(AboutActivity.EMAIL), subject: String = AboutActivity.SUBJECT): Intent {
         return Intent(Intent.ACTION_SENDTO).apply {
             data = Uri.parse("mailto:")
             putExtra(Intent.EXTRA_EMAIL, email)
@@ -16,8 +15,10 @@ object ThirdPartyIntentUtils {
         }
     }
 
-    fun getTelegramIntent() {
-
+    fun getTelegramIntent(link: String): Intent {
+        val telegramIntent = Intent(Intent.ACTION_VIEW)
+        telegramIntent.data = Uri.parse(link)
+        return telegramIntent
     }
 
 }
