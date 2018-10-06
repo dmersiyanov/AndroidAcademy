@@ -43,7 +43,7 @@
                 android:layout_marginStart="@dimen/big_margin"
                 android:layout_marginBottom="@dimen/medium_margin"
                 custom:text="@string/biliionare_title"
-                custom:image="@drawable/iron_man_logo"
+                custom:image="@drawable/ic_iron_man"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
