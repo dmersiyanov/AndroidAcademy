@@ -8,13 +8,11 @@ object ThirdPartyIntentUtils {
 
     private const val EMAIL = "dmersiyanov@yandex.ru"
     private const val SUBJECT = "Деловое предложение"
-    const val TELEGRAM_LINK = "http://telegram.me/dmersiyanov"
+    private const val TELEGRAM_LINK = "http://telegram.me/dmersiyanov"
 
     fun getEmailIntent(message: String, context: Context): Intent? {
         val intent = Intent(Intent.ACTION_SENDTO).apply {
-            data = Uri.parse("mailto:$EMAIL" +
-                    "?subject=" + Uri.encode(SUBJECT) +
-                    "&body=" + Uri.encode(message))
+            data = getEmailUri(message)
         }
         return if (intent.resolveActivity(context.packageManager) != null) intent
         else null
@@ -27,5 +25,9 @@ object ThirdPartyIntentUtils {
 
         return if (intent.resolveActivity(context.packageManager) != null) intent
         else null
+    }
+
+    private fun getEmailUri(message: String): Uri {
+        return  Uri.parse( "mailto:$EMAIL?subject=${Uri.encode(SUBJECT)}&body=${Uri.encode(message)}")
     }
 }

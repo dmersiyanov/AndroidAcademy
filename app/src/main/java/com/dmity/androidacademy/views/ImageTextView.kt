@@ -18,8 +18,8 @@ class ImageTextView @JvmOverloads constructor(
     init {
         View.inflate(context, R.layout.layout_image_text_view, this)
 
-        attrs?.let {
-            context.extractAttrsWithRecycle(it, R.styleable.ImageTextView) {
+        attrs?.let { attr ->
+            context.extractAttrsWithRecycle(attr, R.styleable.ImageTextView) {
                 text.text = getString(R.styleable.ImageTextView_text)
                 image.setImageDrawable(getDrawable(R.styleable.ImageTextView_image))
             }

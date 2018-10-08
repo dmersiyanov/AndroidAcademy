@@ -1,10 +1,8 @@
 package com.dmity.androidacademy
 
-import android.content.res.Configuration
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
-import android.view.View
 import com.dmity.androidacademy.utils.ThirdPartyIntentUtils
 import kotlinx.android.synthetic.main.activity_about_content.*
 
@@ -17,14 +15,7 @@ class AboutActivity : AppCompatActivity() {
 
         setupToolbar()
         initUx()
-        initUi()
 
-    }
-
-    private fun initUi() {
-        if(this.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            my_picture.visibility = View.GONE
-        }
     }
 
     private fun setupToolbar() {
@@ -37,7 +28,7 @@ class AboutActivity : AppCompatActivity() {
     }
 
     private fun composeEmail(message: String) {
-        val intent = ThirdPartyIntentUtils.getEmailIntent(message, context = this)
+        val intent = ThirdPartyIntentUtils.getEmailIntent(message, this)
         if(intent != null) {
             startActivity(intent)
         } else
@@ -51,7 +42,4 @@ class AboutActivity : AppCompatActivity() {
         } else
             Snackbar.make(btn_telegram, getString(R.string.error_message_send), Snackbar.LENGTH_LONG).show()
     }
-
-
-
 }
