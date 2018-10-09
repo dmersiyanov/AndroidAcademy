@@ -4,11 +4,11 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import com.dmity.androidacademy.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_about.*
 
 
-class AboutActivity : AppCompatActivity() {
+class AboutActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,9 +21,15 @@ class AboutActivity : AppCompatActivity() {
 
     private fun setupToolbar() {
         supportActionBar?.title = getString(R.string.my_name)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-    private fun initUx() {
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
+    override fun initUx() {
         btn_send.setOnClickListener { composeEmail(message.text.toString()) }
         btn_telegram.setOnClickListener { openTelegram() }
     }

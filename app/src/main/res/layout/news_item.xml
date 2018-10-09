@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     card_view:cardCornerRadius="4dp"
+    android:layout_margin="4dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -64,15 +65,13 @@
         <ImageView
             android:layout_centerVertical="true"
             android:id="@+id/news_image"
-            android:layout_marginLeft="10dp"
             android:scaleType="centerCrop"
             android:src="@drawable/my_picture"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_alignParentTop="true"
             android:layout_marginStart="16dp"
-            android:layout_alignParentEnd="true"
-             />
+            android:layout_alignParentEnd="true" />
 
 
     </RelativeLayout>

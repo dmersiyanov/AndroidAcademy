@@ -5,8 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.dmity.androidacademy.NewsItem
 import com.dmity.androidacademy.R
+import com.dmity.androidacademy.models.NewsItem
 import kotlinx.android.synthetic.main.news_item.view.*
 
 

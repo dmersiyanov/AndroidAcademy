@@ -1,7 +1,7 @@
 package com.dmity.androidacademy.utils
 
-import com.dmity.androidacademy.Category
-import com.dmity.androidacademy.NewsItem
+import com.dmity.androidacademy.models.Category
+import com.dmity.androidacademy.models.NewsItem
 import java.util.*
 
 object DataUtils {
