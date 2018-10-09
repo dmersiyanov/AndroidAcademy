@@ -14,9 +14,10 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:layout_toStartOf="@+id/news_image"
             android:layout_centerVertical="true"
             android:id="@+id/news_text_container"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
@@ -33,7 +34,7 @@
                 android:textStyle="bold"
                 android:maxLines="2"
                 android:id="@+id/news_title"
-                android:layout_width="250dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:textColor="@android:color/black"
@@ -61,13 +62,17 @@
         </LinearLayout>
 
         <ImageView
+            android:layout_centerVertical="true"
+            android:id="@+id/news_image"
+            android:layout_marginLeft="10dp"
             android:scaleType="centerCrop"
             android:src="@drawable/my_picture"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_alignParentTop="true"
             android:layout_marginStart="16dp"
-            android:layout_toEndOf="@id/news_text_container" />
+            android:layout_alignParentEnd="true"
+             />
 
 
     </RelativeLayout>
