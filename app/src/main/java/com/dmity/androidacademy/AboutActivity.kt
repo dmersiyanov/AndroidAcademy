@@ -1,11 +1,13 @@
 package com.dmity.androidacademy
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import com.dmity.androidacademy.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_about.*
+import android.support.design.widget.Snackbar
+import android.support.v7.app.AppCompatActivity
+import com.dmity.androidacademy.utils.ThirdPartyIntentUtils
+import kotlinx.android.synthetic.main.activity_about_content.*
 
 
 class AboutActivity : BaseActivity() {
@@ -34,31 +36,19 @@ class AboutActivity : BaseActivity() {
         btn_telegram.setOnClickListener { openTelegram() }
     }
 
-    private fun composeEmail(message: String, email: Array<String> = arrayOf("dmersiyanov@yandex.ru"), subject: String = "Деловое предложение") {
-        val intent = Intent(Intent.ACTION_SENDTO).apply {
-            data = Uri.parse("mailto:")
-            putExtra(Intent.EXTRA_EMAIL, email)
-            putExtra(Intent.EXTRA_SUBJECT, subject)
-            putExtra(Intent.EXTRA_TEXT, message)
-        }
-
-        if(intent.resolveActivity(packageManager) != null) {
+    private fun composeEmail(message: String) {
+        val intent = ThirdPartyIntentUtils.getEmailIntent(message, this)
+        if(intent != null) {
             startActivity(intent)
         } else
-            Toast.makeText(this, getString(R.string.error_no_email_app), Toast.LENGTH_SHORT).show()
-
+            Snackbar.make(btn_send, getString(R.string.error_no_email_app), Snackbar.LENGTH_LONG).show()
     }
 
     private fun openTelegram() {
-        try {
-            val telegramIntent = Intent(Intent.ACTION_VIEW)
-            telegramIntent.data = Uri.parse("http://telegram.me/dmersiyanov")
+        val telegramIntent = ThirdPartyIntentUtils.getTelegramIntent(this)
+        if(telegramIntent != null) {
             startActivity(telegramIntent)
-
-        } catch (e: Exception) {
-            Toast.makeText(this, getString(R.string.error_message_send), Toast.LENGTH_SHORT).show()
-        }
-
+        } else
+            Snackbar.make(btn_telegram, getString(R.string.error_message_send), Snackbar.LENGTH_LONG).show()
     }
-
 }

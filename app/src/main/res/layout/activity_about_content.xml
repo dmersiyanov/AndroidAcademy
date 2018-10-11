@@ -1,0 +1,97 @@
+<merge tools:showIn="@layout/activity_about"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.dmity.androidacademy.views.ImageTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/big_margin"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:layout_marginBottom="@dimen/medium_margin"
+        custom:image="@drawable/finch_logo"
+        custom:text="@string/job_title" />
+
+    <com.dmity.androidacademy.views.ImageTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/big_margin"
+        android:layout_marginBottom="@dimen/medium_margin"
+        custom:image="@drawable/ic_iron_man"
+        custom:text="@string/biliionare_title" />
+
+    <com.dmity.androidacademy.views.ImageTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/big_margin"
+        android:layout_marginBottom="@dimen/medium_margin"
+        custom:image="@drawable/avengers_logo"
+        custom:text="@string/philanthropist_title" />
+
+    <include layout="@layout/view_separator" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/big_margin"
+        android:layout_marginEnd="@dimen/medium_margin"
+        android:layout_marginBottom="@dimen/medium_margin"
+        android:text="@string/my_story" />
+
+    <include layout="@layout/view_separator" />
+
+    <EditText
+        android:id="@+id/message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/editText_big_margin"
+        android:layout_marginEnd="@dimen/editText_small_margin"
+        android:layout_marginBottom="@dimen/medium_margin"
+        android:hint="@string/hint_enter_message"
+        android:inputType="text"
+        android:maxLines="1"
+        android:textSize="@dimen/editText_text_size" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/big_margin"
+        android:layout_marginEnd="@dimen/medium_margin"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/btn_telegram"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="@dimen/medium_margin"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:drawableStart="@drawable/ic_telegram"
+            android:paddingStart="@dimen/small_margin"
+            android:paddingEnd="@dimen/small_margin"
+            android:text="@string/btn_telegram_msg"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="@dimen/btn_text_size" />
+
+
+        <Button
+            android:id="@+id/btn_send"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="@dimen/medium_margin"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:paddingLeft="@dimen/small_margin"
+            android:paddingRight="@dimen/small_margin"
+            android:text="@string/btn_send_message"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="@dimen/btn_text_size" />
+
+    </LinearLayout>
+
+</merge>

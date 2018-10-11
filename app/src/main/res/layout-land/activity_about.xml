@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout android:orientation="horizontal"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,20 +8,19 @@
     android:focusableInTouchMode="true"
     android:fitsSystemWindows="true"
     tools:context=".AboutActivity"
-    android:weightSum="3"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:weightSum="3">
 
     <ImageView
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:scaleType="centerCrop"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         android:src="@drawable/my_picture" />
 
     <ScrollView
         android:overScrollMode="never"
-        android:layout_weight="1"
-        android:layout_width="match_parent"
+        android:layout_weight="2"
+        android:layout_width="0dp"
         android:layout_height="match_parent">
 
         <LinearLayout
@@ -30,147 +28,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:layout_marginTop="16dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginBottom="16dp"
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+            <include layout="@layout/activity_about_content" />
 
-                <ImageView
-                    android:layout_marginEnd="15dp"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    app:srcCompat="@drawable/finch_logo" />
-
-                <TextView
-                    android:text="@string/job_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_marginStart="32dp"
-                android:layout_marginBottom="16dp"
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:layout_marginEnd="15dp"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    app:srcCompat="@drawable/iron_man_logo" />
-
-                <TextView
-                    android:text="@string/biliionare_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_marginStart="32dp"
-                android:layout_marginBottom="16dp"
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:layout_marginEnd="15dp"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    app:srcCompat="@drawable/avengers_logo" />
-
-                <TextView
-                    android:text="@string/philanthropist_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-
-            <View
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginBottom="16dp"
-                android:background="@android:color/holo_red_dark"
-                android:layout_width="match_parent"
-                android:layout_height="1dp" />
-
-            <TextView
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginBottom="16dp"
-                android:text="@string/my_story"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <View
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginBottom="16dp"
-                android:background="@android:color/holo_red_dark"
-                android:layout_width="match_parent"
-                android:layout_height="1dp" />
-
-            <EditText
-                android:id="@+id/message"
-                android:maxLines="1"
-                android:inputType="text"
-                android:layout_marginEnd="16dp"
-                android:textSize="12sp"
-                android:hint="@string/hint_enter_message"
-                android:layout_marginStart="30dp"
-                android:layout_marginBottom="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <LinearLayout
-                android:weightSum="2"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="32dp"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <Button
-                    style="?android:attr/buttonBarButtonStyle"
-                    android:id="@+id/btn_telegram"
-                    android:drawableStart="@drawable/ic_telegram"
-                    android:layout_weight="1"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:textSize="13sp"
-                    android:textColor="@android:color/holo_red_dark"
-                    android:text="@string/btn_telegram_msg"
-                    android:background="@android:color/white"
-                    android:layout_gravity="end"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    />
-
-
-                <Button
-                    style="?android:attr/buttonBarButtonStyle"
-                    android:layout_weight="1"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
-                    android:id="@+id/btn_send"
-                    android:layout_marginEnd="16dp"
-                    android:textSize="13sp"
-                    android:textColor="@android:color/holo_red_dark"
-                    android:background="@android:color/white"
-                    android:layout_gravity="end"
-                    android:text="@string/btn_send_message"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-
-            </LinearLayout>
         </LinearLayout>
+
     </ScrollView>
 </LinearLayout>
 
