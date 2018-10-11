@@ -3,7 +3,11 @@
     <string name="job_title">Android-разработчик в Finch</string>
     <string name="biliionare_title">Миллионер</string>
     <string name="philanthropist_title">Филантроп</string>
-    <string name="my_story">Рассказ о себе</string>
+    <string name="my_story">Интересный рассказ о себе :)</string>
     <string name="hint_enter_message">Введите сообщение</string>
     <string name="btn_send_message">Отправить сообщение</string>
+    <string name="btn_telegram_msg">Написать в Telegram</string>
+    <string name="error_no_email_app">Приложение для отправки e-mail не обнаружено</string>
+    <string name="error_message_send">Не удалось отправить сообщение</string>
+    <string name="my_name">Dmitry Mersiyanov</string>
 </resources>

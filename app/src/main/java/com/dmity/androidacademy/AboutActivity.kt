@@ -1,0 +1,45 @@
+package com.dmity.androidacademy
+
+import android.os.Bundle
+import android.support.design.widget.Snackbar
+import android.support.v7.app.AppCompatActivity
+import com.dmity.androidacademy.utils.ThirdPartyIntentUtils
+import kotlinx.android.synthetic.main.activity_about_content.*
+
+
+class AboutActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_about)
+
+        setupToolbar()
+        initUx()
+
+    }
+
+    private fun setupToolbar() {
+        supportActionBar?.title = getString(R.string.my_name)
+    }
+
+    private fun initUx() {
+        btn_send.setOnClickListener { composeEmail(message.text.toString()) }
+        btn_telegram.setOnClickListener { openTelegram() }
+    }
+
+    private fun composeEmail(message: String) {
+        val intent = ThirdPartyIntentUtils.getEmailIntent(message, this)
+        if(intent != null) {
+            startActivity(intent)
+        } else
+            Snackbar.make(btn_send, getString(R.string.error_no_email_app), Snackbar.LENGTH_LONG).show()
+    }
+
+    private fun openTelegram() {
+        val telegramIntent = ThirdPartyIntentUtils.getTelegramIntent(this)
+        if(telegramIntent != null) {
+            startActivity(telegramIntent)
+        } else
+            Snackbar.make(btn_telegram, getString(R.string.error_message_send), Snackbar.LENGTH_LONG).show()
+    }
+}
