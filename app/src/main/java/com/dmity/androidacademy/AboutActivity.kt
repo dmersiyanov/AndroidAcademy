@@ -1,12 +1,9 @@
 package com.dmity.androidacademy
 
 import android.os.Bundle
-import android.widget.Toast
 import com.dmity.androidacademy.base.BaseActivity
-import kotlinx.android.synthetic.main.activity_about.*
-import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
 import com.dmity.androidacademy.utils.ThirdPartyIntentUtils
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_about_content.*
 
 
