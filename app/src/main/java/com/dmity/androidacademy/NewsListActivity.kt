@@ -27,8 +27,10 @@ class NewsListActivity : BaseActivity() {
     }
 
     private fun initRecycler() {
-        news_rv.layoutManager = GridLayoutManager(this, if (isPortrait()) 1 else 2)
+        val layoutManager = GridLayoutManager(this, if (isPortrait()) 1 else 2)
+        news_rv.layoutManager = layoutManager
         news_rv.adapter = NewsListAdapter(DataUtils.generateNews()) { onNewsItemClick(it) }
+//        news_rv.addItemDecoration(DividerItemDecoration(this, layoutManager.orientation))
     }
 
     private fun onNewsItemClick(item: NewsItem) {
