@@ -1,48 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".NewsDetailsActivity">
 
     <ImageView
-        android:layout_marginBottom="16dp"
-        tools:src="@tools:sample/avatars"
         android:id="@+id/detail_image"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/medium_margin"
+        tools:src="@tools:sample/avatars" />
 
     <TextView
-        android:textSize="18sp"
-        android:textColor="@android:color/black"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:textStyle="bold"
-        tools:text="Tourist filmed sitting on 5m-long crocodile"
         android:id="@+id/detail_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/medium_margin"
+        android:layout_marginEnd="@dimen/medium_margin"
+        android:layout_marginBottom="@dimen/small_margin"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/news_title_text_size"
+        android:textStyle="bold"
+        tools:text="Tourist filmed sitting on 5m-long crocodile" />
 
     <TextView
-        android:layout_marginBottom="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        tools:text="4 hr. ago, 10:34 AM"
         android:id="@+id/detail_date"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/medium_margin"
+        android:layout_marginEnd="@dimen/medium_margin"
+        android:layout_marginBottom="@dimen/medium_margin"
+        tools:text="4 hr. ago, 10:34 AM" />
 
     <TextView
-        android:textColor="@android:color/black"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        tools:text="@string/test_text"
         android:id="@+id/detail_text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/medium_margin"
+        android:layout_marginEnd="@dimen/medium_margin"
+        android:textColor="@android:color/black"
+        tools:text="@string/test_text" />
 
 </LinearLayout>

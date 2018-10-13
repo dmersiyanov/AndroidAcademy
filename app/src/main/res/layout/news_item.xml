@@ -2,78 +2,75 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    card_view:cardCornerRadius="4dp"
-    android:layout_margin="4dp"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/card_margin"
+    android:orientation="vertical"
+    card_view:cardCornerRadius="@dimen/card_margin">
 
     <RelativeLayout
-        android:padding="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="@dimen/medium_margin">
 
         <LinearLayout
-            android:layout_toStartOf="@+id/news_image"
-            android:layout_centerVertical="true"
             android:id="@+id/news_text_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/news_image"
             android:orientation="vertical">
 
             <TextView
-                android:textAllCaps="true"
-                android:maxLines="1"
                 android:id="@+id/news_category"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="@dimen/card_margin"
+                android:maxLines="1"
+                android:textAllCaps="true"
                 tools:text="Darvin Award" />
 
             <TextView
-                android:textStyle="bold"
-                android:maxLines="2"
                 android:id="@+id/news_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="@dimen/card_margin"
+                android:maxLines="2"
                 android:textColor="@android:color/black"
+                android:textStyle="bold"
                 tools:text="Tourist filmed sitting on 5m-long crocodile" />
 
             <TextView
-                android:maxLines="3"
-                android:ellipsize="end"
                 android:id="@+id/news_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="@dimen/card_margin"
+                android:ellipsize="end"
+                android:maxLines="3"
                 android:textColor="@android:color/black"
                 tools:text="@string/test_text" />
 
             <TextView
-                android:maxLines="1"
                 android:id="@+id/news_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="@dimen/card_margin"
+                android:maxLines="1"
                 tools:text="4 hr. ago, 10:34 AM" />
-
 
         </LinearLayout>
 
         <ImageView
-            android:layout_centerVertical="true"
             android:id="@+id/news_image"
-            android:scaleType="centerCrop"
-            android:src="@drawable/my_picture"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="@dimen/news_item_image_size"
+            android:layout_height="@dimen/news_item_image_size"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="16dp"
-            android:layout_alignParentEnd="true" />
-
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/medium_margin"
+            android:scaleType="centerCrop"
+            tools:src="@tools:sample/avatars" />
 
     </RelativeLayout>
-
 </com.google.android.material.card.MaterialCardView>
