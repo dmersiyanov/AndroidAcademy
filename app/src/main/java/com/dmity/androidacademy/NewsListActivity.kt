@@ -11,25 +11,66 @@ import com.dmity.androidacademy.adapters.NewsListAdapter
 import com.dmity.androidacademy.base.BaseActivity
 import com.dmity.androidacademy.models.NewsItem
 import com.dmity.androidacademy.utils.DataUtils
+import com.dmity.androidacademy.utils.visible
+import com.google.android.material.snackbar.Snackbar
+import io.reactivex.Single
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
 
 class NewsListActivity : BaseActivity() {
+
+    private lateinit var adapter: NewsListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         initUi()
+        initUx()
     }
 
     override fun initUi() {
         initRecycler()
+        getNews()
+    }
+
+    override fun initUx() {
+        btnRetry.setOnClickListener { getNews() }
+    }
+
+
+    private fun getNews() {
+        Single.just(DataUtils.generateNews())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+//                .delay(2, TimeUnit.SECONDS)
+                .map {
+                    throw Exception("Test")
+                }
+                .doOnSubscribe {
+                    showProgress(true)
+                    showRetry(false)
+                }
+                .subscribe({
+                    adapter.setItems(it)
+                    showProgress(false)
+                }, {
+                    it.printStackTrace()
+                    showRetry(true)
+                    showProgress(false)
+                    Snackbar.make(rvNews, getString(R.string.error_loading), Snackbar.LENGTH_LONG).show()
+                })
+                .bind()
+
+
     }
 
     private fun initRecycler() {
         val layoutManager = GridLayoutManager(this, if (isPortrait()) 1 else 2)
-        news_rv.layoutManager = layoutManager
-        news_rv.adapter = NewsListAdapter(DataUtils.generateNews()) { onNewsItemClick(it) }
+        adapter = NewsListAdapter { onNewsItemClick(it) }
+        rvNews.layoutManager = layoutManager
+        rvNews.adapter = adapter
 //        news_rv.addItemDecoration(DividerItemDecoration(this, layoutManager.orientation))
     }
 
@@ -57,5 +98,15 @@ class NewsListActivity : BaseActivity() {
     private fun isPortrait(): Boolean {
         val orientation: Int = resources.configuration.orientation
         return orientation == Configuration.ORIENTATION_PORTRAIT
+    }
+
+    private fun showProgress(show: Boolean) {
+        progress.visible(show)
+        rvNews.visible(!show)
+    }
+
+    private fun showRetry(show: Boolean) {
+        btnRetry.visible(show)
+        rvNews.visible(!show)
     }
 }

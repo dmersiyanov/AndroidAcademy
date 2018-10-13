@@ -7,13 +7,41 @@
     tools:context=".NewsListActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/news_rv"
+        android:id="@+id/rvNews"
         tools:context=".NewsListActivity"
         tools:listitem="@layout/news_item"
         android:clipToPadding="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </androidx.recyclerview.widget.RecyclerView>
+
+    <FrameLayout
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+            <ProgressBar
+                android:visibility="gone"
+                android:id="@+id/progress"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_width="@dimen/news_item_image_size"
+                android:layout_height="@dimen/news_item_image_size" />
+
+            <Button
+                android:visibility="gone"
+                android:textColor="@android:color/black"
+                android:background="@drawable/btn_outline"
+                android:id="@+id/btnRetry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:paddingBottom="@dimen/medium_margin"
+                android:paddingTop="@dimen/medium_margin"
+                android:paddingEnd="@dimen/big_margin"
+                android:paddingStart="@dimen/big_margin"
+                android:text="@string/retry" />
+
+    </FrameLayout>
 
 
 

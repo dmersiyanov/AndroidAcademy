@@ -10,10 +10,14 @@ import com.dmity.androidacademy.models.NewsItem
 import kotlinx.android.synthetic.main.news_item.view.*
 
 
-class NewsListAdapter(private val items: List<NewsItem>,
-                      private val clickListener: (NewsItem) -> Unit
-)
+class NewsListAdapter(private val clickListener: (NewsItem) -> Unit)
     : RecyclerView.Adapter<NewsListAdapter.ViewHolder>() {
+
+    private var items: List<NewsItem> = emptyList()
+
+    fun setItems(items: List<NewsItem>) {
+        this.items = items
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.news_item, parent, false))
