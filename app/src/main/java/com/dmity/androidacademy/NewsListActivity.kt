@@ -17,6 +17,7 @@ import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.concurrent.TimeUnit
 
 class NewsListActivity : BaseActivity() {
 
@@ -36,28 +37,25 @@ class NewsListActivity : BaseActivity() {
     }
 
     override fun initUx() {
-        btnRetry.setOnClickListener { getNews() }
+//        btnRetry.setOnClickListener { getNews() }
     }
 
 
     private fun getNews() {
         Single.just(DataUtils.generateNews())
                 .subscribeOn(Schedulers.io())
+                .delay(2, TimeUnit.SECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
-//                .delay(2, TimeUnit.SECONDS)
-                .map {
-                    throw Exception("Test")
-                }
                 .doOnSubscribe {
                     showProgress(true)
-                    showRetry(false)
+//                    showRetry(false)
                 }
                 .subscribe({
                     adapter.setItems(it)
                     showProgress(false)
                 }, {
                     it.printStackTrace()
-                    showRetry(true)
+//                    showRetry(true)
                     showProgress(false)
                     Snackbar.make(rvNews, getString(R.string.error_loading), Snackbar.LENGTH_LONG).show()
                 })
@@ -105,8 +103,8 @@ class NewsListActivity : BaseActivity() {
         rvNews.visible(!show)
     }
 
-    private fun showRetry(show: Boolean) {
-        btnRetry.visible(show)
-        rvNews.visible(!show)
-    }
+//    private fun showRetry(show: Boolean) {
+//        btnRetry.visible(show)
+//        rvNews.visible(!show)
+//    }
 }
