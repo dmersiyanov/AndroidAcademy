@@ -9,10 +9,12 @@ abstract class BaseActivity: AppCompatActivity(), SubscriptionsHolder {
 
     open fun initUx() {}
     open fun initUi() {}
+    open fun showProgress(show: Boolean) {}
+    open fun showError(show: Boolean) {}
 
     override fun onDestroy() {
-        super.onDestroy()
         resetCompositeDisposable()
+        super.onDestroy()
     }
 
 }

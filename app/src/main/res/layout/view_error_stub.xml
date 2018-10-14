@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:background="@android:color/white"
+    android:id="@+id/errorStub"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/btnRetry"
         android:textColor="@android:color/black"
-        android:layout_marginTop="@dimen/top_margin"
         android:layout_marginBottom="@dimen/big_margin"
         android:textAlignment="center"
         android:text="@string/error_view_text"
-        android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-
     <Button
-        android:gravity="center_vertical"
+        android:layout_centerInParent="true"
         android:visibility="visible"
         android:textColor="@android:color/black"
         android:background="@drawable/btn_outline"
@@ -32,4 +32,4 @@
         android:paddingStart="@dimen/big_margin"
         android:text="@string/retry" />
 
-</LinearLayout>
+</RelativeLayout>

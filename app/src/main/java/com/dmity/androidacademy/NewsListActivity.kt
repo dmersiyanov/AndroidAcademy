@@ -17,6 +17,7 @@ import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.view_error_stub.*
 import java.util.concurrent.TimeUnit
 
 class NewsListActivity : BaseActivity() {
@@ -37,9 +38,8 @@ class NewsListActivity : BaseActivity() {
     }
 
     override fun initUx() {
-//        btnRetry.setOnClickListener { getNews() }
+        btnRetry.setOnClickListener { getNews() }
     }
-
 
     private fun getNews() {
         Single.just(DataUtils.generateNews())
@@ -48,14 +48,14 @@ class NewsListActivity : BaseActivity() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe {
                     showProgress(true)
-//                    showRetry(false)
+                    showError(false)
                 }
                 .subscribe({
                     adapter.setItems(it)
                     showProgress(false)
                 }, {
                     it.printStackTrace()
-//                    showRetry(true)
+                    showError(true)
                     showProgress(false)
                     Snackbar.make(rvNews, getString(R.string.error_loading), Snackbar.LENGTH_LONG).show()
                 })
@@ -98,13 +98,11 @@ class NewsListActivity : BaseActivity() {
         return orientation == Configuration.ORIENTATION_PORTRAIT
     }
 
-    private fun showProgress(show: Boolean) {
+    override fun showProgress(show: Boolean) {
         progress.visible(show)
         rvNews.visible(!show)
     }
 
-//    private fun showRetry(show: Boolean) {
-//        btnRetry.visible(show)
-//        rvNews.visible(!show)
-//    }
+    override fun showError(show: Boolean) = errorStub.visible(show)
+
 }
