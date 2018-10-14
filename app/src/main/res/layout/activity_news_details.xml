@@ -12,14 +12,14 @@
         tools:context=".NewsDetailsActivity">
 
         <ImageView
-            android:id="@+id/detail_image"
+            android:id="@+id/detailImage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/medium_margin"
             tools:src="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/detail_title"
+            android:id="@+id/detailTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/medium_margin"
@@ -31,7 +31,7 @@
             tools:text="Tourist filmed sitting on 5m-long crocodile" />
 
         <TextView
-            android:id="@+id/detail_date"
+            android:id="@+id/detailDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/medium_margin"
@@ -40,7 +40,7 @@
             tools:text="4 hr. ago, 10:34 AM" />
 
         <TextView
-            android:id="@+id/detail_text"
+            android:id="@+id/detailText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/medium_margin"
