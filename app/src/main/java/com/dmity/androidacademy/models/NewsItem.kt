@@ -12,6 +12,3 @@ class NewsItem(val title: String,
                val previewText: String,
                val fullText: String): Parcelable
 
-@Parcelize
-class Category(val id: Int,
-               val name: String) : Parcelable

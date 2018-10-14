@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.recyclerview.widget.RecyclerView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/news_rv"
+    tools:listitem="@layout/news_item"
     tools:context=".NewsListActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/news_rv"
-        tools:context=".NewsListActivity"
-        tools:listitem="@layout/news_item"
-        android:clipToPadding="true"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </androidx.recyclerview.widget.RecyclerView>
-
-
-
-</LinearLayout>
+</androidx.recyclerview.widget.RecyclerView>

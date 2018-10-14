@@ -18,11 +18,6 @@ class AboutActivity : BaseActivity() {
 
     }
 
-    private fun setupToolbar() {
-        supportActionBar?.title = getString(R.string.my_name)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-    }
-
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
@@ -33,9 +28,15 @@ class AboutActivity : BaseActivity() {
         btn_telegram.setOnClickListener { openTelegram() }
     }
 
+
+    private fun setupToolbar() {
+        supportActionBar?.title = getString(R.string.my_name)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
     private fun composeEmail(message: String) {
         val intent = ThirdPartyIntentUtils.getEmailIntent(message, this)
-        if(intent != null) {
+        if (intent != null) {
             startActivity(intent)
         } else
             Snackbar.make(btn_send, getString(R.string.error_no_email_app), Snackbar.LENGTH_LONG).show()
@@ -43,7 +44,7 @@ class AboutActivity : BaseActivity() {
 
     private fun openTelegram() {
         val telegramIntent = ThirdPartyIntentUtils.getTelegramIntent(this)
-        if(telegramIntent != null) {
+        if (telegramIntent != null) {
             startActivity(telegramIntent)
         } else
             Snackbar.make(btn_telegram, getString(R.string.error_message_send), Snackbar.LENGTH_LONG).show()
