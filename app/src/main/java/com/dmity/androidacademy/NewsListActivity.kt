@@ -5,9 +5,9 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.recyclerview.widget.GridLayoutManager
-import com.dmity.androidacademy.adapters.NewsListAdapter
+import com.dmity.androidacademy.adapters.NewsAdapter
 import com.dmity.androidacademy.base.BaseActivity
-import com.dmity.androidacademy.models.NewsItem
+import com.dmity.androidacademy.models.DisplayableItem
 import com.dmity.androidacademy.utils.DataUtils
 import com.dmity.androidacademy.utils.isPortrait
 import kotlinx.android.synthetic.main.activity_main.*
@@ -42,10 +42,11 @@ class NewsListActivity : BaseActivity() {
 
     private fun initRecycler() {
         news_rv.layoutManager = GridLayoutManager(this, if (isPortrait()) 1 else 2)
-        news_rv.adapter = NewsListAdapter(DataUtils.generateNews()) { onNewsItemClick(it) }
+//        news_rv.adapter = NewsListAdapter(DataUtils.generateNews()) { onNewsItemClick(it) }
+        news_rv.adapter = NewsAdapter(this, DataUtils.generateNews()) { onNewsItemClick(it) }
     }
 
-    private fun onNewsItemClick(item: NewsItem) {
+    private fun onNewsItemClick(item: DisplayableItem) {
         NewsDetailsActivity.display(this, item)
     }
 

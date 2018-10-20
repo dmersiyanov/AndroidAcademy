@@ -4,7 +4,7 @@ import android.os.Bundle
 import com.dmity.androidacademy.base.BaseActivity
 import com.dmity.androidacademy.utils.ThirdPartyIntentUtils
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_about_content.*
+import kotlinx.android.synthetic.main.content_activity_about.*
 
 
 class AboutActivity : BaseActivity() {
