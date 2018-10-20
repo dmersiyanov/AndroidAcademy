@@ -7,8 +7,8 @@ import java.util.*
 @Parcelize
 class NewsItem(val title: String,
                val imageUrl: String,
-               val category: Category,
+               val newsCategory: Categories,
                val publishDate: Date,
                val previewText: String,
-               val fullText: String): Parcelable
+               val fullText: String): Parcelable, DisplayableItem
 

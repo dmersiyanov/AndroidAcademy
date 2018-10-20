@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.dmity.androidacademy.R
 import com.dmity.androidacademy.models.DisplayableItem
 import com.dmity.androidacademy.models.NewsItem
@@ -40,7 +39,6 @@ class GenericNewsAdapterDelegate(activity: Activity, private val clickListener: 
             newsText.text = item.previewText
             newsDate.text = DateUtils.formatDateForNews(item.publishDate, itemView.context)
             newsImage.loadImg(item.imageUrl)
-            Glide.with(itemView).load(item.imageUrl).into(newsImage)
 
             setOnClickListener { listener(item) }
         }

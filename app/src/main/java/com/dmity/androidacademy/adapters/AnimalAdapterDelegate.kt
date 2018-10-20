@@ -5,14 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.dmity.androidacademy.R
 import com.dmity.androidacademy.models.AnimalItem
 import com.dmity.androidacademy.models.DisplayableItem
 import com.dmity.androidacademy.utils.DateUtils
 import com.dmity.androidacademy.utils.loadImg
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
-import kotlinx.android.synthetic.main.item_news_constrained.view.*
+import kotlinx.android.synthetic.main.item_animal_constrained.view.*
 
 class AnimalAdapterDelegate(activity: Activity, private val clickListener: (DisplayableItem) -> Unit):  AdapterDelegate<List<DisplayableItem>>() {
 
@@ -40,7 +39,6 @@ class AnimalAdapterDelegate(activity: Activity, private val clickListener: (Disp
             newsText.text = item.previewText
             newsDate.text = DateUtils.formatDateForNews(item.publishDate, itemView.context)
             newsImage.loadImg(item.imageUrl)
-            Glide.with(itemView).load(item.imageUrl).into(newsImage)
 
             setOnClickListener { listener(item) }
         }

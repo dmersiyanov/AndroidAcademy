@@ -35,28 +35,6 @@ class NewsDetailsActivity : BaseActivity() {
 
 
     private fun getIntentData() {
-        intent?.extras?.getParcelable<NewsItem>(ITEM_DATA)?.let {
-            item = it
-        }
-    }
-
-    private fun setupScreen() {
-        with(item) {
-            Glide.with(this@NewsDetailsActivity).load(imageUrl).into(detail_image)
-            detail_title.text = previewText
-            detail_date.text = publishDate.toString()
-            detail_text.text = fullText
-        }
-    }
-
-    private fun setupToolbar() {
-        supportActionBar?.title = item.category.name
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-    }
-
-
-
-    private fun getIntentData() {
         intent?.extras?.getSerializable(ITEM_DATA)?.let {
             item = it as DisplayableItem
         }
