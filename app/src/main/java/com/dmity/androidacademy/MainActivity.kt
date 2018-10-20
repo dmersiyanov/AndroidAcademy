@@ -5,14 +5,16 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.dmity.androidacademy.adapters.NewsAdapter
 import com.dmity.androidacademy.base.BaseActivity
 import com.dmity.androidacademy.models.DisplayableItem
+import com.dmity.androidacademy.models.GenericNewsItem
 import com.dmity.androidacademy.utils.DataUtils
 import com.dmity.androidacademy.utils.isPortrait
 import kotlinx.android.synthetic.main.activity_main.*
 
-class NewsListActivity : BaseActivity() {
+class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +33,7 @@ class NewsListActivity : BaseActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId) {
+        return when (item.itemId) {
             R.id.action_about -> {
                 startActivity(Intent(this, AboutActivity::class.java))
                 true
@@ -41,13 +43,13 @@ class NewsListActivity : BaseActivity() {
     }
 
     private fun initRecycler() {
-        news_rv.layoutManager = GridLayoutManager(this, if (isPortrait()) 1 else 2)
-//        news_rv.adapter = NewsListAdapter(DataUtils.generateNews()) { onNewsItemClick(it) }
-        news_rv.adapter = NewsAdapter(this, DataUtils.generateNews()) { onNewsItemClick(it) }
+        news_rv.layoutManager = if (isPortrait()) LinearLayoutManager(this)
+        else GridLayoutManager(this, resources.getInteger(R.integer.landscape_news_columns_count))
+        news_rv.adapter = NewsAdapter(DataUtils.generateNews()) { onNewsItemClick(it) }
     }
 
     private fun onNewsItemClick(item: DisplayableItem) {
-        NewsDetailsActivity.display(this, item)
+        NewsDetailsActivity.display(this, item as GenericNewsItem)
     }
 
 }

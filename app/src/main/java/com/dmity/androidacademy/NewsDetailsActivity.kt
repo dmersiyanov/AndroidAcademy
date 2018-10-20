@@ -6,13 +6,14 @@ import android.os.Bundle
 import com.bumptech.glide.Glide
 import com.dmity.androidacademy.base.BaseActivity
 import com.dmity.androidacademy.models.AnimalItem
-import com.dmity.androidacademy.models.DisplayableItem
+import com.dmity.androidacademy.models.GenericNewsItem
 import com.dmity.androidacademy.models.NewsItem
+import com.dmity.androidacademy.utils.DateTimeUtils
 import kotlinx.android.synthetic.main.activity_news_details.*
 
 class NewsDetailsActivity : BaseActivity() {
 
-    private lateinit var item: DisplayableItem
+    private lateinit var item: GenericNewsItem
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,43 +37,23 @@ class NewsDetailsActivity : BaseActivity() {
 
     private fun getIntentData() {
         intent?.extras?.getSerializable(ITEM_DATA)?.let {
-            item = it as DisplayableItem
+            item = it as GenericNewsItem
         }
     }
 
-    // Тут получилась какая-то чушь) но я не вижу другого способа при использовании разных viewType через делегаты :(
     private fun setupScreen() {
-
-        fun setupData(item: NewsItem) {
-            with(item) {
-                Glide.with(this@NewsDetailsActivity).load(imageUrl).into(detailImage)
-                detailTitle.text = previewText
-                detailDate.text = publishDate.toString()
-                detailText.text = fullText
-            }
-        }
-
-        fun setupData(item: AnimalItem) {
-            with(item) {
-                Glide.with(this@NewsDetailsActivity).load(imageUrl).into(detailImage)
-                detailTitle.text = previewText
-                detailDate.text = publishDate.toString()
-                detailText.text = fullText
-            }
-        }
-
         with(item) {
-            when(this){
-                is AnimalItem -> setupData(this)
-                is NewsItem -> setupData(this)
-            }
+            Glide.with(this@NewsDetailsActivity).load(imageUrl).into(detailImage)
+            detailTitle.text = previewText
+            detailDate.text = DateTimeUtils.formatDateForNews(publishDate, this@NewsDetailsActivity)
+            detailText.text = fullText
         }
     }
 
     private fun setupToolbar() {
         if (item is NewsItem) {
-            supportActionBar?.title = (item as NewsItem).newsCategory?.category
-        } else (item as AnimalItem).newsCategory?.category
+            supportActionBar?.title = (item as NewsItem).newsCategory.category
+        } else (item as AnimalItem).newsCategory.category
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
@@ -82,7 +63,7 @@ class NewsDetailsActivity : BaseActivity() {
 
         private const val ITEM_DATA = "item_data"
 
-        fun display(context: Context, item: DisplayableItem) {
+        fun display(context: Context, item: GenericNewsItem) {
             val intent = Intent(context, NewsDetailsActivity::class.java).apply {
                 putExtra(ITEM_DATA, item)
             }

@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit
 
 
 
-object DateUtils {
+object DateTimeUtils {
 
     private const val FULL = "MMM dd, hh:mm a"
     private const val TIME = "hh:mm a"
