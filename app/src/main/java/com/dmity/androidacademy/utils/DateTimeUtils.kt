@@ -30,6 +30,16 @@ object DateTimeUtils {
         }
     }
 
+    fun coolFormatDateForNews(date: Date, context: Context) : CharSequence {
+        return DateUtils.getRelativeDateTimeString(
+                context,
+                date.time,
+                DateUtils.HOUR_IN_MILLIS,
+                5 * DateUtils.DAY_IN_MILLIS,
+                DateUtils.FORMAT_ABBREV_RELATIVE
+        )
+    }
+
     private fun isYesterday(d: Date): Boolean = DateUtils.isToday(d.time + DateUtils.DAY_IN_MILLIS)
 
 }
