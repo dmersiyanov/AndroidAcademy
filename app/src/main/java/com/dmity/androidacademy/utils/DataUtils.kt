@@ -1,22 +1,21 @@
 package com.dmity.androidacademy.utils
 
-import com.dmity.androidacademy.models.Category
+import com.dmity.androidacademy.models.AnimalItem
+import com.dmity.androidacademy.models.Categories
+import com.dmity.androidacademy.models.DisplayableItem
 import com.dmity.androidacademy.models.NewsItem
 import java.util.*
 
 object DataUtils {
 
-    fun generateNews(): List<NewsItem> {
-        val darwinAwards = Category(1, "Darwin Awards")
-        val criminal = Category(2, "Criminal")
-        val animals = Category(3, "Animals")
-        val music = Category(4, "Music")
+    fun generateNews(): List<DisplayableItem> {
 
-        val news = ArrayList<NewsItem>()
+        val news = ArrayList<DisplayableItem>()
+
         news.add(NewsItem(
                 "Tourist filmed sitting on 5m-long crocodile",
                 "https://e3.365dm.com/18/09/736x414/skynews-crocodile-australia_4433218.jpg",
-                darwinAwards,
+                Categories.DARWIN_AWARDS,
                 createDate(2018, 9, 26, 10, 34),
                 "\"It was dangerous, I know. It is a scary feeling sitting on something that could kill you in a fraction of a " + "second,\" he says.",
                 "A Danish tourist has admitted he took his life in his hands by sitting on a large crocodile in Australia.\n\n"
@@ -34,7 +33,7 @@ object DataUtils {
         news.add(NewsItem(
                 "Police warn daredevil cliff jumpers who are 'risking their lives for likes'",
                 "https://e3.365dm.com/18/09/2048x1152/skynews-cliff-jumping-greg-milam_4433647.jpg",
-                criminal,
+                Categories.CRIMINAL,
                 createDate(2018, 9, 25, 12, 45),
                 "Police in Los Angeles say they are spending hundreds of thousands of dollars airlifting cliff jumpers out of " + "dangerous spots.",
                 "Daredevils attempting dangerous cliff dives in a quest for likes has led to an increase in costly helicopter "
@@ -48,10 +47,10 @@ object DataUtils {
                         + "dozens of risky selfie videos. Two men were recently rescued after being injured while being filmed at "
                         + "Hermit Falls."
         ))
-        news.add(NewsItem(
+        news.add(AnimalItem(
                 "Bear saved after getting his head stuck in milk can",
                 "https://e3.365dm.com/18/09/2048x1152/skynews-bear-minnesota_4419111.jpg",
-                animals,
+                Categories.ANIMALS,
                 createDate(2018, 9, 20, 14, 4),
                 "Firefighters used the Jaws of Life to free the young black bear, a tool which is normally used to extricate car" + " accident victims.",
                 "A bear has been freed after getting his head stuck in a milk can.\n\n"
@@ -67,7 +66,7 @@ object DataUtils {
         news.add(NewsItem(
                 "Nearly $18m of cocaine seized in donated boxes of bananas",
                 "https://e3.365dm.com/18/09/2048x1152/skynews-texas-bananas-drugs_4430760.jpg",
-                criminal,
+                Categories.CRIMINAL,
                 createDate(2018, 9, 18, 4, 4),
                 "Massive quantities of the drug were found in boxes of fruit that had been donated to the Texas Department of " + "Criminal Justice.",
                 "A huge haul of cocaine was discovered hidden in boxes of bananas donated to the Texas Department of Criminal "
@@ -86,7 +85,7 @@ object DataUtils {
         news.add(NewsItem(
                 "US government hacker jailed after losing secrets",
                 "https://e3.365dm.com/17/09/736x414/d55722dc4eb37f6959d2e047c14710d586aab99f90aa1e4acfd9f992125294f5_4107038.jpg",
-                criminal,
+                Categories.CRIMINAL,
                 createDate(2018, 9, 17, 12, 45),
                 "Nghia Hoang Pho, 68, who developed hacking tools for the National Security Agency, illegally stored material " + "on his home computer.",
                 "A man who illegally took home hacking tools from his workplace at the National Security Agency, and then "
@@ -109,7 +108,7 @@ object DataUtils {
         news.add(NewsItem(
                 "Wet Wet Wet announce Liberty X star Kevin Simm as new frontman",
                 "https://e3.365dm.com/18/09/2048x1152/skynews-wet-wet-wet-kevin-simm_4433314.jpg",
-                music,
+                Categories.CRIMINAL,
                 createDate(2018, 9, 17, 12, 45),
                 "The Voice 2016 winner says he was \"really taken aback\" by the opportunity after singing the band's songs " + "early in his career.",
                 "The Scottish band, who are best-known for their 1994 cover of The Troggs' 1960s hit Love Is All Around, "

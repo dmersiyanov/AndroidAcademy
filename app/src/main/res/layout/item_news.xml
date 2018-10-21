@@ -19,11 +19,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toStartOf="@+id/news_image"
+            android:layout_toStartOf="@+id/newsImage"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/news_category"
+                android:id="@+id/newsCategory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/card_margin"
@@ -32,7 +32,7 @@
                 tools:text="Darvin Award" />
 
             <TextView
-                android:id="@+id/news_title"
+                android:id="@+id/newsTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/card_margin"
@@ -42,7 +42,7 @@
                 tools:text="Tourist filmed sitting on 5m-long crocodile" />
 
             <TextView
-                android:id="@+id/news_text"
+                android:id="@+id/newsText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/card_margin"
@@ -52,7 +52,7 @@
                 tools:text="@string/test_text" />
 
             <TextView
-                android:id="@+id/news_date"
+                android:id="@+id/newsDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/card_margin"
@@ -62,7 +62,7 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/news_image"
+            android:id="@+id/newsImage"
             android:layout_width="@dimen/news_item_image_size"
             android:layout_height="@dimen/news_item_image_size"
             android:layout_alignParentTop="true"
@@ -73,4 +73,5 @@
             tools:src="@tools:sample/avatars" />
 
     </RelativeLayout>
+
 </com.google.android.material.card.MaterialCardView>
