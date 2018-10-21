@@ -10,6 +10,7 @@ import com.dmity.androidacademy.adapters.NewsAdapter
 import com.dmity.androidacademy.base.BaseActivity
 import com.dmity.androidacademy.models.DisplayableItem
 import com.dmity.androidacademy.models.GenericNewsItem
+import com.dmity.androidacademy.network.RestAPI
 import com.dmity.androidacademy.utils.DataUtils
 import com.dmity.androidacademy.utils.isPortrait
 import com.dmity.androidacademy.utils.visible
@@ -24,6 +25,7 @@ import java.util.concurrent.TimeUnit
 class MainActivity : BaseActivity() {
 
     private lateinit var adapter: NewsAdapter
+    private val restAPI = RestAPI()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +37,16 @@ class MainActivity : BaseActivity() {
     override fun initUi() {
         initRecycler()
         getNews()
+
+        restAPI.getNews("home")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+
+                }, {
+
+                })
+                .bind()
 
     }
 
