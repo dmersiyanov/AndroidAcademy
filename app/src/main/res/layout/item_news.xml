@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/card_margin"
+    android:orientation="vertical"
+    card_view:cardCornerRadius="@dimen/card_margin">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/medium_margin">
+
+        <LinearLayout
+            android:id="@+id/news_text_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/newsImage"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/newsCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/card_margin"
+                android:maxLines="1"
+                android:textAllCaps="true"
+                tools:text="Darvin Award" />
+
+            <TextView
+                android:id="@+id/newsTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/card_margin"
+                android:maxLines="2"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                tools:text="Tourist filmed sitting on 5m-long crocodile" />
+
+            <TextView
+                android:id="@+id/newsText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/card_margin"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:textColor="@android:color/black"
+                tools:text="@string/test_text" />
+
+            <TextView
+                android:id="@+id/newsDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/card_margin"
+                android:maxLines="1"
+                tools:text="4 hr. ago, 10:34 AM" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/newsImage"
+            android:layout_width="@dimen/news_item_image_size"
+            android:layout_height="@dimen/news_item_image_size"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/medium_margin"
+            android:scaleType="centerCrop"
+            tools:src="@tools:sample/avatars" />
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

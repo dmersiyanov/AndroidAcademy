@@ -10,4 +10,7 @@
     <dimen name="image_text_view_size">20dp</dimen>
     <dimen name="separator_height">1dp</dimen>
     <dimen name="my_picture_height">225dp</dimen>
+    <dimen name="news_title_text_size">18sp</dimen>
+    <dimen name="card_margin">5dp</dimen>
+    <dimen name="news_item_image_size">100dp</dimen>
 </resources>
