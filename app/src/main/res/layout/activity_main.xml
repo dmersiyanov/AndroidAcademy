@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".NewsListActivity">
+    tools:context=".MainActivity">
 
     <ProgressBar
         android:layout_centerInParent="true"
@@ -20,7 +20,7 @@
         android:layout_height="match_parent"
         android:clipToPadding="true"
         tools:context=".NewsListActivity"
-        tools:listitem="@layout/news_item" />
+        tools:listitem="@layout/item_news" />
 
     <include layout="@layout/view_error_stub"
         android:visibility="gone"/>
