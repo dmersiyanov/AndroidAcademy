@@ -15,17 +15,15 @@ import com.dmity.androidacademy.utils.DataUtils
 import com.dmity.androidacademy.utils.isPortrait
 import com.dmity.androidacademy.utils.visible
 import com.google.android.material.snackbar.Snackbar
-import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.view_error_stub.*
-import java.util.concurrent.TimeUnit
 
 class MainActivity : BaseActivity() {
 
     private lateinit var adapter: NewsAdapter
-    private val restAPI = RestAPI()
+//    private val restAPI = RestAPI()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,15 +36,18 @@ class MainActivity : BaseActivity() {
         initRecycler()
         getNews()
 
-        restAPI.getNews("home")
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-
-                }, {
-
-                })
-                .bind()
+//        RestAPI.getNews("home")
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe({
+//
+//                    adapter.items = it.results as List<DisplayableItem>
+//
+//                }, {
+//
+//
+//                })
+//                .bind()
 
     }
 
@@ -77,16 +78,18 @@ class MainActivity : BaseActivity() {
     }
 
     private fun getNews() {
-        Single.just(DataUtils.generateNews())
+        RestAPI.getNews("home")
                 .subscribeOn(Schedulers.io())
-                .delay(2, TimeUnit.SECONDS)
+//                .delay(2, TimeUnit.SECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe {
                     showProgress(true)
                     showError(false)
                 }
                 .subscribe({
-                    adapter.items = it
+                    adapter.items = it.results as List<DisplayableItem>
+
+//                    adapter.items = it
                     showProgress(false)
                 }, {
                     it.printStackTrace()

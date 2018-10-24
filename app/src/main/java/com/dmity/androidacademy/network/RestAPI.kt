@@ -11,13 +11,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 
-class RestAPI {
+object RestAPI {
 
-    companion object {
         private const val BASE_URL = "http://api.nytimes.com/svc/topstories/v2/"
         private const val API_KEY = "b05917f0f5b04d7980c6e4cbd9bbd51e"
         private const val TIMEOUT_IN_SECONDS: Long = 2
-    }
+
 
     private val nyTimesService: NyTimesService
 

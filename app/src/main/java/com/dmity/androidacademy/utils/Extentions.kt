@@ -30,8 +30,8 @@ fun Context.isPortrait(): Boolean {
     return orientation == Configuration.ORIENTATION_PORTRAIT
 }
 
-fun ImageView.loadImg(imageUrl: String) {
-    if (imageUrl.isBlank()) {
+fun ImageView.loadImg(imageUrl: String?) {
+    if (imageUrl.isNullOrBlank()) {
         Glide.with(context).load(R.drawable.ic_placeholder).into(this)
     } else {
         Glide.with(context).load(imageUrl).into(this)
