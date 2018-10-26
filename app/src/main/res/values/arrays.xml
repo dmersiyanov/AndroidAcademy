@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="news_categories">
+        <item>Home</item>
+        <item>Opinion</item>
+        <item>World</item>
+        <item>National</item>
+        <item>Politics</item>
+        <item>Upshot</item>
+        <item>NY Region</item>
+        <item>Business</item>
+        <item>Technology</item>
+        <item>Science</item>
+        <item>Health</item>
+        <item>Sports</item>
+        <item>Arts</item>
+        <item>Books</item>
+        <item>Movies</item>
+        <item>Theater</item>
+        <item>Sunday Review</item>
+        <item>Fashion</item>
+        <item>Food</item>
+        <item>Travel</item>
+        <item>Magazine</item>
+        <item>Real Estate</item>
+        <item>Automobiles</item>
+        <item>Obituaries</item>
+        <item>Insider</item>
+    </string-array>
+</resources>

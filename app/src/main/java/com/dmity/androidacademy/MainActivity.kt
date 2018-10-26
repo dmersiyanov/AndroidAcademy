@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ArrayAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dmity.androidacademy.adapters.NewsAdapter
@@ -20,6 +21,7 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.view_error_stub.*
 
+
 class MainActivity : BaseActivity() {
 
     private lateinit var adapter: NewsAdapter
@@ -34,20 +36,8 @@ class MainActivity : BaseActivity() {
 
     override fun initUi() {
         initRecycler()
+        setupSpinner()
         getNews()
-
-//        RestAPI.getNews("home")
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe({
-//
-//                    adapter.items = it.results as List<DisplayableItem>
-//
-//                }, {
-//
-//
-//                })
-//                .bind()
 
     }
 
@@ -58,6 +48,16 @@ class MainActivity : BaseActivity() {
     override fun showProgress(show: Boolean) {
         progress.visible(show)
         rvNews.visible(!show)
+    }
+
+    private fun setupSpinner() {
+        val adapter = ArrayAdapter.createFromResource(
+            this,
+            R.array.news_categories,
+            R.layout.items_categories_spinner
+        )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapter
     }
 
     override fun showError(show: Boolean) = errorStub.visible(show)
@@ -79,25 +79,26 @@ class MainActivity : BaseActivity() {
 
     private fun getNews() {
         RestAPI.getNews("home")
-                .subscribeOn(Schedulers.io())
+            .subscribeOn(Schedulers.io())
 //                .delay(2, TimeUnit.SECONDS)
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe {
-                    showProgress(true)
-                    showError(false)
-                }
-                .subscribe({
-                    adapter.items = it.results as List<DisplayableItem>
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe {
+                showProgress(true)
+                showError(false)
+            }
+            .subscribe({
+                adapter.items = it.results as List<DisplayableItem>
 
 //                    adapter.items = it
-                    showProgress(false)
-                }, {
-                    it.printStackTrace()
-                    showError(true)
-                    showProgress(false)
-                    Snackbar.make(rvNews, getString(R.string.error_loading), Snackbar.LENGTH_LONG).show()
-                })
-                .bind()
+                showProgress(false)
+            }, {
+                it.printStackTrace()
+                showError(true)
+                showProgress(false)
+                Snackbar.make(rvNews, getString(R.string.error_loading), Snackbar.LENGTH_LONG)
+                    .show()
+            })
+            .bind()
     }
 
     private fun initRecycler() {
@@ -110,7 +111,6 @@ class MainActivity : BaseActivity() {
     private fun onNewsItemClick(item: DisplayableItem) {
         NewsDetailsActivity.display(this, item as GenericNewsItem)
     }
-
 
 
 }
