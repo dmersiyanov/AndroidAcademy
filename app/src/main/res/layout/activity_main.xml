@@ -1,28 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
     <ProgressBar
-        android:layout_centerInParent="true"
         android:id="@+id/progress"
         android:layout_width="@dimen/news_item_image_size"
         android:layout_height="@dimen/news_item_image_size"
+        android:layout_gravity="center_horizontal|center_vertical"
         android:visibility="gone" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:visibility="visible"
         android:id="@+id/rvNews"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="true"
         tools:context=".NewsListActivity"
         tools:listitem="@layout/item_news" />
 
-    <include layout="@layout/view_error_stub"
-        android:visibility="gone"/>
+    <include
+        layout="@layout/view_error_stub"
+        android:visibility="gone" />
 
-</RelativeLayout>
+</FrameLayout>

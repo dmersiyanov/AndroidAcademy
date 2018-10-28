@@ -4,6 +4,8 @@ import android.os.Bundle
 import com.dmity.androidacademy.base.BaseActivity
 import com.dmity.androidacademy.utils.ThirdPartyIntentUtils
 import com.google.android.material.snackbar.Snackbar
+import io.reactivex.internal.functions.Functions.emptyConsumer
+import io.reactivex.plugins.RxJavaPlugins
 import kotlinx.android.synthetic.main.content_activity_about.*
 
 
@@ -12,6 +14,8 @@ class AboutActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_about)
+
+        RxJavaPlugins.setErrorHandler(emptyConsumer());
 
         setupToolbar()
         initUx()

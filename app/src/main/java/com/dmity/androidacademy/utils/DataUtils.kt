@@ -8,7 +8,7 @@ import java.util.*
 
 object DataUtils {
 
-    fun generateNews(): List<DisplayableItem> {
+    fun generateNews(): List<DisplayableItem>? {
 
         val news = ArrayList<DisplayableItem>()
 

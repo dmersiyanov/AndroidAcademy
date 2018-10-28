@@ -5,7 +5,7 @@ import io.reactivex.disposables.CompositeDisposable
 
 abstract class BaseActivity: AppCompatActivity(), SubscriptionsHolder {
 
-    override val mDisposable: CompositeDisposable = CompositeDisposable()
+    override val disposables: CompositeDisposable = CompositeDisposable()
 
     open fun initUx() {}
     open fun initUi() {}
