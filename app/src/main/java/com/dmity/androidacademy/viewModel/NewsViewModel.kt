@@ -8,16 +8,13 @@ import com.dmity.androidacademy.utils.DataUtils
 
 class NewsViewModel: ViewModel() {
 
-    private var news: MutableLiveData<List<DisplayableItem>>? = null
+    private var news: MutableLiveData<List<DisplayableItem>> = MutableLiveData()
 
     fun getNews(): LiveData<List<DisplayableItem>> {
-        if (news == null) {
-            news = MutableLiveData()
-            news?.value = DataUtils.generateNews()
+        if (news.value == null) {
+            news.value = DataUtils.generateNews()
         }
-
-        // TODO Так и не понял как понормальному сделать этот момент ниже
-        return news!!
+        return news
     }
 
 }

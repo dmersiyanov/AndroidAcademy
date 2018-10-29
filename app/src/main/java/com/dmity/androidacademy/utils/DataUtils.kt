@@ -8,9 +8,9 @@ import java.util.*
 
 object DataUtils {
 
-    fun generateNews(): List<DisplayableItem>? {
+    fun generateNews(): List<DisplayableItem> {
 
-        val news = ArrayList<DisplayableItem>()
+        val news = mutableListOf<DisplayableItem>()
 
         news.add(NewsItem(
                 "Tourist filmed sitting on 5m-long crocodile",

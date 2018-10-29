@@ -53,7 +53,12 @@ class MainActivity : BaseActivity() {
         rvNews.visible(!show)
     }
 
-    override fun showError(show: Boolean) = errorStub.visible(show)
+    override fun showError(errorMessage: String, show: Boolean) {
+        if(errorMessage.isNotBlank()) {
+            tvErrorMessage.text = errorMessage
+        }
+        errorStub.visible(show)
+    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_list, menu)
@@ -72,12 +77,13 @@ class MainActivity : BaseActivity() {
 
     private fun getNews() {
         Flowable.fromPublisher(LiveDataReactiveStreams.toPublisher(this, viewModel.getNews()))
+                .firstOrError()
                 .subscribeOn(Schedulers.io())
                 .delay(DELAY, TimeUnit.SECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe {
                     showProgress(true)
-                    showError(false)
+                    showError("", false)
                 }
                 .subscribe({
                     adapter.items = it
@@ -85,7 +91,7 @@ class MainActivity : BaseActivity() {
                 }, {
                     Log.e(this.javaClass.simpleName, it.message)
                     it.printStackTrace()
-                    showError(true)
+                    showError("", true)
                     showProgress(false)
                     Snackbar.make(rvNews, getString(R.string.error_loading), Snackbar.LENGTH_LONG).show()
                 })

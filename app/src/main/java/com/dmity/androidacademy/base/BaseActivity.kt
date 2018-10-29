@@ -10,7 +10,7 @@ abstract class BaseActivity: AppCompatActivity(), SubscriptionsHolder {
     open fun initUx() {}
     open fun initUi() {}
     open fun showProgress(show: Boolean) {}
-    open fun showError(show: Boolean) {}
+    open fun showError(errorMessage: String, show: Boolean) {}
 
     override fun onDestroy() {
         resetCompositeDisposable()
