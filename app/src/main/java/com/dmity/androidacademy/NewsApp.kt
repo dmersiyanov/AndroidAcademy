@@ -10,11 +10,12 @@ class NewsApp: Application() {
 
     override fun onCreate() {
         super.onCreate()
-        setGlovalRxJavaErrorHandler()
+        setGlobalRxJavaErrorHandler()
     }
 
+
     @SuppressLint("LongLogTag")
-    private fun setGlovalRxJavaErrorHandler() {
+    private fun setGlobalRxJavaErrorHandler() {
         RxJavaPlugins.setErrorHandler { e ->
             if (e is NullPointerException || e is IllegalArgumentException) {
                 // that's likely a bug in the application

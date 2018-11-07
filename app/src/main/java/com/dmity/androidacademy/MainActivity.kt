@@ -9,6 +9,7 @@ import androidx.lifecycle.LiveDataReactiveStreams
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.dmity.androidacademy.adapters.NewsAdapter
 import com.dmity.androidacademy.base.BaseActivity
 import com.dmity.androidacademy.models.DisplayableItem
@@ -89,7 +90,7 @@ class MainActivity : BaseActivity() {
                     adapter.items = it
                     showProgress(false)
                 }, {
-                    Log.e(this.javaClass.simpleName, it.message)
+                    Log.e(TAG, it.message)
                     it.printStackTrace()
                     showError("", true)
                     showProgress(false)
@@ -99,12 +100,16 @@ class MainActivity : BaseActivity() {
     }
 
     private fun initRecycler() {
-        rvNews.layoutManager = when (isPortrait()) {
+        rvNews.layoutManager = getLayoutManager()
+        adapter = NewsAdapter { onNewsItemClick(it) }
+        rvNews.adapter = adapter
+    }
+
+    private fun getLayoutManager(): RecyclerView.LayoutManager {
+        return when (isPortrait()) {
             true -> LinearLayoutManager(this)
             else -> GridLayoutManager(this, resources.getInteger(R.integer.landscape_news_columns_count))
         }
-        adapter = NewsAdapter { onNewsItemClick(it) }
-        rvNews.adapter = adapter
     }
 
     private fun onNewsItemClick(item: DisplayableItem) {
@@ -112,7 +117,8 @@ class MainActivity : BaseActivity() {
     }
 
     companion object {
-        private const val DELAY: Long = 2
+        private const val DELAY = 2L
+        private const val TAG = "MainActivity"
     }
 
 

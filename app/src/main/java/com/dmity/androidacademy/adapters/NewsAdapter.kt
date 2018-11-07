@@ -9,7 +9,6 @@ class NewsAdapter(clickListener: (DisplayableItem) -> Unit) : ListDelegationAdap
     init {
         delegatesManager.addDelegate(GenericNewsAdapterDelegate(clickListener))
         delegatesManager.addDelegate(AnimalAdapterDelegate(clickListener))
-//        setItems(news)
     }
 
 }
