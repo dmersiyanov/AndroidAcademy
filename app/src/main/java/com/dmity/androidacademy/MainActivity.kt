@@ -14,6 +14,7 @@ import com.dmity.androidacademy.base.BaseActivity
 import com.dmity.androidacademy.models.DisplayableItem
 import com.dmity.androidacademy.models.GenericNewsItem
 import com.dmity.androidacademy.utils.isPortrait
+import com.dmity.androidacademy.utils.showSnackbar
 import com.dmity.androidacademy.utils.visible
 import com.dmity.androidacademy.viewModel.NewsViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -36,11 +37,7 @@ class MainActivity : BaseActivity() {
 
     override fun initUi() {
         initRecycler()
-//        getNews()
-
-        observeNews()
-
-
+        initObservers()
     }
 
     override fun initUx() {
@@ -74,32 +71,14 @@ class MainActivity : BaseActivity() {
         }
     }
 
-//    private fun getNews() {
-//        Flowable.fromPublisher(LiveDataReactiveStreams.toPublisher(this, viewModel.getNews()))
-//                .firstOrError()
-//                .subscribeOn(Schedulers.io())
-//                .delay(DELAY, TimeUnit.SECONDS)
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .doOnSubscribe {
-//                    showProgress(true)
-//                    showError("", false)
-//                }
-//                .subscribe({
-//                    adapter.items = it
-//                    showProgress(false)
-//                }, {
-//                    Log.e(TAG, it.message)
-//                    it.printStackTrace()
-//                    showError("", true)
-//                    showProgress(false)
-//                    Snackbar.make(rvNews, getString(R.string.error_loading), Snackbar.LENGTH_LONG).show()
-//                })
-//                .bind()
-//    }
+    private fun initObservers() {
+        viewModel.showProgress.observe(this, Observer { showProgress(it) })
+        viewModel.showError.observe(this, Observer { showError(getString(R.string.error_loading), it) })
+        viewModel.showSnackbar.observe(this, Observer { rvNews.showSnackbar(getString(R.string.error_loading)) })
 
-    private fun observeNews() {
-        viewModel.news.observe(this, Observer {
-            adapter.items = it
+        viewModel.news.observe(this, Observer { items ->
+            adapter.items = items
+            rvNews.visible(true)
         })
     }
 
@@ -119,11 +98,5 @@ class MainActivity : BaseActivity() {
     private fun onNewsItemClick(item: DisplayableItem) {
         NewsDetailsActivity.display(this, item as GenericNewsItem)
     }
-
-    companion object {
-        private const val DELAY = 2L
-        private const val TAG = "MainActivity"
-    }
-
 
 }
