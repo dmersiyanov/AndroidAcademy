@@ -4,9 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ArrayAdapter
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import android.widget.ArrayAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,14 +14,9 @@ import com.dmity.androidacademy.adapters.NewsAdapter
 import com.dmity.androidacademy.base.BaseActivity
 import com.dmity.androidacademy.models.DisplayableItem
 import com.dmity.androidacademy.models.GenericNewsItem
-import com.dmity.androidacademy.network.RestAPI
-import com.dmity.androidacademy.utils.DataUtils
 import com.dmity.androidacademy.utils.isPortrait
 import com.dmity.androidacademy.utils.showSnackbar
 import com.dmity.androidacademy.utils.visible
-import com.google.android.material.snackbar.Snackbar
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import com.dmity.androidacademy.viewModel.NewsViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.view_error_stub.*
@@ -73,8 +68,6 @@ class MainActivity : BaseActivity() {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
     }
-
-    override fun showError(show: Boolean) = errorStub.visible(show)
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_list, menu)
