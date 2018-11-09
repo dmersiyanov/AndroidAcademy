@@ -8,18 +8,18 @@ interface SubscriptionsHolder {
     /**
      * Holds Disposables
      */
-    val mDisposable: CompositeDisposable
+    val disposables: CompositeDisposable
 
     /**
      * Easy activate disposables to composite with this function
      */
-    fun Disposable.bind() = mDisposable.add(this)
+    fun Disposable.bind() = disposables.add(this)
 
     /**
      * Clear all subscriptions when needed
      */
     fun resetCompositeDisposable() {
-        mDisposable.clear()
+        disposables.clear()
     }
 
 

@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.dmity.androidacademy.R
+import com.google.android.material.snackbar.Snackbar
 
 
 fun Context.extractAttrsWithRecycle(set: AttributeSet, id: IntArray, func: TypedArray.() -> Unit) {
@@ -38,3 +39,6 @@ fun ImageView.loadImg(imageUrl: String?) {
     }
 }
 
+fun View.showSnackbar(snackbarText: String, timeLength: Int = Snackbar.LENGTH_LONG) {
+    Snackbar.make(this, snackbarText, timeLength).show()
+}

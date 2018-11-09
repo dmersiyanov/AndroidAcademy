@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
@@ -39,6 +38,7 @@
         android:layout_width="@dimen/news_item_image_size"
         android:layout_height="@dimen/news_item_image_size"
         android:layout_centerInParent="true"
+        android:layout_gravity="center_horizontal|center_vertical"
         android:visibility="gone" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -54,4 +54,4 @@
         layout="@layout/view_error_stub"
         android:visibility="gone" />
 
-</RelativeLayout>
+</FrameLayout>
