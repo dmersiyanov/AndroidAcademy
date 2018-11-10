@@ -23,7 +23,7 @@ class NewsViewModel(application: Application): AndroidViewModel(application), Su
     var news: MutableLiveData<List<DisplayableItem>> = MutableLiveData()
     val showProgress = MutableLiveData<Boolean>()
     val showError = MutableLiveData<Boolean>()
-    var showSnackbar = MutableLiveData<Boolean>()
+    var showSnackBar = MutableLiveData<Boolean>()
 
     init {
         getNews(DEFAULT_CATEGORY, false)
@@ -41,6 +41,7 @@ class NewsViewModel(application: Application): AndroidViewModel(application), Su
 
     private fun loadNews(position: Int = currentPosition) {
         currentPosition = position
+
         RestAPI.getNews(getCategoryForApi(currentPosition))
                 .subscribeOn(Schedulers.io())
                 .delay(DELAY_IN_SECONDS, TimeUnit.SECONDS)
@@ -50,13 +51,13 @@ class NewsViewModel(application: Application): AndroidViewModel(application), Su
                     showError.value = false
                 }
                 .subscribe({
-                    news.postValue(it.results as List<DisplayableItem>)
+                    news.value = it.results as List<DisplayableItem>
                     showProgress.value = false
                 }, {
                     Log.e(TAG, it.message)
                     showProgress.value = false
                     showError.value = true
-                    showSnackbar.value = true
+                    showSnackBar.value = true
                 })
                 .bind()
     }

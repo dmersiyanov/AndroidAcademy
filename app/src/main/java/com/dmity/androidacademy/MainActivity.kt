@@ -17,6 +17,7 @@ import com.dmity.androidacademy.base.BaseActivity
 import com.dmity.androidacademy.models.DisplayableItem
 import com.dmity.androidacademy.models.GenericNewsItem
 import com.dmity.androidacademy.utils.isPortrait
+import com.dmity.androidacademy.utils.setupActionBar
 import com.dmity.androidacademy.utils.showSnack
 import com.dmity.androidacademy.utils.visible
 import com.dmity.androidacademy.viewModel.NewsViewModel
@@ -42,6 +43,7 @@ class MainActivity : BaseActivity() {
     override fun initUi() {
         initRecycler()
         setupSpinner()
+        setupActionBar(R.id.toolbar) {}
 
         initObservers()
     }
@@ -71,7 +73,7 @@ class MainActivity : BaseActivity() {
     }
 
     private fun resetSnackBar() {
-        viewModel.showSnackbar.postValue(false)
+        viewModel.showSnackBar.postValue(false)
     }
 
     private fun setupSpinnerListener() {
@@ -111,8 +113,8 @@ class MainActivity : BaseActivity() {
 
     private fun initObservers() {
         viewModel.showProgress.observe(this, Observer { showProgress(it) })
-        viewModel.showError.observe(this, Observer { showError(getString(R.string.error_loading), it) })
-        viewModel.showSnackbar.observe(this, Observer { showSnackBar(getString(R.string.error_loading), it) })
+        viewModel.showError.observe(this, Observer { showError(getString(R.string.error_view_text), it) })
+        viewModel.showSnackBar.observe(this, Observer { showSnackBar(getString(R.string.error_loading), it) })
 
         viewModel.news.observe(this, Observer { items ->
             adapter.setData(items)

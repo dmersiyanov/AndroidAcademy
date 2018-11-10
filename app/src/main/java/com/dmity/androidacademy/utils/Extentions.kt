@@ -6,6 +6,9 @@ import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.View
 import android.widget.ImageView
+import androidx.annotation.IdRes
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.dmity.androidacademy.R
 import com.google.android.material.snackbar.Snackbar
@@ -42,3 +45,11 @@ fun ImageView.loadImg(imageUrl: String?) {
 fun View.showSnack(text: String, timeLength: Int = Snackbar.LENGTH_LONG) {
     Snackbar.make(this, text, timeLength).show()
 }
+
+fun AppCompatActivity.setupActionBar(@IdRes toolbarId: Int, action: ActionBar.() -> Unit) {
+    setSupportActionBar(findViewById(toolbarId))
+    supportActionBar?.run {
+        action()
+    }
+}
+
