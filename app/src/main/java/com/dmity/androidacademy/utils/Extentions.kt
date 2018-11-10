@@ -4,9 +4,11 @@ import android.content.Context
 import android.content.res.Configuration
 import android.content.res.TypedArray
 import android.util.AttributeSet
+import android.view.View
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.dmity.androidacademy.R
+import com.google.android.material.snackbar.Snackbar
 
 
 fun Context.extractAttrsWithRecycle(set: AttributeSet, id: IntArray, func: TypedArray.() -> Unit) {
@@ -18,6 +20,11 @@ fun Context.extractAttrsWithRecycle(set: AttributeSet, id: IntArray, func: Typed
         attributes?.recycle()
     }
 }
+
+fun View.visible(visible: Boolean) {
+    this.visibility = if (visible) View.VISIBLE else View.GONE
+}
+
 
 fun Context.isPortrait(): Boolean {
     val orientation: Int = resources.configuration.orientation
@@ -32,3 +39,6 @@ fun ImageView.loadImg(imageUrl: String) {
     }
 }
 
+fun View.showSnackbar(snackbarText: String, timeLength: Int = Snackbar.LENGTH_LONG) {
+    Snackbar.make(this, snackbarText, timeLength).show()
+}

@@ -18,7 +18,7 @@
         android:layout_marginStart="@dimen/big_margin"
         android:layout_marginBottom="@dimen/medium_margin"
         custom:image="@drawable/ic_iron_man"
-        custom:text="@string/biliionare_title" />
+        custom:text="@string/billionaire_title" />
 
     <com.dmity.androidacademy.views.ImageTextView
         android:layout_width="wrap_content"

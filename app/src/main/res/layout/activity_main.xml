@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/news_rv"
-    tools:listitem="@layout/item_news_constrained"
-    tools:context=".MainActivity" />
+    android:layout_height="match_parent">
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="@dimen/news_item_image_size"
+        android:layout_height="@dimen/news_item_image_size"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:visibility="gone" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvNews"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".NewsListActivity"
+        tools:listitem="@layout/item_news" />
+
+    <include
+        layout="@layout/view_error_stub"
+        android:visibility="gone" />
+
+</FrameLayout>
