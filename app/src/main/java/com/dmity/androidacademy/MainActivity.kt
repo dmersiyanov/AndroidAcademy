@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -15,7 +17,7 @@ import com.dmity.androidacademy.base.BaseActivity
 import com.dmity.androidacademy.models.DisplayableItem
 import com.dmity.androidacademy.models.GenericNewsItem
 import com.dmity.androidacademy.utils.isPortrait
-import com.dmity.androidacademy.utils.showSnackbar
+import com.dmity.androidacademy.utils.showSnack
 import com.dmity.androidacademy.utils.visible
 import com.dmity.androidacademy.viewModel.NewsViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -45,7 +47,8 @@ class MainActivity : BaseActivity() {
     }
 
     override fun initUx() {
-        btnRetry.setOnClickListener { viewModel.getNews() }
+        btnRetry.setOnClickListener { viewModel.getNews(retry = true) }
+        setupSpinnerListener()
     }
 
     override fun showProgress(show: Boolean) {
@@ -59,6 +62,28 @@ class MainActivity : BaseActivity() {
         }
         errorStub.visible(show)
     }
+
+    private fun showSnackBar(text: String, show: Boolean) {
+        if (show && text.isNotBlank()) {
+            rvNews.showSnack(text)
+            resetSnackBar()
+        }
+    }
+
+    private fun resetSnackBar() {
+        viewModel.showSnackbar.postValue(false)
+    }
+
+    private fun setupSpinnerListener() {
+        spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                viewModel.getNews(position, false)
+            }
+        }
+    }
+
     private fun setupSpinner() {
         val adapter = ArrayAdapter.createFromResource(
             this,
@@ -87,12 +112,13 @@ class MainActivity : BaseActivity() {
     private fun initObservers() {
         viewModel.showProgress.observe(this, Observer { showProgress(it) })
         viewModel.showError.observe(this, Observer { showError(getString(R.string.error_loading), it) })
-        viewModel.showSnackbar.observe(this, Observer { rvNews.showSnackbar(getString(R.string.error_loading)) })
+        viewModel.showSnackbar.observe(this, Observer { showSnackBar(getString(R.string.error_loading), it) })
 
         viewModel.news.observe(this, Observer { items ->
-            adapter.items = items
+            adapter.setData(items)
             rvNews.visible(true)
         })
+
     }
 
     private fun initRecycler() {

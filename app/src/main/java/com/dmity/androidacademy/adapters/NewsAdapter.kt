@@ -12,4 +12,9 @@ class NewsAdapter(clickListener: (DisplayableItem) -> Unit) : ListDelegationAdap
         delegatesManager.addDelegate(NewsAdapterDelegate(clickListener))
     }
 
+    fun setData(items: List<DisplayableItem>) {
+        setItems(items)
+        notifyDataSetChanged()
+    }
+
 }

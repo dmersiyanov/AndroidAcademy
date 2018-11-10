@@ -1,45 +1,56 @@
 package com.dmity.androidacademy.viewModel
 
+import android.app.Application
+import android.content.Context
 import android.util.Log
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import com.dmity.androidacademy.R
 import com.dmity.androidacademy.base.SubscriptionsHolder
 import com.dmity.androidacademy.models.DisplayableItem
-import com.dmity.androidacademy.utils.DataUtils
-import io.reactivex.Single
+import com.dmity.androidacademy.network.RestAPI
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 
-class NewsViewModel: ViewModel(), SubscriptionsHolder {
+class NewsViewModel(application: Application): AndroidViewModel(application), SubscriptionsHolder {
 
     override val disposables: CompositeDisposable = CompositeDisposable()
+    private var currentPosition = -1
+    private var context: Context = getApplication()
 
     var news: MutableLiveData<List<DisplayableItem>> = MutableLiveData()
     val showProgress = MutableLiveData<Boolean>()
     val showError = MutableLiveData<Boolean>()
-    val showSnackbar = MutableLiveData<Boolean>()
+    var showSnackbar = MutableLiveData<Boolean>()
 
     init {
-        getNews()
+        getNews(DEFAULT_CATEGORY, false)
     }
 
     override fun onCleared() {
         resetCompositeDisposable()
     }
 
-    fun getNews() {
-        Single.fromCallable { DataUtils.generateNews()  }
+    fun getNews(position: Int = currentPosition, retry: Boolean) {
+        if (position != currentPosition || retry) {
+            loadNews(position)
+        }
+    }
+
+    private fun loadNews(position: Int = currentPosition) {
+        currentPosition = position
+        RestAPI.getNews(getCategoryForApi(currentPosition))
                 .subscribeOn(Schedulers.io())
-                .delay(DELAY, TimeUnit.SECONDS)
+                .delay(DELAY_IN_SECONDS, TimeUnit.SECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe {
                     showProgress.value = true
                     showError.value = false
                 }
                 .subscribe({
-                    news.value = it
+                    news.postValue(it.results as List<DisplayableItem>)
                     showProgress.value = false
                 }, {
                     Log.e(TAG, it.message)
@@ -50,8 +61,13 @@ class NewsViewModel: ViewModel(), SubscriptionsHolder {
                 .bind()
     }
 
+    private fun getCategoryForApi(position: Int): String {
+        return context.resources.getStringArray(R.array.news_categories)[position].toLowerCase().trim()
+    }
+
     companion object {
-        private const val DELAY = 2L
+        private const val DELAY_IN_SECONDS = 2L
+        private const val DEFAULT_CATEGORY = 0
         private const val TAG = "NewsViewModel"
     }
 

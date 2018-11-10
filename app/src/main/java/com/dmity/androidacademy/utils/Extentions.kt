@@ -39,6 +39,6 @@ fun ImageView.loadImg(imageUrl: String?) {
     }
 }
 
-fun View.showSnackbar(snackbarText: String, timeLength: Int = Snackbar.LENGTH_LONG) {
-    Snackbar.make(this, snackbarText, timeLength).show()
+fun View.showSnack(text: String, timeLength: Int = Snackbar.LENGTH_LONG) {
+    Snackbar.make(this, text, timeLength).show()
 }
