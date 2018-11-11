@@ -1,7 +1,7 @@
 package com.dmity.androidacademy.network
 
 import com.dmity.androidacademy.BuildConfig
-import com.dmity.androidacademy.models.dto.NewsResponse
+import com.dmity.androidacademy.models.dto.NewsResponseDTO
 import io.reactivex.Single
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -53,7 +53,7 @@ object RestAPI {
     }
 
 
-    fun getNews(category: String): Single<NewsResponse> {
+    fun getNews(category: String): Single<NewsResponseDTO> {
         return nyTimesService.getNews(category)
     }
 

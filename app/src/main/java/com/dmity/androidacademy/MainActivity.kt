@@ -1,7 +1,6 @@
 package com.dmity.androidacademy
 
 import android.content.Intent
-import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -14,8 +13,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dmity.androidacademy.adapters.NewsAdapter
 import com.dmity.androidacademy.base.BaseActivity
+import com.dmity.androidacademy.base.Layout
 import com.dmity.androidacademy.models.DisplayableItem
-import com.dmity.androidacademy.models.GenericNewsItem
+import com.dmity.androidacademy.models.dto.NewsItemDTO
 import com.dmity.androidacademy.utils.isPortrait
 import com.dmity.androidacademy.utils.setupActionBar
 import com.dmity.androidacademy.utils.showSnack
@@ -24,20 +24,12 @@ import com.dmity.androidacademy.viewModel.NewsViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.view_error_stub.*
 
-
+@Layout(R.layout.activity_main)
 class MainActivity : BaseActivity() {
 
     private lateinit var adapter: NewsAdapter
     private val viewModel: NewsViewModel by lazy {
         ViewModelProviders.of(this).get(NewsViewModel::class.java)
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        initUi()
-        initUx()
     }
 
     override fun initUi() {
@@ -137,7 +129,7 @@ class MainActivity : BaseActivity() {
     }
 
     private fun onNewsItemClick(item: DisplayableItem) {
-        NewsDetailsActivity.display(this, item as GenericNewsItem)
+        NewsDetailsActivity.displayWebView(this, (item as NewsItemDTO).url)
     }
 
 

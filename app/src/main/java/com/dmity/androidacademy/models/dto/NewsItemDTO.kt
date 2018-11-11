@@ -4,7 +4,7 @@ import com.dmity.androidacademy.models.DisplayableItem
 import com.google.gson.annotations.SerializedName
 import java.util.*
 
-data class ResultsItem(
+data class NewsItemDTO(
 
         @field:SerializedName("subsection")
         val subsection: String? = null,
@@ -22,7 +22,7 @@ data class ResultsItem(
         val url: String? = null,
 
         @field:SerializedName("multimedia")
-        val multimedia: List<MultimediaItem?>? = null,
+        val multimedia: List<MultimediaItemDTO?>? = null,
 
         @field:SerializedName("published_date")
         val publishDate: Date? = null

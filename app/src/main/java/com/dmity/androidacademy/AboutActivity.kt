@@ -1,33 +1,27 @@
 package com.dmity.androidacademy
 
-import android.os.Bundle
 import com.dmity.androidacademy.base.BaseActivity
+import com.dmity.androidacademy.base.Layout
 import com.dmity.androidacademy.utils.ThirdPartyIntentUtils
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.content_activity_about.*
 
-
+@Layout(R.layout.activity_about)
 class AboutActivity : BaseActivity() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_about)
-
-        setupToolbar()
-        initUx()
-
-    }
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
     }
 
+    override fun initUi() {
+        setupToolbar()
+    }
+
     override fun initUx() {
         btn_send.setOnClickListener { composeEmail(message.text.toString()) }
         btn_telegram.setOnClickListener { openTelegram() }
     }
-
 
     private fun setupToolbar() {
         supportActionBar?.title = getString(R.string.my_name)

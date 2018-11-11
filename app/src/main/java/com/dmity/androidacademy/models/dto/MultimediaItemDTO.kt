@@ -2,7 +2,7 @@ package com.dmity.androidacademy.models.dto
 
 import com.google.gson.annotations.SerializedName
 
-data class MultimediaItem(
+data class MultimediaItemDTO(
 
 	@field:SerializedName("copyright")
 	val copyright: String? = null,
