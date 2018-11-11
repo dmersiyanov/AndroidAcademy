@@ -15,11 +15,11 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".AboutActivity"
+            android:name=".features.about.AboutActivity"
             android:windowSoftInputMode="adjustPan" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".features.newsList.MainActivity"
             android:theme="@style/AppThemeNoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".NewsDetailsActivity" />
+        <activity android:name=".features.newsDetail.NewsDetailsActivity" />
     </application>
 
 </manifest>

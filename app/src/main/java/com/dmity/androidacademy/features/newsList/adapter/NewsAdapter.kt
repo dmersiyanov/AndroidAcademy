@@ -1,6 +1,6 @@
-package com.dmity.androidacademy.adapters
+package com.dmity.androidacademy.features.newsList.adapter
 
-import com.dmity.androidacademy.models.DisplayableItem
+import com.dmity.androidacademy.features.newsList.model.DisplayableItem
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 
 

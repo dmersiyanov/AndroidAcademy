@@ -1,5 +1,6 @@
-package com.dmity.androidacademy
+package com.dmity.androidacademy.features.about
 
+import com.dmity.androidacademy.R
 import com.dmity.androidacademy.base.BaseActivity
 import com.dmity.androidacademy.base.Layout
 import com.dmity.androidacademy.utils.ThirdPartyIntentUtils

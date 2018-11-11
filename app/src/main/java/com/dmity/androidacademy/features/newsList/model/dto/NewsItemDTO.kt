@@ -1,6 +1,6 @@
-package com.dmity.androidacademy.models.dto
+package com.dmity.androidacademy.features.newsList.model.dto
 
-import com.dmity.androidacademy.models.DisplayableItem
+import com.dmity.androidacademy.features.newsList.model.DisplayableItem
 import com.google.gson.annotations.SerializedName
 import java.util.*
 

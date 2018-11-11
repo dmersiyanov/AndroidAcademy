@@ -1,4 +1,4 @@
-package com.dmity.androidacademy.viewModel
+package com.dmity.androidacademy.features.newsList
 
 import android.app.Application
 import android.content.Context
@@ -7,7 +7,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.dmity.androidacademy.R
 import com.dmity.androidacademy.base.SubscriptionsHolder
-import com.dmity.androidacademy.models.DisplayableItem
+import com.dmity.androidacademy.features.newsList.model.DisplayableItem
 import com.dmity.androidacademy.network.RestAPI
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable

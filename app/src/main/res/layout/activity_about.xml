@@ -7,7 +7,7 @@
     android:fitsSystemWindows="true"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
-    tools:context=".AboutActivity">
+    tools:context=".features.about.AboutActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

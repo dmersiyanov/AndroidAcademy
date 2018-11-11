@@ -1,9 +1,9 @@
-package com.dmity.androidacademy.models.mapper
+package com.dmity.androidacademy.features.newsList.model.mapper
 
-import com.dmity.androidacademy.models.Categories
-import com.dmity.androidacademy.models.DisplayableItem
-import com.dmity.androidacademy.models.NewsItem
-import com.dmity.androidacademy.models.dto.NewsItemDTO
+import com.dmity.androidacademy.features.newsList.model.Categories
+import com.dmity.androidacademy.features.newsList.model.DisplayableItem
+import com.dmity.androidacademy.features.newsList.model.NewsItem
+import com.dmity.androidacademy.features.newsList.model.dto.NewsItemDTO
 import java.util.*
 
 class NewsItemMapper {

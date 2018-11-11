@@ -1,7 +1,7 @@
 package com.dmity.androidacademy.network
 
 import com.dmity.androidacademy.BuildConfig
-import com.dmity.androidacademy.models.dto.NewsResponseDTO
+import com.dmity.androidacademy.features.newsList.model.dto.NewsResponseDTO
 import io.reactivex.Single
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -13,10 +13,9 @@ import java.util.concurrent.TimeUnit
 
 object RestAPI {
 
-        private const val BASE_URL = "http://api.nytimes.com/svc/topstories/v2/"
-        private const val API_KEY = "b05917f0f5b04d7980c6e4cbd9bbd51e"
-        private const val TIMEOUT_IN_SECONDS: Long = 2
-
+    private const val BASE_URL = "http://api.nytimes.com/svc/topstories/v2/"
+    private const val API_KEY = "b05917f0f5b04d7980c6e4cbd9bbd51e"
+    private const val TIMEOUT_IN_SECONDS: Long = 2
 
     private val nyTimesService: NyTimesService
 

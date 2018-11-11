@@ -1,4 +1,4 @@
-package com.dmity.androidacademy
+package com.dmity.androidacademy.features.newsList
 
 import android.content.Intent
 import android.view.Menu
@@ -11,16 +11,18 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.dmity.androidacademy.adapters.NewsAdapter
+import com.dmity.androidacademy.R
 import com.dmity.androidacademy.base.BaseActivity
 import com.dmity.androidacademy.base.Layout
-import com.dmity.androidacademy.models.DisplayableItem
-import com.dmity.androidacademy.models.dto.NewsItemDTO
+import com.dmity.androidacademy.features.about.AboutActivity
+import com.dmity.androidacademy.features.newsDetail.NewsDetailsActivity
+import com.dmity.androidacademy.features.newsList.adapter.NewsAdapter
+import com.dmity.androidacademy.features.newsList.model.DisplayableItem
+import com.dmity.androidacademy.features.newsList.model.dto.NewsItemDTO
 import com.dmity.androidacademy.utils.isPortrait
 import com.dmity.androidacademy.utils.setupActionBar
 import com.dmity.androidacademy.utils.showSnack
 import com.dmity.androidacademy.utils.visible
-import com.dmity.androidacademy.viewModel.NewsViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.view_error_stub.*
 
@@ -81,8 +83,8 @@ class MainActivity : BaseActivity() {
     private fun setupSpinner() {
         val adapter = ArrayAdapter.createFromResource(
             this,
-            R.array.news_categories,
-            R.layout.items_categories_spinner
+                R.array.news_categories,
+                R.layout.items_categories_spinner
         )
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter

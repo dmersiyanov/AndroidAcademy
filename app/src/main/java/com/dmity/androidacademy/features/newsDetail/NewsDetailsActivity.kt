@@ -1,11 +1,12 @@
-package com.dmity.androidacademy
+package com.dmity.androidacademy.features.newsDetail
 
 import android.content.Context
 import android.content.Intent
 import com.bumptech.glide.Glide
+import com.dmity.androidacademy.R
 import com.dmity.androidacademy.base.BaseActivity
 import com.dmity.androidacademy.base.Layout
-import com.dmity.androidacademy.models.GenericNewsItem
+import com.dmity.androidacademy.features.newsList.model.GenericNewsItem
 import com.dmity.androidacademy.utils.DateTimeUtils
 import com.dmity.androidacademy.utils.visible
 import kotlinx.android.synthetic.main.activity_news_details.*

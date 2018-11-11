@@ -1,4 +1,4 @@
-package com.dmity.androidacademy.models.dto
+package com.dmity.androidacademy.features.newsList.model.dto
 
 import com.google.gson.annotations.SerializedName
 
