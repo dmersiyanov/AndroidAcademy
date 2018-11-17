@@ -17,11 +17,13 @@ import kotlinx.android.synthetic.main.view_error_stub.*
 class NewsDetailsActivity : BaseActivity() {
 
     private lateinit var item: GenericNewsItem
-    private var url: String? = ""
+
+    private val url by lazy {
+        intent?.extras?.getString(ARGS_URL) ?: ""
+    }
 
     override fun initUi() {
         setupToolbar()
-        getUrlFromIntent()
         setupWebView()
     }
 
@@ -39,21 +41,15 @@ class NewsDetailsActivity : BaseActivity() {
     }
 
     private fun setupWebView() {
-        if(url.isNullOrBlank()) {
+        if(url.isBlank()) {
             showError(show = true)
         } else {
             webView.loadUrl(url)
         }
     }
 
-    private fun getUrlFromIntent() {
-        intent?.extras?.getString(URL)?.let {
-            url = it
-        }
-    }
-
     private fun getIntentData() {
-        intent?.extras?.getSerializable(ITEM_DATA)?.let {
+        intent?.extras?.getSerializable(ARGS_ITEM_DATA)?.let {
             item = it as GenericNewsItem
         }
     }
@@ -67,30 +63,25 @@ class NewsDetailsActivity : BaseActivity() {
         }
     }
 
-    private fun setupToolbar() {
-//        if (item is NewsItem) {
-//            supportActionBar?.title = (item as NewsItem).newsCategory.category
-//        } else (item as AnimalItem).newsCategory.category
+    private fun setupToolbar() = supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-    }
 
 
     companion object {
 
-        private const val ITEM_DATA = "item_data"
-        private const val URL = "url"
+        private const val ARGS_ITEM_DATA = "item_data"
+        private const val ARGS_URL = "url"
 
         fun display(context: Context, item: GenericNewsItem) {
             val intent = Intent(context, NewsDetailsActivity::class.java).apply {
-                putExtra(ITEM_DATA, item)
+                putExtra(ARGS_ITEM_DATA, item)
             }
             context.startActivity(intent)
         }
 
         fun displayWebView(context: Context, url: String?) {
             val intent = Intent(context, NewsDetailsActivity::class.java).apply {
-                putExtra(URL, url)
+                putExtra(ARGS_URL, url)
             }
             context.startActivity(intent)
         }

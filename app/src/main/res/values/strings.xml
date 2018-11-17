@@ -6,7 +6,7 @@
     <string name="philanthropist_title">Philanthropist</string>
     <string name="my_story">Interesting story about myself :)</string>
     <string name="hint_enter_message">Enter message</string>
-    <string name="btn_send_message">Send message</string>
+    <string name="btn_send_message">Send e-mail</string>
     <string name="btn_telegram_msg">PM in Telegram</string>
     <string name="error_no_email_app">Application for sending e-mail is not detected</string>
     <string name="error_message_send">Failed to send message</string>
