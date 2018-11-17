@@ -1,5 +1,6 @@
 package com.dmity.androidacademy.features.newsList
 
+import android.content.Context
 import android.content.Intent
 import android.view.Menu
 import android.view.MenuItem
@@ -132,6 +133,14 @@ class MainActivity : BaseActivity() {
 
     private fun onNewsItemClick(item: DisplayableItem) {
         NewsDetailsActivity.displayWebView(this, (item as NewsItemDTO).url)
+    }
+
+    companion object {
+
+        fun display(context: Context) {
+            val intent = Intent(context, MainActivity::class.java)
+            context.startActivity(intent)
+        }
     }
 
 

@@ -17,4 +17,5 @@
     <string name="error_view_text">Error has occurred. \nTry again.</string>
     <string name="text_yesterday" translatable="false"> Yesterday, %s </string>
     <string name="text_hours" translatable="false"> %d hr. ago, %s </string>
+    <string name="onboarding_title">Get latest news from all over the world</string>
 </resources>

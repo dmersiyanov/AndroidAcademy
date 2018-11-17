@@ -7,7 +7,6 @@ import io.reactivex.plugins.RxJavaPlugins
 
 
 class NewsApp: Application() {
-
     override fun onCreate() {
         super.onCreate()
         setGlobalRxJavaErrorHandler()
