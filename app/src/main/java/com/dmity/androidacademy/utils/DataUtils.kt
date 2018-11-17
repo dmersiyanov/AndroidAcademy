@@ -1,16 +1,16 @@
 package com.dmity.androidacademy.utils
 
-import com.dmity.androidacademy.models.AnimalItem
-import com.dmity.androidacademy.models.Categories
-import com.dmity.androidacademy.models.DisplayableItem
-import com.dmity.androidacademy.models.NewsItem
+import com.dmity.androidacademy.features.newsList.model.AnimalItem
+import com.dmity.androidacademy.features.newsList.model.Categories
+import com.dmity.androidacademy.features.newsList.model.DisplayableItem
+import com.dmity.androidacademy.features.newsList.model.NewsItem
 import java.util.*
 
 object DataUtils {
 
     fun generateNews(): List<DisplayableItem> {
 
-        val news = ArrayList<DisplayableItem>()
+        val news = mutableListOf<DisplayableItem>()
 
         news.add(NewsItem(
                 "Tourist filmed sitting on 5m-long crocodile",

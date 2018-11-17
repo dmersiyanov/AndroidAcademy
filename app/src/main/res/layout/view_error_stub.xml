@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:background="@android:color/white"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/errorStub"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
 
     <TextView
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/btnRetry"
-        android:textColor="@android:color/black"
-        android:layout_marginBottom="@dimen/big_margin"
-        android:textAlignment="center"
-        android:text="@string/error_view_text"
+        android:id="@+id/tvErrorMessage"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnRetry"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/big_margin"
+        android:text="@string/error_view_text"
+        android:textAlignment="center"
+        android:textColor="@android:color/black" />
 
     <Button
-        android:layout_centerInParent="true"
-        android:visibility="visible"
-        android:textColor="@android:color/black"
-        android:background="@drawable/btn_outline"
         android:id="@+id/btnRetry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:layout_gravity="center_horizontal"
-        android:paddingBottom="@dimen/medium_margin"
+        android:background="@drawable/btn_outline"
+        android:paddingStart="@dimen/big_margin"
         android:paddingTop="@dimen/medium_margin"
         android:paddingEnd="@dimen/big_margin"
-        android:paddingStart="@dimen/big_margin"
-        android:text="@string/retry" />
+        android:paddingBottom="@dimen/medium_margin"
+        android:text="@string/retry"
+        android:textColor="@android:color/black"
+        android:visibility="visible" />
 
 </RelativeLayout>
