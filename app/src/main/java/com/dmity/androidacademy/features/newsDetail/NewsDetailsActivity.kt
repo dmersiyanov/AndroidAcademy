@@ -2,6 +2,7 @@ package com.dmity.androidacademy.features.newsDetail
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import com.bumptech.glide.Glide
 import com.dmity.androidacademy.R
 import com.dmity.androidacademy.base.BaseActivity
@@ -22,9 +23,19 @@ class NewsDetailsActivity : BaseActivity() {
         intent?.extras?.getString(ARGS_URL) ?: ""
     }
 
-    override fun initUi() {
+    override fun initUi(savedInstanceState: Bundle?) {
         setupToolbar()
-        setupWebView()
+        setupWebView(savedInstanceState)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle?) {
+        super.onSaveInstanceState(outState)
+        webView.saveState(outState)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+        super.onRestoreInstanceState(savedInstanceState)
+        webView.restoreState(savedInstanceState)
     }
 
     override fun initUx() {
@@ -40,10 +51,10 @@ class NewsDetailsActivity : BaseActivity() {
         errorStub.visible(show)
     }
 
-    private fun setupWebView() {
+    private fun setupWebView(savedInstanceState: Bundle?) {
         if(url.isBlank()) {
             showError(show = true)
-        } else {
+        } else if(savedInstanceState == null) {
             webView.loadUrl(url)
         }
     }

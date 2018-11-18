@@ -27,7 +27,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".features.newsDetail.NewsDetailsActivity" />
+        <activity android:name=".features.newsDetail.NewsDetailsActivity"
+            android:configChanges="orientation|screenSize"/>
     </application>
 
 </manifest>
