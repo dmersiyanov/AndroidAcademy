@@ -18,7 +18,7 @@ class GenericNewsAdapterDelegate(private val clickListener: (DisplayableItem) ->
     override fun onBindViewHolder(item: GenericNewsItem, holder: BaseViewHolder, payloads: MutableList<Any>) {
         with(holder.itemView) {
             newsTitle.text = item.title
-            newsCategory.text = item.newsCategory.category
+            newsCategory.text = item.newsCategory.value
             newsText.text = item.previewText
             newsDate.text = DateTimeUtils.formatDateForNews(item.publishDate, context)
             newsImage.loadImg(item.imageUrl)

@@ -4,12 +4,38 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-enum class Categories(val id: Int,
-                      val category: String) : Parcelable {
+enum class Categories(val value: String) : Parcelable {
 
-    DARWIN_AWARDS(1, "Darwin Awards"),
-    CRIMINAL(2, "Criminal"),
-    ANIMALS(3, "Animals"),
-    MUSIC(4, "Music"),
+    EMPTY_CATEGORY( ""),
+    HOME("Home"),
+    OPINION("Opinion"),
+    WORLD ("World"),
+    NATIONAL("National"),
+    POLITICS("Politics"),
+    UPSHOT("Upshot"),
+    NY_REGION("NY Region"),
+    BUSINESS("Business"),
+    TECHNOLOGY("Technology"),
+    SCIENCE("Science"),
+    HEALTH("Health"),
+    SPORTS("Sports"),
+    ARTS("Arts"),
+    BOOKS("Books"),
+    MOVIES("Movies"),
+    THEATER("Theater"),
+    SUNDAY_REVIEW("Sunday Review"),
+    FASHION("Fashion"),
+    FOOD("Food"),
+    TRAVEL("Travel"),
+    MAGAZINE("Magazine"),
+    REAL_ESTATE("Real Estate"),
+    AUTO("Automobiles"),
+    OBITUARIES("Obituaries"),
+    INSIDER("Insider")
+
+//    DARWIN_AWARDS(1, "Darwin Awards"),
+//    CRIMINAL(2, "Criminal"),
+//    ANIMALS(3, "Animals"),
+//    MUSIC(4, "Music"),
 
 }

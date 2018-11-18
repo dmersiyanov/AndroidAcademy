@@ -8,15 +8,17 @@ import androidx.lifecycle.MutableLiveData
 import com.dmity.androidacademy.R
 import com.dmity.androidacademy.base.SubscriptionsHolder
 import com.dmity.androidacademy.features.newsList.model.DisplayableItem
+import com.dmity.androidacademy.features.newsList.model.mapper.NewsItemMapper
 import com.dmity.androidacademy.network.RestAPI
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import java.util.concurrent.TimeUnit
 
 class NewsViewModel(application: Application): AndroidViewModel(application), SubscriptionsHolder {
 
     override val disposables: CompositeDisposable = CompositeDisposable()
+    private val mapper: NewsItemMapper = NewsItemMapper()
+    private val newsRepo: NewsRepo
     private var currentPosition = -1
     private var context: Context = getApplication()
 
@@ -26,6 +28,7 @@ class NewsViewModel(application: Application): AndroidViewModel(application), Su
     var showSnackBar = MutableLiveData<Boolean>()
 
     init {
+        newsRepo = NewsRepo(context)
         getNews(DEFAULT_CATEGORY, false)
     }
 
@@ -44,13 +47,18 @@ class NewsViewModel(application: Application): AndroidViewModel(application), Su
 
         RestAPI.getNews(getCategoryForApi(currentPosition))
                 .subscribeOn(Schedulers.io())
-                .delay(DELAY_IN_SECONDS, TimeUnit.SECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe {
                     showProgress.value = true
                     showError.value = false
                 }
                 .subscribe({
+
+                    val newsForDb = mapper.toDatabase(it)
+                    newsForDb?.let { newsForDbNotNull ->
+                        newsRepo.saveData(newsForDbNotNull)
+                    }
+
                     news.value = it.results as List<DisplayableItem>
                     showProgress.value = false
                 }, {
@@ -67,7 +75,6 @@ class NewsViewModel(application: Application): AndroidViewModel(application), Su
     }
 
     companion object {
-        private const val DELAY_IN_SECONDS = 2L
         private const val DEFAULT_CATEGORY = 0
         private const val TAG = "NewsViewModel"
     }

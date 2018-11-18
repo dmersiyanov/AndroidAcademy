@@ -44,13 +44,18 @@ class MainActivity : BaseActivity() {
     }
 
     override fun initUx() {
-        btnRetry.setOnClickListener { viewModel.getNews(retry = true) }
+        val clickListener = View.OnClickListener {
+            viewModel.getNews(retry = true)
+        }
+
+        btnRetry.setOnClickListener(clickListener)
+        fab.setOnClickListener(clickListener)
         setupSpinnerListener()
     }
 
     override fun showProgress(show: Boolean) {
         progress.visible(show)
-        rvNews.visible(!show)
+        content.visible(!show)
     }
 
     override fun showError(errorMessage: String, show: Boolean) {
