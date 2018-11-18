@@ -19,7 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/my_picture_height"
             android:scaleType="centerCrop"
-            android:src="@drawable/my_picture" />
+            android:src="@drawable/my_picture"
+            tools:ignore="ContentDescription" />
 
         <include layout="@layout/content_activity_about" />
 

@@ -10,7 +10,7 @@
         android:layout_width="@dimen/image_text_view_size"
         android:layout_height="@dimen/image_text_view_size"
         android:layout_marginEnd="@dimen/medium_margin"
-        tools:srcCompat="@drawable/finch_logo" />
+        android:contentDescription="TODO" tools:srcCompat="@drawable/finch_logo" />
 
     <TextView
         android:id="@+id/text"

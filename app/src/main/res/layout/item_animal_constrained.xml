@@ -21,22 +21,22 @@
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:textAllCaps="true"
-            card_view:layout_constraintTop_toTopOf="parent"
             card_view:layout_constraintStart_toStartOf="@id/newsImage"
+            card_view:layout_constraintTop_toTopOf="parent"
             tools:text="Darvin Award" />
 
         <TextView
             android:id="@+id/newsTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/card_margin"
             android:layout_marginStart="@dimen/medium_margin"
+            android:layout_marginTop="@dimen/card_margin"
             android:ellipsize="end"
             android:maxLines="2"
             android:textColor="@android:color/black"
             android:textStyle="bold"
-            card_view:layout_constraintStart_toEndOf="@id/newsImage"
             card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintStart_toEndOf="@id/newsImage"
             card_view:layout_constraintTop_toBottomOf="@+id/newsCategory"
             tools:text="Tourist filmed sitting on 5m-long crocodile" />
 
@@ -49,9 +49,9 @@
             android:ellipsize="end"
             android:maxLines="3"
             android:textColor="@android:color/black"
+            card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toEndOf="@id/newsImage"
             card_view:layout_constraintStart_toStartOf="@+id/newsTitle"
-            card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintTop_toBottomOf="@+id/newsTitle"
             tools:text="@string/test_text" />
 
@@ -62,8 +62,8 @@
             android:layout_marginTop="@dimen/card_margin"
             android:layout_marginEnd="@dimen/medium_margin"
             android:maxLines="1"
-            card_view:layout_constraintStart_toEndOf="@id/newsImage"
             card_view:layout_constraintHorizontal_bias="0.0"
+            card_view:layout_constraintStart_toEndOf="@id/newsImage"
             card_view:layout_constraintStart_toStartOf="@+id/newsText"
             card_view:layout_constraintTop_toBottomOf="@+id/newsText"
             tools:text="4 hr. ago, 10:34 AM" />
@@ -74,9 +74,10 @@
             android:layout_width="@dimen/news_item_image_size"
             android:layout_height="@dimen/news_item_image_size"
             android:scaleType="centerCrop"
-            card_view:layout_constraintTop_toBottomOf="@id/newsCategory"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@id/newsCategory"
+            tools:ignore="ContentDescription"
             tools:src="@tools:sample/avatars" />
 
 

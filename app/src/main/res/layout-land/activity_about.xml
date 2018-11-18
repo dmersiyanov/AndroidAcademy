@@ -1,32 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    android:focusableInTouchMode="true"
     android:fitsSystemWindows="true"
-    tools:context=".features.about.AboutActivity"
-    android:weightSum="3">
+    android:focusableInTouchMode="true"
+    android:orientation="horizontal"
+    android:weightSum="3"
+    tools:context=".features.about.AboutActivity">
 
     <ImageView
-        android:layout_weight="1"
-        android:scaleType="centerCrop"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:src="@drawable/my_picture" />
+        android:layout_weight="1"
+        android:scaleType="centerCrop"
+        android:src="@drawable/my_picture"
+        tools:ignore="ContentDescription" />
 
     <ScrollView
-        android:overScrollMode="never"
-        android:layout_weight="2"
         android:layout_width="0dp"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:overScrollMode="never">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <include layout="@layout/content_activity_about" />
 

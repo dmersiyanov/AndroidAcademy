@@ -30,7 +30,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     // Google libs
-    implementation 'androidx.appcompat:appcompat:1.0.1'
+    implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation "androidx.cardview:cardview:1.0.0"
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'com.google.android.material:material:1.0.0'
@@ -55,8 +55,13 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
 
     // Architecture Components
-    implementation "android.arch.lifecycle:extensions:1.1.1"
-    implementation "android.arch.lifecycle:reactivestreams:1.1.1"
+    implementation "androidx.lifecycle:lifecycle-extensions:2.0.0"
+    implementation "androidx.lifecycle:lifecycle-reactivestreams:2.0.0"
+
+    implementation "androidx.room:room-runtime:2.1.0-alpha02"
+    annotationProcessor "androidx.room:room-compiler:2.1.0-alpha02"
+
+
 
 
 }
