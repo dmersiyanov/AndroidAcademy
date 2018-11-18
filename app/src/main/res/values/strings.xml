@@ -6,13 +6,13 @@
     <string name="philanthropist_title">Philanthropist</string>
     <string name="my_story">Interesting story about myself :)</string>
     <string name="hint_enter_message">Enter message</string>
-    <string name="btn_send_message">Send message</string>
+    <string name="btn_send_message">Send e-mail</string>
     <string name="btn_telegram_msg">PM in Telegram</string>
     <string name="error_no_email_app">Application for sending e-mail is not detected</string>
     <string name="error_message_send">Failed to send message</string>
     <string name="title_about">About</string>
     <string name="test_text" translatable="false">A Danish tourist has admitted he took his life in his hands by sitting on a large crocodile in Australia.  + Niels Jensen, 22, was on safari in a wildlife park east of Darwin in northern Australia when he encountered the predator, estimated to be 4.7m (15ft) long and weighing 653kg (1428 lbs).   The wildlife management graduate is filmed enticing the large reptile, which had been relocated to the park after it was caught preying on livestock, with a wallaby carcass. After leaving the bait on the ground and waiting for the crocodile to start eating, he astonishingly straddled the reptile\'s back, sitting just behind its rear legs.   He touched some of the scales on the animal\'s back, and, after a few moments, rose and walked away.   But a man out of shot told him to get back and give a thumbs-up, so he approached the animal for a second time, sat down again, turned towards the camera, smiled and put this thumb in the air.   Mr Jensen admitted he took life in his hands by sitting on a live crocodile for the first time.</string>
-    <string name="error_loading">Loading error</string>
+    <string name="error_loading">Error while loading</string>
     <string name="retry">Retry</string>
     <string name="error_view_text">Error has occurred. \nTry again.</string>
     <string name="text_yesterday" translatable="false"> Yesterday, %s </string>

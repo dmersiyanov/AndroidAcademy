@@ -1,9 +1,9 @@
 package com.dmity.androidacademy.utils
 
-import com.dmity.androidacademy.models.AnimalItem
-import com.dmity.androidacademy.models.Categories
-import com.dmity.androidacademy.models.DisplayableItem
-import com.dmity.androidacademy.models.NewsItem
+import com.dmity.androidacademy.features.newsList.model.AnimalItem
+import com.dmity.androidacademy.features.newsList.model.Categories
+import com.dmity.androidacademy.features.newsList.model.DisplayableItem
+import com.dmity.androidacademy.features.newsList.model.NewsItem
 import java.util.*
 
 object DataUtils {

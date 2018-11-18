@@ -1,4 +1,4 @@
-package com.dmity.androidacademy.models
+package com.dmity.androidacademy.features.newsList.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
