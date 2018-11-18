@@ -13,6 +13,7 @@ abstract class BaseActivity: AppCompatActivity(), SubscriptionsHolder {
 
         initLayout()
         initUi()
+        initUi(savedInstanceState)
         initUx()
     }
 
@@ -23,6 +24,7 @@ abstract class BaseActivity: AppCompatActivity(), SubscriptionsHolder {
 
     open fun initUx() {}
     open fun initUi() {}
+    open fun initUi(savedInstanceState: Bundle?) {}
     open fun showProgress(show: Boolean) {}
     open fun showError(errorMessage: String = "", show: Boolean) {}
 
