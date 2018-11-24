@@ -1,13 +1,10 @@
 package com.dmity.androidacademy.features.newsList.model
 
-import java.util.*
-
 
 class NewsItem(title: String,
                imageUrl: String,
                newsCategory: String,
-               publishDate: Date,
-               previewText: String,
+               publishDate: String,
                fullText: String)
-    : GenericNewsItem(title, imageUrl, newsCategory, publishDate, previewText, fullText), DisplayableItem
+    : GenericNewsItem(title, imageUrl, newsCategory, publishDate, fullText), DisplayableItem
 

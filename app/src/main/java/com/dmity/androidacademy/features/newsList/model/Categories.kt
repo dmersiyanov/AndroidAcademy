@@ -33,9 +33,4 @@ enum class Categories(val value: String) : Parcelable {
     OBITUARIES("Obituaries"),
     INSIDER("Insider")
 
-//    DARWIN_AWARDS(1, "Darwin Awards"),
-//    CRIMINAL(2, "Criminal"),
-//    ANIMALS(3, "Animals"),
-//    MUSIC(4, "Music"),
-
 }

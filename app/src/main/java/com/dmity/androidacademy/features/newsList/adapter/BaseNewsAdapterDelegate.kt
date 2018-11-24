@@ -9,7 +9,7 @@ import com.dmity.androidacademy.features.newsList.model.NewsEntity
 import com.dmity.androidacademy.utils.loadImg
 import kotlinx.android.synthetic.main.item_news_constrained.view.*
 
-class GenericNewsAdapterDelegate(private val clickListener: (DisplayableItem) -> Unit) : BaseAdapterDelegate<NewsEntity, DisplayableItem, BaseViewHolder>() {
+class BaseNewsAdapterDelegate(private val clickListener: (DisplayableItem) -> Unit) : BaseAdapterDelegate<NewsEntity, DisplayableItem, BaseViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup): BaseViewHolder = fromLayoutId(R.layout.item_news_constrained, parent)
 
@@ -17,8 +17,8 @@ class GenericNewsAdapterDelegate(private val clickListener: (DisplayableItem) ->
         with(holder.itemView) {
             newsTitle.text = item.title
             newsCategory.text = item.newsCategory
-            newsText.text = item.previewText
-//            newsDate.text = DateTimeUtils.formatDateForNews(item.publishDate, context)
+            newsText.text = item.fullText
+            newsDate.text = item.publishDate
             newsImage.loadImg(item.imageUrl)
             setOnClickListener { clickListener(item) }
         }

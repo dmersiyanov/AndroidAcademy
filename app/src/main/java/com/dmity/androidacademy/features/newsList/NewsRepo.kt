@@ -32,4 +32,6 @@ class NewsRepo(private val context: Context) {
     fun clear(): Completable = Completable.fromAction {
         newsDao?.deleteAll()
     }
+
+    fun getNewsById(id: Int) = newsDaoAsync?.getNewsById(id)
 }

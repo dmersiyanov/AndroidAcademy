@@ -19,7 +19,7 @@ import com.dmity.androidacademy.features.about.AboutActivity
 import com.dmity.androidacademy.features.newsDetail.NewsDetailsActivity
 import com.dmity.androidacademy.features.newsList.adapter.NewsAdapter
 import com.dmity.androidacademy.features.newsList.model.DisplayableItem
-import com.dmity.androidacademy.features.newsList.model.dto.NewsItemDTO
+import com.dmity.androidacademy.features.newsList.model.NewsEntity
 import com.dmity.androidacademy.utils.isPortrait
 import com.dmity.androidacademy.utils.setupActionBar
 import com.dmity.androidacademy.utils.showSnack
@@ -39,7 +39,6 @@ class MainActivity : BaseActivity() {
         initRecycler()
         setupSpinner()
         setupActionBar(R.id.toolbar) {}
-
         initObservers()
     }
 
@@ -51,11 +50,6 @@ class MainActivity : BaseActivity() {
         btnRetry.setOnClickListener(clickListener)
         fab.setOnClickListener(clickListener)
         setupSpinnerListener()
-    }
-
-    override fun showProgress(show: Boolean) {
-        progress.visible(show)
-        content.visible(!show)
     }
 
     override fun showError(errorMessage: String, show: Boolean) {
@@ -137,16 +131,14 @@ class MainActivity : BaseActivity() {
     }
 
     private fun onNewsItemClick(item: DisplayableItem) {
-        NewsDetailsActivity.displayWebView(this, (item as NewsItemDTO).url)
+        NewsDetailsActivity.display(this, (item as NewsEntity).id)
     }
 
     companion object {
-
         fun display(context: Context) {
             val intent = Intent(context, MainActivity::class.java)
             context.startActivity(intent)
         }
     }
-
 
 }

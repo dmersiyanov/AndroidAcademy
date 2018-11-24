@@ -18,7 +18,7 @@ class NewsApp: Application() {
     override fun onCreate() {
         super.onCreate()
         context = this
-//        setGlobalRxJavaErrorHandler()
+        setGlobalRxJavaErrorHandler()
     }
 
 

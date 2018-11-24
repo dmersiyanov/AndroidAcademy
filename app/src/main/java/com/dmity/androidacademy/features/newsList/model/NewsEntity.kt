@@ -2,6 +2,7 @@ package com.dmity.androidacademy.features.newsList.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity
 data class NewsEntity(
@@ -12,6 +13,5 @@ data class NewsEntity(
         val newsUrl: String,
         val newsCategory: String,
         val publishDate: String,
-        val previewText: String,
         val fullText: String
-): DisplayableItem
+): DisplayableItem, Serializable
