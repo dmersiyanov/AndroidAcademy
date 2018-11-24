@@ -5,7 +5,7 @@ import java.util.*
 
 class NewsItem(title: String,
                imageUrl: String,
-               newsCategory: Categories,
+               newsCategory: String,
                publishDate: Date,
                previewText: String,
                fullText: String)

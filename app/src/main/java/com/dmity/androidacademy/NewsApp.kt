@@ -2,13 +2,22 @@ package com.dmity.androidacademy
 
 import android.annotation.SuppressLint
 import android.app.Application
+import android.content.Context
 import android.util.Log
 import io.reactivex.plugins.RxJavaPlugins
 
 
 class NewsApp: Application() {
+
+    companion object {
+        @SuppressLint("StaticFieldLeak")
+        lateinit var context: Context
+    }
+
+
     override fun onCreate() {
         super.onCreate()
+        context = this
 //        setGlobalRxJavaErrorHandler()
     }
 

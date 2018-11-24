@@ -5,7 +5,7 @@ import java.util.*
 
 abstract class GenericNewsItem(val title: String,
                                val imageUrl: String,
-                               val newsCategory: Categories,
+                               val newsCategory: String,
                                val publishDate: Date,
                                val previewText: String,
                                val fullText: String): Serializable, DisplayableItem

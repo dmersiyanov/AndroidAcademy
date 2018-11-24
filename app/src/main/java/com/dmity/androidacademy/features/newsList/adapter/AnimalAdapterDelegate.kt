@@ -18,7 +18,7 @@ class AnimalAdapterDelegate(private val clickListener: (DisplayableItem) -> Unit
     override fun onBindViewHolder(item: GenericNewsItem, holder: BaseViewHolder, payloads: MutableList<Any>) {
         with(holder.itemView) {
             newsTitle.text = item.title
-            newsCategory.text = item.newsCategory.value
+            newsCategory.text = item.newsCategory
             newsText.text = item.previewText
             newsDate.text = DateTimeUtils.formatDateForNews(item.publishDate, context)
             newsImage.loadImg(item.imageUrl)

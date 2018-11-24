@@ -10,6 +10,9 @@ interface NewsDao {
     @Query("SELECT * FROM NewsEntity")
     fun getAll(): List<NewsEntity>
 
+//    @Query("SELECT * FROM NewsEntity")
+//    fun getAll(): Observable<List<NewsEntity>>
+
     @Query("SELECT * FROM NewsEntity WHERE id = :id")
     fun getNewsById(id: Int): NewsEntity
 

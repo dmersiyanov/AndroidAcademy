@@ -8,4 +8,4 @@ class AnimalItem(title: String,
                  publishDate: Date,
                  previewText: String,
                  fullText: String)
-    : GenericNewsItem(title, imageUrl, newsCategory, publishDate, previewText, fullText), DisplayableItem
+    : GenericNewsItem(title, imageUrl, newsCategory.value, publishDate, previewText, fullText), DisplayableItem

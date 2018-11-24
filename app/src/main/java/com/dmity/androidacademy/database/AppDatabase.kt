@@ -4,12 +4,16 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.dmity.androidacademy.database.converter.DateConverter
 import com.dmity.androidacademy.features.newsList.model.NewsEntity
 
 @Database(entities = [NewsEntity::class], version = 1)
+@TypeConverters(DateConverter::class)
 abstract class AppDatabase: RoomDatabase() {
 
     abstract fun newsDao(): NewsDao
+    abstract fun newsDaoAsync(): NewsDaoAsync
 
     companion object {
 

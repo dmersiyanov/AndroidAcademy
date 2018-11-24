@@ -2,27 +2,34 @@ package com.dmity.androidacademy.features.newsList
 
 import android.content.Context
 import com.dmity.androidacademy.database.AppDatabase
+import com.dmity.androidacademy.database.NewsDao
+import com.dmity.androidacademy.database.NewsDaoAsync
 import com.dmity.androidacademy.features.newsList.model.NewsEntity
 import io.reactivex.Completable
-import io.reactivex.Single
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 
 class NewsRepo(private val context: Context) {
 
-    fun saveData(filmList: List<NewsEntity>): Completable {
-        return Completable.fromCallable {
-            val db = AppDatabase.getAppDataBase(context)
-            db?.newsDao()?.let {
-                it.deleteAll()
-                it.insertAll(filmList)
-            }
-        }
-    }
+    private val newsDao: NewsDao?
+        get() = AppDatabase.getAppDataBase(context)?.newsDao()
 
-    fun getData(): Single<List<NewsEntity>> {
-        return Single.fromCallable {
-            AppDatabase.getAppDataBase(context)?.newsDao()?.getAll()
-        }
-    }
+    private val newsDaoAsync: NewsDaoAsync?
+        get() = AppDatabase.getAppDataBase(context)?.newsDaoAsync()
 
+    fun saveData(filmList: List<NewsEntity>): Completable = Completable.fromCallable {
+        newsDao?.let {
+            it.deleteAll()
+            it.insertAll(filmList)
+        }
+    }.subscribeOn(Schedulers.io())
+
+    fun getData() = newsDaoAsync?.getAll()
+            ?.observeOn(Schedulers.io())
+            ?.subscribeOn(AndroidSchedulers.mainThread())
+
+    fun clear(): Completable = Completable.fromAction {
+        newsDao?.deleteAll()
+    }
 }

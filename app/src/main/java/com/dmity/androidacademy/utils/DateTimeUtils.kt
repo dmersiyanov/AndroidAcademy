@@ -14,8 +14,9 @@ object DateTimeUtils {
     private const val FULL = "MMM dd, hh:mm a"
     private const val TIME = "hh:mm a"
 
-    fun formatDateForNews(date: Date, context: Context) : String {
-        return when(DateUtils.isToday(date.time)) {
+    fun formatDateForNews(date: Date?, context: Context) : String {
+        if (date == null) return ""
+        else return when(DateUtils.isToday(date.time)) {
             true -> {
                 val hoursAgo = TimeUnit.MILLISECONDS.toHours(System.currentTimeMillis() - date.time)
                 context.getString(R.string.text_hours, hoursAgo, SimpleDateFormat(TIME, Locale.ENGLISH).format(date))
