@@ -8,14 +8,14 @@ import com.dmity.androidacademy.utils.DateTimeUtils
 
 class NewsItemMapper {
 
-    fun fromDatabase(newsEntities: List<NewsEntity?>?): List<NewsItem> {
+    fun fromDatabase(newsEntities: List<NewsEntity>?): List<NewsItem> {
         val newsItemsList = newsEntities?.map { it ->
             NewsItem(
-                    it?.title ?: "",
-                    it?.imageUrl ?: "",
-                    it?.newsCategory ?: "",
-                    it?.publishDate ?: "",
-                    it?.fullText ?: "")
+                    it.title,
+                    it.imageUrl,
+                    it.newsCategory,
+                    it.publishDate,
+                    it.fullText)
         }
 
         return newsItemsList ?: emptyList()
