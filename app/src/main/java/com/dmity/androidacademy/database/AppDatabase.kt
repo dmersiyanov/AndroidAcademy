@@ -17,21 +17,29 @@ abstract class AppDatabase: RoomDatabase() {
 
     companion object {
 
-        private const val DB_NAME = "news.db"
+        private const val DB_NAME = "news_db"
 
-        var INSTANCE: AppDatabase? = null
+        private var INSTANCE: AppDatabase? = null
 
-        fun getAppDataBase(context: Context): AppDatabase? {
+        fun getAppDataBase(context: Context): AppDatabase {
             if (INSTANCE == null){
                 synchronized(AppDatabase::class){
                     INSTANCE = Room.databaseBuilder(context.applicationContext, AppDatabase::class.java, DB_NAME).build()
                 }
             }
-            return INSTANCE
+            return INSTANCE!!
         }
 
         fun destroyDataBase(){
             INSTANCE = null
+        }
+
+        fun getNewsDao(context: Context): NewsDao {
+            return AppDatabase.getAppDataBase(context).newsDao()
+        }
+
+        fun getNewsDaoAsync(context: Context): NewsDaoAsync {
+            return AppDatabase.getAppDataBase(context).newsDaoAsync()
         }
     }
 

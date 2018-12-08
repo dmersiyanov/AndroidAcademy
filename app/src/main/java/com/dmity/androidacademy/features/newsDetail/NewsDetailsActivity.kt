@@ -26,6 +26,19 @@ class NewsDetailsActivity : BaseActivity() {
         getIntentData()
     }
 
+    override fun initUx() {
+        btnRetry.setOnClickListener { onBackPressed() }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
+    override fun showError(errorMessage: String, show: Boolean) {
+        errorStub.visible(show)
+    }
+
     private fun initObservers() {
         viewModel.showProgress.observe(this, Observer {
             showProgress(it)
@@ -38,19 +51,6 @@ class NewsDetailsActivity : BaseActivity() {
             setupScreen(item)
         })
 
-    }
-
-    override fun initUx() {
-        btnRetry.setOnClickListener { onBackPressed() }
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return true
-    }
-
-    override fun showError(errorMessage: String, show: Boolean) {
-        errorStub.visible(show)
     }
 
     private fun getIntentData() {
@@ -68,9 +68,7 @@ class NewsDetailsActivity : BaseActivity() {
     }
 
     private fun setupToolbar(title: String) {
-        if (title.isNotBlank()) {
-            supportActionBar?.title = title
-        }
+        supportActionBar?.title = title.takeIf { it.isNotBlank() } ?: ""
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
@@ -79,7 +77,7 @@ class NewsDetailsActivity : BaseActivity() {
 
         private const val ARGS_ITEM_ID = "item_id"
 
-        fun display(context: Context, itemId: Int?) {
+        fun display(context: Context, itemId: Int) {
             val intent = Intent(context, NewsDetailsActivity::class.java).apply {
                 putExtra(ARGS_ITEM_ID, itemId)
             }
