@@ -14,5 +14,6 @@
     <string name="error_loading">Ошибка загрузки</string>
     <string name="retry">Повторить</string>
     <string name="error_view_text">Произошла ошибка при загрузке. \nПопробуйте еще раз.</string>
+    <string name="onboarding_title">Получайте последние новости со всего мира</string>
 
 </resources>

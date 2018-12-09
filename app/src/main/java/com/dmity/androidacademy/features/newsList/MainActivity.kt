@@ -1,5 +1,6 @@
 package com.dmity.androidacademy.features.newsList
 
+import android.content.Context
 import android.content.Intent
 import android.view.Menu
 import android.view.MenuItem
@@ -18,7 +19,7 @@ import com.dmity.androidacademy.features.about.AboutActivity
 import com.dmity.androidacademy.features.newsDetail.NewsDetailsActivity
 import com.dmity.androidacademy.features.newsList.adapter.NewsAdapter
 import com.dmity.androidacademy.features.newsList.model.DisplayableItem
-import com.dmity.androidacademy.features.newsList.model.dto.NewsItemDTO
+import com.dmity.androidacademy.features.newsList.model.NewsEntity
 import com.dmity.androidacademy.utils.isPortrait
 import com.dmity.androidacademy.utils.setupActionBar
 import com.dmity.androidacademy.utils.showSnack
@@ -38,18 +39,17 @@ class MainActivity : BaseActivity() {
         initRecycler()
         setupSpinner()
         setupActionBar(R.id.toolbar) {}
-
         initObservers()
     }
 
     override fun initUx() {
-        btnRetry.setOnClickListener { viewModel.getNews(retry = true) }
-        setupSpinnerListener()
-    }
+        val clickListener = View.OnClickListener {
+            viewModel.getNews(retry = true)
+        }
 
-    override fun showProgress(show: Boolean) {
-        progress.visible(show)
-        rvNews.visible(!show)
+        btnRetry.setOnClickListener(clickListener)
+        fab.setOnClickListener(clickListener)
+        setupSpinnerListener()
     }
 
     override fun showError(errorMessage: String, show: Boolean) {
@@ -131,8 +131,14 @@ class MainActivity : BaseActivity() {
     }
 
     private fun onNewsItemClick(item: DisplayableItem) {
-        NewsDetailsActivity.displayWebView(this, (item as NewsItemDTO).url)
+        (item as NewsEntity).id?.let { NewsDetailsActivity.display(this, it) }
     }
 
+    companion object {
+        fun display(context: Context) {
+            val intent = Intent(context, MainActivity::class.java)
+            context.startActivity(intent)
+        }
+    }
 
 }

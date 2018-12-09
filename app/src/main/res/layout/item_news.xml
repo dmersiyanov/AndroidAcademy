@@ -70,6 +70,7 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/medium_margin"
             android:scaleType="centerCrop"
+            tools:ignore="ContentDescription"
             tools:src="@tools:sample/avatars" />
 
     </RelativeLayout>

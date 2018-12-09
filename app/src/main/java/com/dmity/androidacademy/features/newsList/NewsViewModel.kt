@@ -7,26 +7,31 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.dmity.androidacademy.R
 import com.dmity.androidacademy.base.SubscriptionsHolder
-import com.dmity.androidacademy.features.newsList.model.DisplayableItem
+import com.dmity.androidacademy.database.AppDatabase
+import com.dmity.androidacademy.features.newsList.model.NewsEntity
+import com.dmity.androidacademy.features.newsList.model.dto.NewsResponseDTO
+import com.dmity.androidacademy.features.newsList.model.mapper.NewsItemMapper
 import com.dmity.androidacademy.network.RestAPI
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import java.util.concurrent.TimeUnit
 
-class NewsViewModel(application: Application): AndroidViewModel(application), SubscriptionsHolder {
+class NewsViewModel(application: Application) : AndroidViewModel(application), SubscriptionsHolder {
 
     override val disposables: CompositeDisposable = CompositeDisposable()
+    private val mapper: NewsItemMapper = NewsItemMapper()
+    private val newsRepo: NewsRepo
     private var currentPosition = -1
     private var context: Context = getApplication()
 
-    var news: MutableLiveData<List<DisplayableItem>> = MutableLiveData()
+    var news: MutableLiveData<List<NewsEntity>> = MutableLiveData()
     val showProgress = MutableLiveData<Boolean>()
     val showError = MutableLiveData<Boolean>()
     var showSnackBar = MutableLiveData<Boolean>()
 
     init {
-        getNews(DEFAULT_CATEGORY, false)
+        newsRepo = NewsRepo(AppDatabase.getAppDataBase(context).newsDao())
+        subscribeToData()
     }
 
     override fun onCleared() {
@@ -39,27 +44,54 @@ class NewsViewModel(application: Application): AndroidViewModel(application), Su
         }
     }
 
+    private fun subscribeToData() {
+        newsRepo.getData()
+                .subscribe({
+                    if (it.isNotEmpty()) {
+                        news.postValue(it)
+                    } else {
+                        getNews(DEFAULT_CATEGORY, false)
+                    }
+
+                }, {
+                    Log.e(TAG, it.message)
+                })
+                .bind()
+    }
+
     private fun loadNews(position: Int = currentPosition) {
         currentPosition = position
 
         RestAPI.getNews(getCategoryForApi(currentPosition))
                 .subscribeOn(Schedulers.io())
-                .delay(DELAY_IN_SECONDS, TimeUnit.SECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe {
-                    showProgress.value = true
-                    showError.value = false
+                    showProgress.postValue(true)
+                    showError.postValue(false)
                 }
                 .subscribe({
-                    news.value = it.results as List<DisplayableItem>
-                    showProgress.value = false
+                    saveNews(it)
                 }, {
-                    Log.e(TAG, it.message)
-                    showProgress.value = false
-                    showError.value = true
-                    showSnackBar.value = true
+                    handleError(it)
                 })
                 .bind()
+    }
+
+    private fun saveNews(response: NewsResponseDTO) {
+        val newsForDb = mapper.toDatabase(response, context)
+        newsForDb?.let { newsForDbNotNull ->
+            newsRepo.saveData(newsForDbNotNull)
+                    .subscribe()
+                    .bind()
+        }
+        showProgress.postValue(false)
+    }
+
+    private fun handleError(error: Throwable) {
+        Log.e(TAG, error.message)
+        showProgress.postValue(false)
+        showError.postValue(true)
+        showSnackBar.postValue(true)
     }
 
     private fun getCategoryForApi(position: Int): String {
@@ -67,7 +99,6 @@ class NewsViewModel(application: Application): AndroidViewModel(application), Su
     }
 
     companion object {
-        private const val DELAY_IN_SECONDS = 2L
         private const val DEFAULT_CATEGORY = 0
         private const val TAG = "NewsViewModel"
     }

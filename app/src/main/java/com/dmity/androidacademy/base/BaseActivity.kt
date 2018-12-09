@@ -2,7 +2,9 @@ package com.dmity.androidacademy.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.dmity.androidacademy.utils.visible
 import io.reactivex.disposables.CompositeDisposable
+import kotlinx.android.synthetic.main.view_progress_stub.*
 
 abstract class BaseActivity: AppCompatActivity(), SubscriptionsHolder {
 
@@ -25,7 +27,7 @@ abstract class BaseActivity: AppCompatActivity(), SubscriptionsHolder {
     open fun initUx() {}
     open fun initUi() {}
     open fun initUi(savedInstanceState: Bundle?) {}
-    open fun showProgress(show: Boolean) {}
+    open fun showProgress(show: Boolean) = progress?.visible(show)
     open fun showError(errorMessage: String = "", show: Boolean) {}
 
     private fun initLayout(){

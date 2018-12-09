@@ -33,34 +33,46 @@
 
                 <Spinner
                     android:id="@+id/spinner"
-                    android:layout_width="150dp"
+                    android:layout_width="@dimen/spinner_width"
                     android:layout_height="match_parent"
                     android:layout_alignParentEnd="true"
-                    android:backgroundTint="@android:color/white" />
+                    app:backgroundTint="@android:color/white" />
 
             </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <ProgressBar
-        android:id="@+id/progress"
-        android:layout_width="@dimen/news_item_image_size"
-        android:layout_height="@dimen/news_item_image_size"
-        android:layout_centerInParent="true"
-        android:layout_gravity="center_horizontal|center_vertical"
-        android:visibility="gone" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvNews"
+    <FrameLayout
+        android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/appbar"
-        android:clipToPadding="true"
-        tools:context=".NewsListActivity"
-        tools:listitem="@layout/item_news" />
+        android:layout_below="@+id/appbar">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvNews"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="true"
+            tools:context=".NewsListActivity"
+            tools:listitem="@layout/item_news" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="@dimen/medium_margin"
+            app:srcCompat="@drawable/ic_refresh_white" />
+
+    </FrameLayout>
+
+    <include
+        layout="@layout/view_progress_stub"
+        android:visibility="gone" />
 
     <include
         layout="@layout/view_error_stub"
         android:visibility="gone" />
+
 
 </RelativeLayout>
