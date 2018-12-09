@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.dmity.androidacademy.R
 import com.dmity.androidacademy.base.SubscriptionsHolder
+import com.dmity.androidacademy.database.AppDatabase
 import com.dmity.androidacademy.features.newsList.model.NewsEntity
 import com.dmity.androidacademy.features.newsList.model.dto.NewsResponseDTO
 import com.dmity.androidacademy.features.newsList.model.mapper.NewsItemMapper
@@ -29,7 +30,7 @@ class NewsViewModel(application: Application) : AndroidViewModel(application), S
     var showSnackBar = MutableLiveData<Boolean>()
 
     init {
-        newsRepo = NewsRepo(context)
+        newsRepo = NewsRepo(AppDatabase.getAppDataBase(context).newsDao())
         subscribeToData()
     }
 
@@ -45,16 +46,17 @@ class NewsViewModel(application: Application) : AndroidViewModel(application), S
 
     private fun subscribeToData() {
         newsRepo.getData()
-                ?.subscribe({
-                    when (it.isNotEmpty()) {
-                        true -> news.postValue(it)
-                        else -> getNews(DEFAULT_CATEGORY, false)
+                .subscribe({
+                    if (it.isNotEmpty()) {
+                        news.postValue(it)
+                    } else {
+                        getNews(DEFAULT_CATEGORY, false)
                     }
 
                 }, {
                     Log.e(TAG, it.message)
                 })
-                ?.bind()
+                .bind()
     }
 
     private fun loadNews(position: Int = currentPosition) {

@@ -12,15 +12,14 @@ class NewsApp: Application() {
     companion object {
         @SuppressLint("StaticFieldLeak")
         lateinit var context: Context
+            private set
     }
-
 
     override fun onCreate() {
         super.onCreate()
         context = this
         setGlobalRxJavaErrorHandler()
     }
-
 
     @SuppressLint("LongLogTag")
     private fun setGlobalRxJavaErrorHandler() {
@@ -34,7 +33,7 @@ class NewsApp: Application() {
                 Thread.currentThread().uncaughtExceptionHandler.uncaughtException(Thread.currentThread(), e)
             }
 
-            Log.w("Undeliverable exception received", e)
+            Log.w("Undeliverable exception received", e.message)
         }
     }
 

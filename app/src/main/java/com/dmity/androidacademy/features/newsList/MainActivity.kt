@@ -131,7 +131,7 @@ class MainActivity : BaseActivity() {
     }
 
     private fun onNewsItemClick(item: DisplayableItem) {
-        NewsDetailsActivity.display(this, (item as NewsEntity).id)
+        (item as NewsEntity).id?.let { NewsDetailsActivity.display(this, it) }
     }
 
     companion object {

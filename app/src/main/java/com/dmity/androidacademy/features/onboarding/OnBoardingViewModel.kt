@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import com.dmity.androidacademy.base.SubscriptionsHolder
 import com.dmity.androidacademy.features.newsList.MainActivity
 import io.reactivex.Completable
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import java.util.concurrent.TimeUnit
 
@@ -39,7 +40,8 @@ class OnBoardingViewModel(application: Application): AndroidViewModel(applicatio
 
             Completable.complete()
                     .delay(DELAY_IN_SECONDS, TimeUnit.SECONDS)
-                    .subscribe { MainActivity.display(context)}
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe { MainActivity.display(context) }
                     .bind()
         } else {
             showOnBoarding.value = false

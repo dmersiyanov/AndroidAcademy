@@ -15,19 +15,14 @@ object DateTimeUtils {
     private const val TIME = "hh:mm a"
 
     fun formatDateForNews(date: Date?, context: Context) : String {
-        return if (date == null) ""
-        else when(DateUtils.isToday(date.time)) {
-            true -> {
+        return when {
+            date == null -> ""
+            DateUtils.isToday(date.time) -> {
                 val hoursAgo = TimeUnit.MILLISECONDS.toHours(System.currentTimeMillis() - date.time)
                 context.getString(R.string.text_hours, hoursAgo, SimpleDateFormat(TIME, Locale.ENGLISH).format(date))
             }
-            else -> {
-                if (isYesterday(date)) {
-                    context.getString(R.string.text_yesterday, SimpleDateFormat(TIME, Locale.ENGLISH).format(date))
-                } else {
-                    SimpleDateFormat(FULL, Locale.ENGLISH).format(date)
-                }
-            }
+            isYesterday(date) -> context.getString(R.string.text_yesterday, SimpleDateFormat(TIME, Locale.ENGLISH).format(date))
+            else -> SimpleDateFormat(FULL, Locale.ENGLISH).format(date)
         }
     }
 

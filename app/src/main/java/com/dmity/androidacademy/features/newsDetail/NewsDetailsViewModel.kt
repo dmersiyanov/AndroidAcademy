@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.dmity.androidacademy.base.SubscriptionsHolder
+import com.dmity.androidacademy.database.AppDatabase
 import com.dmity.androidacademy.features.newsList.NewsRepo
 import com.dmity.androidacademy.features.newsList.model.NewsEntity
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -23,7 +24,7 @@ class NewsDetailsViewModel(application: Application) : AndroidViewModel(applicat
     val showError = MutableLiveData<Boolean>()
 
     init {
-        newsRepo = NewsRepo(context)
+        newsRepo = NewsRepo(AppDatabase.getAppDataBase(context).newsDao())
     }
 
     override fun onCleared() {
@@ -35,19 +36,19 @@ class NewsDetailsViewModel(application: Application) : AndroidViewModel(applicat
             handleError(null)
         } else {
             newsRepo.getNewsById(id)
-                    ?.subscribeOn(Schedulers.io())
-                    ?.observeOn(AndroidSchedulers.mainThread())
-                    ?.doOnSubscribe {
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .doOnSubscribe {
                         showProgress.postValue(true)
                         showError.postValue(false)
                     }
-                    ?.subscribe({
+                    .subscribe({
                         newsItem.postValue(it)
                         showProgress.postValue(false)
                     }, {
                         handleError(it)
                     })
-                    ?.bind()
+                    .bind()
         }
     }
 

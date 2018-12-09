@@ -16,7 +16,7 @@ class OnBoardingRepo(context: Context) {
 
     fun incrementCounter() {
         val counter = getCounter()
-        writer.putInt(LAUNCH_COUNTER, counter + 1).commit()
+        writer.putInt(LAUNCH_COUNTER, counter + 1).apply()
     }
 
     fun getCounter(): Int {
