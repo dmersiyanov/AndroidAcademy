@@ -24,7 +24,7 @@ class NewsDetailsViewModel(application: Application) : AndroidViewModel(applicat
     val showError = MutableLiveData<Boolean>()
 
     init {
-        newsRepo = NewsRepo(AppDatabase.getNewsDao(context), AppDatabase.getNewsDaoAsync(context))
+        newsRepo = NewsRepo(AppDatabase.getAppDataBase(context).newsDao())
     }
 
     override fun onCleared() {

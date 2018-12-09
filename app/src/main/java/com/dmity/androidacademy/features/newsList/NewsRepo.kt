@@ -1,7 +1,6 @@
 package com.dmity.androidacademy.features.newsList
 
 import com.dmity.androidacademy.database.NewsDao
-import com.dmity.androidacademy.database.NewsDaoAsync
 import com.dmity.androidacademy.features.newsList.model.NewsEntity
 import io.reactivex.Completable
 import io.reactivex.Observable
@@ -9,7 +8,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 
-class NewsRepo(private val newsDao: NewsDao, private val newsDaoAsync: NewsDaoAsync) {
+class NewsRepo(private val newsDao: NewsDao) {
 
     fun saveData(filmList: List<NewsEntity>): Completable = Completable.fromCallable {
         newsDao.let {
@@ -18,7 +17,7 @@ class NewsRepo(private val newsDao: NewsDao, private val newsDaoAsync: NewsDaoAs
         }
     }.subscribeOn(Schedulers.io())
 
-    fun getData(): Observable<List<NewsEntity>> = newsDaoAsync.getAll()
+    fun getData(): Observable<List<NewsEntity>> = newsDao.getAllObservable()
             .observeOn(Schedulers.io())
             .subscribeOn(AndroidSchedulers.mainThread())
 
@@ -26,5 +25,5 @@ class NewsRepo(private val newsDao: NewsDao, private val newsDaoAsync: NewsDaoAs
         newsDao.deleteAll()
     }
 
-    fun getNewsById(id: Int) = newsDaoAsync.getNewsById(id)
+    fun getNewsById(id: Int) = newsDao.getNewsByIdSingle(id)
 }

@@ -4,43 +4,34 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
-import com.dmity.androidacademy.database.converter.DateConverter
 import com.dmity.androidacademy.features.newsList.model.NewsEntity
 
 @Database(entities = [NewsEntity::class], version = 1)
-@TypeConverters(DateConverter::class)
 abstract class AppDatabase: RoomDatabase() {
 
     abstract fun newsDao(): NewsDao
-    abstract fun newsDaoAsync(): NewsDaoAsync
 
     companion object {
 
-        private const val DB_NAME = "news_db"
+        private const val DB_NAME = "news.db"
 
-        private var INSTANCE: AppDatabase? = null
+        private var appDatabase: AppDatabase? = null
 
         fun getAppDataBase(context: Context): AppDatabase {
-            if (INSTANCE == null){
+            if (appDatabase == null){
                 synchronized(AppDatabase::class){
-                    INSTANCE = Room.databaseBuilder(context.applicationContext, AppDatabase::class.java, DB_NAME).build()
+                    if (appDatabase == null) {
+                        appDatabase = Room.databaseBuilder(context.applicationContext, AppDatabase::class.java, DB_NAME).build()
+                    }
                 }
             }
-            return INSTANCE!!
+            return appDatabase!!
         }
 
         fun destroyDataBase(){
-            INSTANCE = null
+            appDatabase = null
         }
 
-        fun getNewsDao(context: Context): NewsDao {
-            return AppDatabase.getAppDataBase(context).newsDao()
-        }
-
-        fun getNewsDaoAsync(context: Context): NewsDaoAsync {
-            return AppDatabase.getAppDataBase(context).newsDaoAsync()
-        }
     }
 
 }

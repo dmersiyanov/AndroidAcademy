@@ -30,7 +30,7 @@ class NewsViewModel(application: Application) : AndroidViewModel(application), S
     var showSnackBar = MutableLiveData<Boolean>()
 
     init {
-        newsRepo = NewsRepo(AppDatabase.getNewsDao(context), AppDatabase.getNewsDaoAsync(context))
+        newsRepo = NewsRepo(AppDatabase.getAppDataBase(context).newsDao())
         subscribeToData()
     }
 
