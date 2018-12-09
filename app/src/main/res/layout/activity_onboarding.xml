@@ -1,26 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/white"
-    android:orientation="vertical"
-    tools:context=".features.onboarding.OnBoardingActivity">
+    android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_width="@dimen/onboarding_image"
-        android:layout_height="@dimen/onboarding_image"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/onboarding_image_margin"
-        android:layout_marginBottom="@dimen/onboarding_image_margin"
-        android:src="@drawable/ic_onboarding"
-        tools:ignore="ContentDescription" />
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/small_margin"
+        android:background="@color/white" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/onboarding_title"
-        android:textStyle="bold" />
-
-</LinearLayout>
+    <me.relex.circleindicator.CircleIndicator
+        android:id="@+id/indicator"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/circle_indicator_height"
+        android:layout_alignBottom="@+id/viewpager"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="@dimen/circle_indicator_margin"
+        app:ci_drawable="@drawable/color_indicator_black" />
+</RelativeLayout>
