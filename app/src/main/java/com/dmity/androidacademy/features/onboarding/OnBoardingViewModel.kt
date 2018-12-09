@@ -39,9 +39,9 @@ class OnBoardingViewModel(application: Application): AndroidViewModel(applicatio
             showOnBoarding.value = true
 
             Completable.complete()
-                    .observeOn(AndroidSchedulers.mainThread())
                     .delay(DELAY_IN_SECONDS, TimeUnit.SECONDS)
-                    .subscribe { MainActivity.display(context)}
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe { MainActivity.display(context) }
                     .bind()
         } else {
             showOnBoarding.value = false
