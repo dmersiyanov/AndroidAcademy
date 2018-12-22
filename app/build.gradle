@@ -51,7 +51,7 @@ dependencies {
     implementation 'com.hannesdorfmann:adapterdelegates4:4.0.0'
 
     // RxJava
-    implementation "io.reactivex.rxjava2:rxjava:2.2.2"
+    implementation "io.reactivex.rxjava2:rxjava:2.2.4"
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
 
     // Network
@@ -64,13 +64,13 @@ dependencies {
     // Architecture Components
     implementation "androidx.lifecycle:lifecycle-extensions:2.0.0"
     implementation "androidx.lifecycle:lifecycle-reactivestreams:2.0.0"
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0-alpha1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt "androidx.lifecycle:lifecycle-compiler:2.0.0"
 
     // Room
-    implementation "androidx.room:room-runtime:2.1.0-alpha02"
-    kapt "androidx.room:room-compiler:2.1.0-alpha02"
-    implementation "androidx.room:room-rxjava2:2.1.0-alpha02"
+    implementation "androidx.room:room-runtime:2.1.0-alpha03"
+    kapt "androidx.room:room-compiler:2.1.0-alpha03"
+    implementation "androidx.room:room-rxjava2:2.1.0-alpha03"
 
     // Other
     implementation 'me.relex:circleindicator:2.1.0'

@@ -44,7 +44,6 @@ class OnBoardingFragment : Fragment() {
 
     companion object {
 
-        @JvmStatic
         fun newInstance(imageId: Int, titleId: Int) =
                 OnBoardingFragment().apply {
                     arguments = Bundle().apply {
