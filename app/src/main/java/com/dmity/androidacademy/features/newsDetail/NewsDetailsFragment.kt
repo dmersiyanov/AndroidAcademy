@@ -39,6 +39,7 @@ class NewsDetailsFragment : BaseFragment() {
 
     override fun initUx() {
         btnRetry.setOnClickListener { requireActivity().onBackPressed() }
+        toolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
     }
 
 

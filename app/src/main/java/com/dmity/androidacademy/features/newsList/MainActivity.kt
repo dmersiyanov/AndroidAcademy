@@ -2,6 +2,7 @@ package com.dmity.androidacademy.features.newsList
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import com.dmity.androidacademy.R
@@ -11,7 +12,6 @@ import com.dmity.androidacademy.features.about.AboutActivity
 
 @Layout(R.layout.activity_main_frame_layout)
 class MainActivity : BaseActivity() {
-
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_list, menu)
@@ -28,11 +28,13 @@ class MainActivity : BaseActivity() {
         }
     }
 
-    override fun initUi() {
-        supportFragmentManager
-                .beginTransaction()
-                .add(R.id.container, NewListFragment.newInstance())
-                .commit()
+    override fun initUi(savedInstanceState: Bundle?) {
+        if (savedInstanceState == null) {
+            supportFragmentManager
+                    .beginTransaction()
+                    .add(R.id.container, NewListFragment.newInstance())
+                    .commit()
+        }
     }
 
 //    override fun onCreate(savedInstanceState: Bundle?) {

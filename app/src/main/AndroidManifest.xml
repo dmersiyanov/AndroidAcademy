@@ -25,7 +25,8 @@
 
         <activity
             android:name=".features.onboarding.OnBoardingActivity"
-            android:theme="@style/AppThemeNoActionBar">
+            android:theme="@style/AppThemeNoActionBar"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
