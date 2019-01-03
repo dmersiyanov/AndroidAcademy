@@ -53,7 +53,7 @@ class OnBoardingViewModel(application: Application): AndroidViewModel(applicatio
     }
 
     companion object {
-        private const val DELAY_IN_SECONDS = 15L
+        private const val DELAY_IN_SECONDS = 1L
     }
 
 }

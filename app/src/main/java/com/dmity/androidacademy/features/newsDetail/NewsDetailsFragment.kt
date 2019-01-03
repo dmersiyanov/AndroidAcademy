@@ -1,11 +1,10 @@
 package com.dmity.androidacademy.features.newsDetail
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
@@ -63,7 +62,7 @@ class NewsDetailsFragment : BaseFragment() {
     }
 
     private fun getIntentData() {
-        viewModel.loadNewsItem(requireActivity().intent?.extras?.getInt(ARGS_ITEM_ID))
+        viewModel.loadNewsItem(arguments?.getInt(ARGS_ITEM_ID))
     }
 
     private fun setupScreen(newsEntity: NewsEntity) {
@@ -77,8 +76,12 @@ class NewsDetailsFragment : BaseFragment() {
     }
 
     private fun setupToolbar(title: String) {
-//        supportActionBar?.title = title.takeIf { it.isNotBlank() } ?: ""
+//        requireActivity().setActionBar(toolbar)
+//        requireActivity().supportActionBar?.title = title.takeIf { it.isNotBlank() } ?: ""
 //        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+//        toolbar.title = title.takeIf { it.isNotBlank() } ?: ""
+        toolbar.title = title.takeIf { it.isNotBlank() } ?: ""
+        toolbar.setTitleTextColor(ContextCompat.getColor(context, R.color.white))
     }
 
 
@@ -86,12 +89,12 @@ class NewsDetailsFragment : BaseFragment() {
 
         private const val ARGS_ITEM_ID = "item_id"
 
-        fun display(context: Context?, itemId: Int) {
-            val intent = Intent(context, NewsDetailsFragment::class.java).apply {
-                putExtra(ARGS_ITEM_ID, itemId)
-            }
-            context?.startActivity(intent)
-        }
+//        fun display(context: Context?, itemId: Int) {
+//            val intent = Intent(context, NewsDetailsFragment::class.java).apply {
+//                putExtra(ARGS_ITEM_ID, itemId)
+//            }
+//            context?.startActivity(intent)
+//        }
 
         fun newInstance(itemId: Int): NewsDetailsFragment {
             val fragment = NewsDetailsFragment()

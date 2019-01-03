@@ -1,7 +1,5 @@
 package com.dmity.androidacademy.features.newsList
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dmity.androidacademy.R
 import com.dmity.androidacademy.base.BaseFragment
-import com.dmity.androidacademy.features.newsDetail.NewsDetailsActivity
+import com.dmity.androidacademy.features.newsDetail.NewsDetailsFragment
 import com.dmity.androidacademy.features.newsList.adapter.NewsAdapter
 import com.dmity.androidacademy.features.newsList.model.DisplayableItem
 import com.dmity.androidacademy.features.newsList.model.NewsEntity
@@ -60,7 +58,7 @@ class NewListFragment : BaseFragment() {
         setupSpinnerListener()
     }
 
-    fun showError(errorMessage: String, show: Boolean) {
+    private fun showError(errorMessage: String, show: Boolean) {
         if(errorMessage.isNotBlank()) {
             tvErrorMessage.text = errorMessage
         }
@@ -128,17 +126,23 @@ class NewListFragment : BaseFragment() {
     }
 
     private fun onNewsItemClick(item: DisplayableItem) {
-        (item as NewsEntity).id?.let { NewsDetailsActivity.display(context, it) }
+        (item as NewsEntity).id?.let {
+//            NewsDetailsActivity.display(context, it)
+
+            requireActivity().supportFragmentManager
+                    .beginTransaction()
+                    .addToBackStack(null)
+                    .replace(R.id.container, NewsDetailsFragment.newInstance(it))
+                    .commit()
+
+
+
+
+        }
     }
 
     companion object {
-        fun display(context: Context) {
-            val intent = Intent(context, NewListFragment::class.java)
-            context.startActivity(intent)
-        }
-
         fun newInstance() = NewListFragment()
-
     }
 
 }

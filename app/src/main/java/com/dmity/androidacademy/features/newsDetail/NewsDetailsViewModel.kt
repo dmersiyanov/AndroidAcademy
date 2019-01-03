@@ -53,7 +53,7 @@ class NewsDetailsViewModel(application: Application) : AndroidViewModel(applicat
     }
 
     private fun handleError(error: Throwable?) {
-        Log.e(TAG, error?.message)
+        Log.e(TAG, error?.message ?: "")
         showProgress.postValue(false)
         showError.postValue(true)
     }
