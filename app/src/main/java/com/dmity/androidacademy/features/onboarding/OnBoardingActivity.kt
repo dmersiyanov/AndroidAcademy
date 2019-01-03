@@ -15,12 +15,14 @@ import kotlinx.android.synthetic.main.activity_onboarding.*
 @Layout(R.layout.activity_onboarding)
 class OnBoardingActivity : BaseActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        initObserver()
+    private val viewModel: OnBoardingViewModel by lazy {
+        ViewModelProviders.of(this).get(OnBoardingViewModel::class.java)
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        initObserver()
+    }
 
     override fun onBackPressed() {
         if (viewpager.currentItem == 0) {
@@ -31,7 +33,6 @@ class OnBoardingActivity : BaseActivity() {
     }
 
     private fun initObserver() {
-        val viewModel = ViewModelProviders.of(this).get(OnBoardingViewModel::class.java)
         viewModel.showOnBoarding.observe(this, Observer { showOnBoarding ->
             if (showOnBoarding) {
                 setContentView(R.layout.activity_onboarding)

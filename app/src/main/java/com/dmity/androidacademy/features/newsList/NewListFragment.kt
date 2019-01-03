@@ -1,9 +1,7 @@
 package com.dmity.androidacademy.features.newsList
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.lifecycle.Observer
@@ -24,27 +22,22 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.view_error_stub.*
 import kotlinx.android.synthetic.main.view_progress_stub.*
 
-//@Layout(R.layout.activity_main)
 class NewListFragment : BaseFragment() {
 
+    override val layout = R.layout.activity_main
     private lateinit var adapter: NewsAdapter
     private val viewModel: NewsViewModel by lazy {
         ViewModelProviders.of(this).get(NewsViewModel::class.java)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.activity_main, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        initUi()
-        initUx()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
     }
 
     override fun initUi() {
         initRecycler()
         setupSpinner()
-//        setupActionBar(R.id.toolbar) {}
         initObservers()
     }
 
