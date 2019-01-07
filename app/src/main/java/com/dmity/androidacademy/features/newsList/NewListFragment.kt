@@ -15,7 +15,8 @@ import com.dmity.androidacademy.base.BaseFragment
 import com.dmity.androidacademy.features.newsList.adapter.NewsAdapter
 import com.dmity.androidacademy.features.newsList.model.DisplayableItem
 import com.dmity.androidacademy.features.newsList.model.NewsEntity
-import com.dmity.androidacademy.utils.isPortrait
+import com.dmity.androidacademy.utils.DisplayMetricsUtils.isPhone
+import com.dmity.androidacademy.utils.DisplayMetricsUtils.isPortrait
 import com.dmity.androidacademy.utils.showSnack
 import com.dmity.androidacademy.utils.visible
 import kotlinx.android.synthetic.main.activity_main.*
@@ -126,9 +127,14 @@ class NewListFragment : BaseFragment() {
     }
 
     private fun getLayoutManager(): RecyclerView.LayoutManager {
-        return when (context.isPortrait()) {
-            true -> LinearLayoutManager(context)
-            else -> GridLayoutManager(context, resources.getInteger(R.integer.landscape_news_columns_count))
+        return when (isPhone(context)) {
+            true -> {
+                if (isPortrait(context)) LinearLayoutManager(context)
+                else GridLayoutManager(context, resources.getInteger(R.integer.landscape_news_columns_count))
+            }
+            false -> {
+                LinearLayoutManager(context)
+            }
         }
     }
 
