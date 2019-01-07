@@ -1,5 +1,6 @@
 package com.dmity.androidacademy.features.newsList
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -11,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dmity.androidacademy.R
 import com.dmity.androidacademy.base.BaseFragment
-import com.dmity.androidacademy.features.newsDetail.NewsDetailsFragment
 import com.dmity.androidacademy.features.newsList.adapter.NewsAdapter
 import com.dmity.androidacademy.features.newsList.model.DisplayableItem
 import com.dmity.androidacademy.features.newsList.model.NewsEntity
@@ -29,6 +29,7 @@ class NewListFragment : BaseFragment() {
     private val viewModel: NewsViewModel by lazy {
         ViewModelProviders.of(this).get(NewsViewModel::class.java)
     }
+    private var clickListener: OnNewsClickListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +42,13 @@ class NewListFragment : BaseFragment() {
         initObservers()
     }
 
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+        when(context) {
+            is OnNewsClickListener -> clickListener = context
+        }
+    }
+
     override fun initUx() {
         val clickListener = View.OnClickListener {
             viewModel.getNews(retry = true)
@@ -49,6 +57,13 @@ class NewListFragment : BaseFragment() {
         btnRetry.setOnClickListener(clickListener)
         fab.setOnClickListener(clickListener)
         setupSpinnerListener()
+    }
+
+    override fun showProgress(show: Boolean) = progress?.visible(show)
+
+    override fun onDetach() {
+        clickListener = null
+        super.onDetach()
     }
 
     private fun showError(errorMessage: String, show: Boolean) {
@@ -79,7 +94,6 @@ class NewListFragment : BaseFragment() {
         }
     }
 
-    override fun showProgress(show: Boolean) = progress?.visible(show)
 
     private fun setupSpinner() {
         val adapter = ArrayAdapter.createFromResource(
@@ -120,22 +134,16 @@ class NewListFragment : BaseFragment() {
 
     private fun onNewsItemClick(item: DisplayableItem) {
         (item as NewsEntity).id?.let {
-//            NewsDetailsActivity.display(context, it)
-
-            requireActivity().supportFragmentManager
-                    .beginTransaction()
-                    .addToBackStack(null)
-                    .replace(R.id.container, NewsDetailsFragment.newInstance(it))
-                    .commit()
-
-
-
-
+            clickListener?.onNewsItemClick(it)
         }
     }
 
     companion object {
         fun newInstance() = NewListFragment()
+    }
+
+    interface OnNewsClickListener {
+        fun onNewsItemClick(itemId: Int)
     }
 
 }
