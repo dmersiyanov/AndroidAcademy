@@ -12,9 +12,9 @@ import com.dmity.androidacademy.features.about.AboutActivity
 import com.dmity.androidacademy.features.newsDetail.NewsDetailsFragment
 import com.dmity.androidacademy.utils.DisplayMetricsUtils.isLandscape
 import com.dmity.androidacademy.utils.DisplayMetricsUtils.isTablet
-import kotlinx.android.synthetic.main.activity_main_frame_layout.*
+import kotlinx.android.synthetic.main.activity_main.*
 
-@Layout(R.layout.activity_main_frame_layout)
+@Layout(R.layout.activity_main)
 class MainActivity : BaseActivity(), NewListFragment.OnNewsClickListener {
 
     private var isTwoPanel = false

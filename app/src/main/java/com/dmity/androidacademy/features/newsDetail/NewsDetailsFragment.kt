@@ -9,12 +9,12 @@ import com.dmity.androidacademy.R
 import com.dmity.androidacademy.base.BaseFragment
 import com.dmity.androidacademy.features.newsList.model.NewsEntity
 import com.dmity.androidacademy.utils.visible
-import kotlinx.android.synthetic.main.activity_news_details.*
+import kotlinx.android.synthetic.main.fragment_news_details.*
 import kotlinx.android.synthetic.main.view_error_stub.*
 
 class NewsDetailsFragment : BaseFragment() {
 
-    override val layout = R.layout.activity_news_details
+    override val layout = R.layout.fragment_news_details
 
     private val viewModel: NewsDetailsViewModel by lazy {
         ViewModelProviders.of(this).get(NewsDetailsViewModel::class.java)

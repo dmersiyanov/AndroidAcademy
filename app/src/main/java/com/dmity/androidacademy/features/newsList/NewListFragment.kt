@@ -19,13 +19,13 @@ import com.dmity.androidacademy.utils.DisplayMetricsUtils.isPhone
 import com.dmity.androidacademy.utils.DisplayMetricsUtils.isPortrait
 import com.dmity.androidacademy.utils.showSnack
 import com.dmity.androidacademy.utils.visible
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_news_list.*
 import kotlinx.android.synthetic.main.view_error_stub.*
 import kotlinx.android.synthetic.main.view_progress_stub.*
 
 class NewListFragment : BaseFragment() {
 
-    override val layout = R.layout.activity_main
+    override val layout = R.layout.fragment_news_list
     private lateinit var adapter: NewsAdapter
     private val viewModel: NewsViewModel by lazy {
         ViewModelProviders.of(this).get(NewsViewModel::class.java)
