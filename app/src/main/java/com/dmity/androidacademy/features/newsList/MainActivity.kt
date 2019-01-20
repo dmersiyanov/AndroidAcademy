@@ -10,7 +10,7 @@ import com.dmity.androidacademy.base.BaseActivity
 import com.dmity.androidacademy.base.Layout
 import com.dmity.androidacademy.features.about.AboutActivity
 import com.dmity.androidacademy.features.newsDetail.NewsDetailsFragment
-import com.dmity.androidacademy.utils.DisplayMetricsUtils.isLandscape
+import com.dmity.androidacademy.utils.DisplayMetricsUtils.isPhone
 import com.dmity.androidacademy.utils.DisplayMetricsUtils.isTablet
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -23,19 +23,15 @@ class MainActivity : BaseActivity(), NewListFragment.OnNewsClickListener {
 
         isTwoPanel = contentContainer != null
 
-        if (savedInstanceState == null) {
-            supportFragmentManager
-                        .beginTransaction()
-                        .add(R.id.container, NewListFragment.newInstance())
-                        .commit()
-        } else {
-            if (isTablet(this) && isLandscape(this)) {
-                supportFragmentManager
-                        .beginTransaction()
-                        .add(R.id.listContainer, NewListFragment.newInstance())
-                        .commit()
+        if (isPhone(this)) {
+            if (savedInstanceState == null) {
+                replaceFragment(R.id.container, NewListFragment.newInstance(), false)
             }
+        } else if (isTablet(this)) {
+            val container = if (isTwoPanel) R.id.listContainer else R.id.container
+            replaceFragment(container, NewListFragment.newInstance(), false)
         }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -55,11 +51,7 @@ class MainActivity : BaseActivity(), NewListFragment.OnNewsClickListener {
 
     override fun onNewsItemClick(itemId: Int) {
         val container = if(isTwoPanel) R.id.contentContainer else R.id.container
-        supportFragmentManager
-                .beginTransaction()
-                .addToBackStack(null)
-                .replace(container, NewsDetailsFragment.newInstance(itemId))
-                .commit()
+        replaceFragment(container, NewsDetailsFragment.newInstance(itemId), true)
     }
 
     companion object {

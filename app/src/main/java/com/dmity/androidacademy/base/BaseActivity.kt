@@ -2,6 +2,7 @@ package com.dmity.androidacademy.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.dmity.androidacademy.utils.visible
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.view_progress_stub.*
@@ -40,6 +41,26 @@ abstract class BaseActivity: AppCompatActivity(), SubscriptionsHolder {
         if (layoutId != 0) {
             setContentView(layoutId)
         }
+    }
+
+    protected fun replaceFragment(container: Int, fragment: Fragment, addToBackStack: Boolean) {
+        val transaction = supportFragmentManager
+                .beginTransaction()
+                .replace(container, fragment)
+
+        if(addToBackStack) {
+            transaction.addToBackStack(null)
+        }
+
+        transaction.commit()
+
+    }
+
+    protected fun addFragment(container: Int, fragment: Fragment, addToBackStack: Boolean) {
+        supportFragmentManager
+                .beginTransaction()
+                .add(container, fragment)
+                .commit()
     }
 
 
