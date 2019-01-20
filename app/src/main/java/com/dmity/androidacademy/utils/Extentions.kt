@@ -5,7 +5,9 @@ import android.content.res.Configuration
 import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.View
+import android.widget.AdapterView
 import android.widget.ImageView
+import android.widget.Spinner
 import androidx.annotation.IdRes
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
@@ -50,6 +52,16 @@ fun AppCompatActivity.setupActionBar(@IdRes toolbarId: Int, action: ActionBar.()
     setSupportActionBar(findViewById(toolbarId))
     supportActionBar?.run {
         action()
+    }
+}
+
+fun Spinner?.addOnClickListener(clickListener: (position: Int) -> Unit) {
+    this?.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+        override fun onNothingSelected(parent: AdapterView<*>?) {}
+
+        override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+            clickListener.invoke(position)
+        }
     }
 }
 

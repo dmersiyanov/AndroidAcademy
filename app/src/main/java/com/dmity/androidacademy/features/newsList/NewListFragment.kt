@@ -3,7 +3,6 @@ package com.dmity.androidacademy.features.newsList
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -17,6 +16,7 @@ import com.dmity.androidacademy.features.newsList.model.DisplayableItem
 import com.dmity.androidacademy.features.newsList.model.NewsEntity
 import com.dmity.androidacademy.utils.DisplayMetricsUtils.isPhone
 import com.dmity.androidacademy.utils.DisplayMetricsUtils.isPortrait
+import com.dmity.androidacademy.utils.addOnClickListener
 import com.dmity.androidacademy.utils.showSnack
 import com.dmity.androidacademy.utils.visible
 import kotlinx.android.synthetic.main.fragment_news_list.*
@@ -56,7 +56,7 @@ class NewListFragment : BaseFragment() {
         }
 
         btnRetry.setOnClickListener(clickListener)
-        fab.setOnClickListener(clickListener)
+        fab?.setOnClickListener(clickListener)
         setupSpinnerListener()
     }
 
@@ -86,15 +86,10 @@ class NewListFragment : BaseFragment() {
     }
 
     private fun setupSpinnerListener() {
-        spinner?.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                viewModel.getNews(position, false)
-            }
+        spinner?.addOnClickListener { position ->
+            viewModel.getNews(position, false)
         }
     }
-
 
     private fun setupSpinner() {
         val adapter = ArrayAdapter.createFromResource(
@@ -105,8 +100,6 @@ class NewListFragment : BaseFragment() {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner?.adapter = adapter
     }
-
-
 
     private fun initObservers() {
         viewModel.showProgress.observe(this, Observer { showProgress(it) })

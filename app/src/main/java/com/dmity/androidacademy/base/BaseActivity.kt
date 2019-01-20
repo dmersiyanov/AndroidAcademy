@@ -25,11 +25,11 @@ abstract class BaseActivity: AppCompatActivity(), SubscriptionsHolder {
         super.onDestroy()
     }
 
-    open fun initUx() {}
-    open fun initUi() {}
-    open fun initUi(savedInstanceState: Bundle?) {}
-    open fun showProgress(show: Boolean) = progress?.visible(show)
-    open fun showError(errorMessage: String = "", show: Boolean) {}
+    protected open fun initUx() {}
+    protected open fun initUi() {}
+    protected open fun initUi(savedInstanceState: Bundle?) {}
+    protected open fun showProgress(show: Boolean) = progress?.visible(show)
+    protected open fun showError(errorMessage: String = "", show: Boolean) {}
 
     private fun initLayout(){
         var layoutId = 0
@@ -55,13 +55,5 @@ abstract class BaseActivity: AppCompatActivity(), SubscriptionsHolder {
         transaction.commit()
 
     }
-
-    protected fun addFragment(container: Int, fragment: Fragment, addToBackStack: Boolean) {
-        supportFragmentManager
-                .beginTransaction()
-                .add(container, fragment)
-                .commit()
-    }
-
 
 }
