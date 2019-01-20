@@ -86,7 +86,7 @@ class NewListFragment : BaseFragment() {
     }
 
     private fun setupSpinnerListener() {
-        spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+        spinner?.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {}
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -103,7 +103,7 @@ class NewListFragment : BaseFragment() {
                 R.layout.items_categories_spinner
         )
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinner.adapter = adapter
+        spinner?.adapter = adapter
     }
 
 

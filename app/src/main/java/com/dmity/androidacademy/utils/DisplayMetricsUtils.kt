@@ -43,6 +43,10 @@ object DisplayMetricsUtils {
     fun isLandscape(context: Context): Boolean =
             !isPortrait(context)
 
+    fun isTabletLand(context: Context): Boolean {
+        return isTablet(context) && isLandscape(context)
+    }
+
 
 
 

@@ -27,7 +27,7 @@ class NewsDetailsFragment : BaseFragment() {
 
     override fun initUx() {
         btnRetry.setOnClickListener { requireActivity().onBackPressed() }
-        toolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
+        toolbar?.setNavigationOnClickListener { requireActivity().onBackPressed() }
     }
 
     fun showError(errorMessage: String, show: Boolean) {
@@ -62,8 +62,8 @@ class NewsDetailsFragment : BaseFragment() {
     }
 
     private fun setupToolbar(title: String) {
-        toolbar.title = title.takeIf { it.isNotBlank() } ?: ""
-        toolbar.setTitleTextColor(ContextCompat.getColor(context, R.color.white))
+        toolbar?.title = title.takeIf { it.isNotBlank() } ?: ""
+        toolbar?.setTitleTextColor(ContextCompat.getColor(context, R.color.white))
     }
 
 
