@@ -6,6 +6,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.dmity.androidacademy.NewsApp
 import com.dmity.androidacademy.base.SubscriptionsHolder
+import com.dmity.androidacademy.domain.interactor.GetOnboardingVisibilityInteractor
 import com.dmity.androidacademy.features.newsList.MainActivity
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -13,13 +14,15 @@ import io.reactivex.disposables.CompositeDisposable
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
-class OnBoardingViewModel @Inject constructor(application: Application) :
+class OnBoardingViewModel @Inject constructor(
+    application: Application,
+    private val getOnboardingVisibilityInteractor: GetOnboardingVisibilityInteractor
+) :
     AndroidViewModel(application),
     SubscriptionsHolder {
 
     override val disposables: CompositeDisposable = CompositeDisposable()
     private var context: Context = getApplication()
-    private var counter = 0
     val showOnBoarding = MutableLiveData<Boolean>()
 
     @Inject
@@ -37,9 +40,7 @@ class OnBoardingViewModel @Inject constructor(application: Application) :
 
     private fun setupOnBoarding() {
 
-        counter = onBoardingRepo.getCounter()
-
-        if (counter % 2 == 0) {
+        if (getOnboardingVisibilityInteractor.execute()) {
 
             showOnBoarding.value = true
 
