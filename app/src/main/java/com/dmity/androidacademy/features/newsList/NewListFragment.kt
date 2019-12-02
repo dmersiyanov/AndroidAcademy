@@ -43,7 +43,7 @@ class NewListFragment : BaseFragment() {
         initObservers()
     }
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
         when(context) {
             is OnNewsClickListener -> clickListener = context

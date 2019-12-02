@@ -13,7 +13,7 @@ class ApiKeyInterceptor(private val apiKey: String): Interceptor {
 
         val requestWithoutApiKey = chain.request()
 
-        val url = requestWithoutApiKey.url()
+        val url = requestWithoutApiKey.url
                 .newBuilder()
                 .addQueryParameter(PARAM_API_KEY, apiKey)
                 .build()
