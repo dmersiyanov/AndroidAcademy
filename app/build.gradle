@@ -86,5 +86,11 @@ dependencies {
     // Other
     implementation 'me.relex:circleindicator:2.1.4'
 
+    // Dagger 2
+    implementation dagger2.core
+    implementation dagger2.androidSupport
+    kapt dagger2.daggerCompiler
+    kapt dagger2.androidCompiler
+    implementation dagger2.jsr330
 
 }
