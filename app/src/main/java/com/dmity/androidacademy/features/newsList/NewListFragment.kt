@@ -2,6 +2,8 @@ package com.dmity.androidacademy.features.newsList
 
 import android.content.Context
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import android.widget.ArrayAdapter
 import androidx.lifecycle.Observer
@@ -11,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dmity.androidacademy.R
 import com.dmity.androidacademy.base.BaseFragment
+import com.dmity.androidacademy.features.about.AboutActivity
 import com.dmity.androidacademy.features.newsList.adapter.NewsAdapter
 import com.dmity.androidacademy.features.newsList.model.DisplayableItem
 import com.dmity.androidacademy.features.newsList.model.NewsEntity
@@ -57,7 +60,15 @@ class NewListFragment : BaseFragment() {
 
         btnRetry.setOnClickListener(clickListener)
         fab?.setOnClickListener(clickListener)
+        aboutBtn?.setOnClickListener {
+            AboutActivity.display(requireContext())
+        }
         setupSpinnerListener()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_list, menu)
     }
 
     override fun showProgress(show: Boolean) = progress?.visible(show)

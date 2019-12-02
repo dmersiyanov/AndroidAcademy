@@ -1,5 +1,7 @@
 package com.dmity.androidacademy.features.about
 
+import android.content.Context
+import android.content.Intent
 import com.dmity.androidacademy.R
 import com.dmity.androidacademy.base.BaseActivity
 import com.dmity.androidacademy.base.Layout
@@ -34,7 +36,11 @@ class AboutActivity : BaseActivity() {
         if (intent != null) {
             startActivity(intent)
         } else
-            Snackbar.make(btn_send, getString(R.string.error_no_email_app), Snackbar.LENGTH_LONG).show()
+            Snackbar.make(
+                btn_send,
+                getString(R.string.error_no_email_app),
+                Snackbar.LENGTH_LONG
+            ).show()
     }
 
     private fun openTelegram() {
@@ -42,6 +48,19 @@ class AboutActivity : BaseActivity() {
         if (telegramIntent != null) {
             startActivity(telegramIntent)
         } else
-            Snackbar.make(btn_telegram, getString(R.string.error_message_send), Snackbar.LENGTH_LONG).show()
+            Snackbar.make(
+                btn_telegram,
+                getString(R.string.error_message_send),
+                Snackbar.LENGTH_LONG
+            ).show()
+    }
+
+    companion object {
+
+        fun display(context: Context) {
+            val intent = Intent(context, AboutActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            context.startActivity(intent)
+        }
     }
 }
