@@ -47,6 +47,9 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
+    implementation project(':domain')
+
+
     // Google libs
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation "androidx.cardview:cardview:1.0.0"
@@ -88,9 +91,9 @@ dependencies {
 
     // Dagger 2
     implementation dagger2.core
-    implementation dagger2.androidSupport
+//    implementation dagger2.androidSupport
     kapt dagger2.daggerCompiler
-    kapt dagger2.androidCompiler
+//    kapt dagger2.androidCompiler
     implementation dagger2.jsr330
 
 }
