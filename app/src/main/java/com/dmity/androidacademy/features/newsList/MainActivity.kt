@@ -86,6 +86,7 @@ class MainActivity : BaseActivity(), NewListFragment.OnNewsClickListener {
     companion object {
         fun display(context: Context) {
             val intent = Intent(context, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent)
         }
     }

@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit
 
 object RestAPI {
 
-    private const val BASE_URL = "http://api.nytimes.com/svc/topstories/v2/"
+    private const val BASE_URL = "https://api.nytimes.com/svc/topstories/v2/"
     private const val API_KEY = "567mSg0NfYj5GwXBOaYtovgZef0tXHCs"
     private const val TIMEOUT_IN_SECONDS = 2L
 
