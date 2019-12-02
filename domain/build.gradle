@@ -1,8 +1,10 @@
-apply plugin: 'java-library'
+apply from: "$rootDir/base/deps_versions.gradle"
+apply plugin: 'kotlin'
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation kotlin
+    implementation dagger2.jsr330
 }
 
-sourceCompatibility = "7"
-targetCompatibility = "7"
+sourceCompatibility = "8"
+targetCompatibility = "8"

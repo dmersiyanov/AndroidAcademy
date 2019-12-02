@@ -3,8 +3,9 @@ package com.dmity.androidacademy.features.onboarding
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
+import com.dmity.androidacademy.domain.repo.OnBoardingRepo
 
-class OnBoardingRepo(context: Context) {
+class OnBoardingRepoImpl(context: Context) : OnBoardingRepo {
 
     private var writer: SharedPreferences.Editor
     private val reader: SharedPreferences
@@ -14,12 +15,12 @@ class OnBoardingRepo(context: Context) {
         writer = reader.edit()
     }
 
-    fun incrementCounter() {
+    override fun incrementCounter() {
         val counter = getCounter()
         writer.putInt(LAUNCH_COUNTER, counter + 1).apply()
     }
 
-    fun getCounter(): Int {
+    override fun getCounter(): Int {
         return reader.getInt(LAUNCH_COUNTER, 0)
     }
 

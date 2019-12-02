@@ -1,10 +1,6 @@
-package com.dmity.androidacademy.features.newsList.model
+package com.dmity.androidacademy.domain.model
 
-import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
-
-@Parcelize
-enum class Categories(val value: String) : Parcelable {
+enum class Categories(val value: String) {
 
     EMPTY_CATEGORY( ""),
     HOME("Home"),

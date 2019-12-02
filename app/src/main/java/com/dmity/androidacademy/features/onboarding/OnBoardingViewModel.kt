@@ -18,10 +18,10 @@ class OnBoardingViewModel(application: Application): AndroidViewModel(applicatio
     private var counter = 0
     val showOnBoarding = MutableLiveData<Boolean>()
 
-    private var onBoardingRepo: OnBoardingRepo
+    private var onBoardingRepo: OnBoardingRepoImpl
 
     init {
-        onBoardingRepo = OnBoardingRepo(context)
+        onBoardingRepo = OnBoardingRepoImpl(context)
         setupOnBoarding()
     }
 
