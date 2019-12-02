@@ -13,7 +13,8 @@ import io.reactivex.disposables.CompositeDisposable
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
-class OnBoardingViewModel(application: Application) : AndroidViewModel(application),
+class OnBoardingViewModel @Inject constructor(application: Application) :
+    AndroidViewModel(application),
     SubscriptionsHolder {
 
     override val disposables: CompositeDisposable = CompositeDisposable()

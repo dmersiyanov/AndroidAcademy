@@ -3,11 +3,16 @@ package com.dmity.androidacademy.base
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.dmity.androidacademy.utils.visible
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.view_progress_stub.*
+import javax.inject.Inject
 
 abstract class BaseActivity: AppCompatActivity(), SubscriptionsHolder {
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     override val disposables: CompositeDisposable = CompositeDisposable()
 
