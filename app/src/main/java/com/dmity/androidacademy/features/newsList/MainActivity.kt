@@ -3,14 +3,11 @@ package com.dmity.androidacademy.features.newsList
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import android.widget.ArrayAdapter
 import androidx.lifecycle.ViewModelProviders
 import com.dmity.androidacademy.R
 import com.dmity.androidacademy.base.BaseActivity
 import com.dmity.androidacademy.base.Layout
-import com.dmity.androidacademy.features.about.AboutActivity
 import com.dmity.androidacademy.features.newsDetail.NewsDetailsFragment
 import com.dmity.androidacademy.utils.DisplayMetricsUtils.isPhone
 import com.dmity.androidacademy.utils.DisplayMetricsUtils.isTablet
@@ -41,21 +38,6 @@ class MainActivity : BaseActivity(), NewListFragment.OnNewsClickListener {
 
             setupSpinner()
             setupTabletLand()
-        }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_list, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_about -> {
-                startActivity(Intent(this, AboutActivity::class.java))
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
         }
     }
 

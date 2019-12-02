@@ -17,5 +17,6 @@
     <string name="text_skip">Пропустить</string>
     <string name="onboarding_title_page_1">Получайте последние новости со всего мира</string>
     <string name="onboarding_title_page_2">Будьте в курсе последних новостей</string>
+    <string name="choose_news_item">Выберите новость</string>
 
 </resources>
