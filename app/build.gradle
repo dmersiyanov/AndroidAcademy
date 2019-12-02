@@ -1,17 +1,22 @@
+apply from: "$rootDir/base/deps_versions.gradle"
+apply from: "$rootDir/base/config.gradle"
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion config.currentSDK
+
     defaultConfig {
-        applicationId "com.dmity.androidacademy"
-        minSdkVersion 19
-        targetSdkVersion 29
-        versionCode 2
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        versionCode config.versionCode
+        versionName config.versionName
+        minSdkVersion config.minSDK
+        targetSdkVersion config.currentSDK
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
         vectorDrawables.useSupportLibrary = true
 
         kapt {
@@ -30,9 +35,15 @@ android {
     androidExtensions {
         experimental = true
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 

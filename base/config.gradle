@@ -1,0 +1,8 @@
+ext {
+    config = [
+            'versionCode': 2,
+            'versionName': "1.0",
+            'minSDK': 19,
+            'currentSDK': 28
+    ]
+}
