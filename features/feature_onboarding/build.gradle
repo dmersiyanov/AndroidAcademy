@@ -1,0 +1,30 @@
+apply from: "$rootDir/base/deps_versions.gradle"
+apply from: "$rootDir/base/config.gradle"
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+androidExtensions {
+    experimental = true
+}
+
+android {
+    compileSdkVersion config.currentSDK
+
+    defaultConfig {
+        versionCode config.versionCode
+        versionName config.versionName
+        minSdkVersion config.minSDK
+        targetSdkVersion config.currentSDK
+    }
+}
+
+dependencies {
+    implementation project(":domain")
+
+    implementation appcompat
+    implementation coreKtx
+
+}
