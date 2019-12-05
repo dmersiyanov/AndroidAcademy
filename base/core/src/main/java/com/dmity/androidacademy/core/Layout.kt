@@ -1,4 +1,4 @@
-package com.dmity.androidacademy.base
+package com.dmity.androidacademy.core
 
 @Target(AnnotationTarget.CLASS)
 @Retention(AnnotationRetention.RUNTIME)

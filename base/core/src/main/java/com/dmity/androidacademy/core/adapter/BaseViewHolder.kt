@@ -1,4 +1,4 @@
-package com.dmity.androidacademy.base
+package com.dmity.androidacademy.core.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

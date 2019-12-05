@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="big_margin">32dp</dimen>
-    <dimen name="medium_margin">16dp</dimen>
-    <dimen name="small_margin">8dp</dimen>
+
     <dimen name="btn_text_size">13sp</dimen>
     <dimen name="editText_text_size">12sp</dimen>
     <dimen name="editText_big_margin">28dp</dimen>
     <dimen name="editText_small_margin">12dp</dimen>
     <dimen name="image_text_view_size">20dp</dimen>
-    <dimen name="separator_height">1dp</dimen>
     <dimen name="my_picture_height">225dp</dimen>
     <dimen name="news_title_text_size">18sp</dimen>
     <dimen name="card_margin">5dp</dimen>
-    <dimen name="news_item_image_size">100dp</dimen>
     <dimen name="onboarding_image">300dp</dimen>
     <dimen name="onboarding_image_margin">50dp</dimen>
     <dimen name="spinner_width">150dp</dimen>

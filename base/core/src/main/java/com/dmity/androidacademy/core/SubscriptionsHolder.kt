@@ -1,4 +1,4 @@
-package com.dmity.androidacademy.base
+package com.dmity.androidacademy.core
 
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable

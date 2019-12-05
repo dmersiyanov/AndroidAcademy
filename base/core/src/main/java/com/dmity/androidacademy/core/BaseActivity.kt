@@ -1,10 +1,10 @@
-package com.dmity.androidacademy.base
+package com.dmity.androidacademy.core
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.dmity.androidacademy.utils.visible
+import com.dmity.androidacademy.core.extensions.visible
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.view_progress_stub.*
 import javax.inject.Inject

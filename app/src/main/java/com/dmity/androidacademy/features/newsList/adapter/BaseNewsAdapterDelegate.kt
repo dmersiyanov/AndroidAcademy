@@ -2,11 +2,11 @@ package com.dmity.androidacademy.features.newsList.adapter
 
 import android.view.ViewGroup
 import com.dmity.androidacademy.R
-import com.dmity.androidacademy.base.BaseAdapterDelegate
-import com.dmity.androidacademy.base.BaseViewHolder
+import com.dmity.androidacademy.core.adapter.BaseAdapterDelegate
+import com.dmity.androidacademy.core.adapter.BaseViewHolder
+import com.dmity.androidacademy.core.extensions.loadImg
 import com.dmity.androidacademy.features.newsList.model.DisplayableItem
 import com.dmity.androidacademy.features.newsList.model.NewsEntity
-import com.dmity.androidacademy.utils.loadImg
 import kotlinx.android.synthetic.main.item_news_constrained.view.*
 
 class BaseNewsAdapterDelegate(private val clickListener: (DisplayableItem) -> Unit) : BaseAdapterDelegate<NewsEntity, DisplayableItem, BaseViewHolder>() {

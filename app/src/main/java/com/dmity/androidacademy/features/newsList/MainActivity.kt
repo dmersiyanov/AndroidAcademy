@@ -6,12 +6,12 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import androidx.lifecycle.ViewModelProviders
 import com.dmity.androidacademy.R
-import com.dmity.androidacademy.base.BaseActivity
-import com.dmity.androidacademy.base.Layout
+import com.dmity.androidacademy.core.BaseActivity
+import com.dmity.androidacademy.core.Layout
+import com.dmity.androidacademy.core.extensions.addOnClickListener
 import com.dmity.androidacademy.features.newsDetail.NewsDetailsFragment
 import com.dmity.androidacademy.utils.DisplayMetricsUtils.isPhone
 import com.dmity.androidacademy.utils.DisplayMetricsUtils.isTablet
-import com.dmity.androidacademy.utils.addOnClickListener
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar_main_tablet.*
 

@@ -8,8 +8,8 @@ import androidx.fragment.app.FragmentPagerAdapter
 import androidx.lifecycle.Observer
 import com.dmity.androidacademy.NewsApp
 import com.dmity.androidacademy.R
-import com.dmity.androidacademy.base.BaseActivity
-import com.dmity.androidacademy.base.Layout
+import com.dmity.androidacademy.core.BaseActivity
+import com.dmity.androidacademy.core.Layout
 import com.dmity.androidacademy.features.newsList.MainActivity
 import kotlinx.android.synthetic.main.activity_onboarding.*
 

@@ -1,4 +1,4 @@
-package com.dmity.androidacademy.base
+package com.dmity.androidacademy.core
 
 import android.content.Context
 import android.os.Bundle
@@ -6,8 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.dmity.androidacademy.utils.visible
-import kotlinx.android.synthetic.main.view_progress_stub.*
 
 abstract class BaseFragment: Fragment() {
 
@@ -29,7 +27,7 @@ abstract class BaseFragment: Fragment() {
 
     protected abstract fun initUx()
     protected abstract fun initUi()
-    open fun showProgress(show: Boolean) = progress?.visible(show)
+//    open fun showProgress(show: Boolean) = progress?.visible(show)
 
 
 

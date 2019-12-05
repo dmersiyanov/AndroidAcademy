@@ -1,4 +1,4 @@
-package com.dmity.androidacademy.base
+package com.dmity.androidacademy.core.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,7 +11,13 @@ abstract class BaseAdapterDelegate<I : T, T, VH : RecyclerView.ViewHolder>: AbsL
 
     protected fun fromLayoutId(layoutId: Int, parent: ViewGroup): BaseViewHolder {
         inflater = LayoutInflater.from(parent.context)
-        return BaseViewHolder(inflater.inflate(layoutId, parent, false))
+        return BaseViewHolder(
+            inflater.inflate(
+                layoutId,
+                parent,
+                false
+            )
+        )
     }
 
 }

@@ -6,7 +6,7 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.dmity.androidacademy.R
-import com.dmity.androidacademy.base.SubscriptionsHolder
+import com.dmity.androidacademy.core.SubscriptionsHolder
 import com.dmity.androidacademy.database.AppDatabase
 import com.dmity.androidacademy.features.newsList.model.NewsEntity
 import com.dmity.androidacademy.features.newsList.model.dto.NewsResponseDTO
@@ -16,7 +16,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class NewsViewModel(application: Application) : AndroidViewModel(application), SubscriptionsHolder {
+class NewsViewModel(application: Application) : AndroidViewModel(application),
+    SubscriptionsHolder {
 
     override val disposables: CompositeDisposable = CompositeDisposable()
     private val mapper: NewsItemMapper = NewsItemMapper()
