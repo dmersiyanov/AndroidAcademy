@@ -24,4 +24,7 @@ android {
 dependencies {
     implementation project(":base:core")
 
+    // Other
+    implementation 'me.relex:circleindicator:2.1.4'
+
 }
