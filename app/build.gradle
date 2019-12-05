@@ -48,6 +48,8 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     implementation project(':domain')
+    implementation project(':base:core')
+    implementation project(':features:feature_onboarding')
 
 
     // Google libs

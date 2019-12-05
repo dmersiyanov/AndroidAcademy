@@ -1,1 +1,1 @@
-include ':app', ':domain', ':features:feature_onboarding'
+include ':app', ':domain', ':features:feature_onboarding', ':base:core'
