@@ -47,6 +47,9 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
+    implementation project(':domain')
+
+
     // Google libs
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation "androidx.cardview:cardview:1.0.0"
@@ -73,6 +76,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
 
     // Architecture Components
+    implementation fragmentKtx
     implementation "androidx.lifecycle:lifecycle-extensions:2.1.0"
     implementation "androidx.lifecycle:lifecycle-reactivestreams:2.1.0"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
@@ -86,5 +90,11 @@ dependencies {
     // Other
     implementation 'me.relex:circleindicator:2.1.4'
 
+    // Dagger 2
+    implementation dagger2.core
+//    implementation dagger2.androidSupport
+    kapt dagger2.daggerCompiler
+//    kapt dagger2.androidCompiler
+    implementation dagger2.jsr330
 
 }

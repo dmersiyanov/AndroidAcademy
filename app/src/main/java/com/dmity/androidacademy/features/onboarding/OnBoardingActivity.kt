@@ -2,10 +2,11 @@ package com.dmity.androidacademy.features.onboarding
 
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import com.dmity.androidacademy.NewsApp
 import com.dmity.androidacademy.R
 import com.dmity.androidacademy.base.BaseActivity
 import com.dmity.androidacademy.base.Layout
@@ -15,12 +16,11 @@ import kotlinx.android.synthetic.main.activity_onboarding.*
 @Layout(R.layout.activity_onboarding)
 class OnBoardingActivity : BaseActivity() {
 
-    private val viewModel: OnBoardingViewModel by lazy {
-        ViewModelProviders.of(this).get(OnBoardingViewModel::class.java)
-    }
+    private val viewModel: OnBoardingViewModel by viewModels { viewModelFactory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        NewsApp.getAppComponent().inject(this)
         initObserver()
     }
 
