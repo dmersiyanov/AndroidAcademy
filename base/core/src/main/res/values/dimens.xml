@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="big_margin">32dp</dimen>
+    <dimen name="medium_margin">16dp</dimen>
+    <dimen name="small_margin">8dp</dimen>
+    <dimen name="separator_height">1dp</dimen>
+    <dimen name="news_item_image_size">100dp</dimen>
+
+</resources>

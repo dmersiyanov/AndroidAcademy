@@ -12,19 +12,20 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dmity.androidacademy.R
-import com.dmity.androidacademy.base.BaseFragment
+import com.dmity.androidacademy.core.BaseFragment
+import com.dmity.androidacademy.core.extensions.addOnClickListener
+import com.dmity.androidacademy.core.extensions.setRetryListener
+import com.dmity.androidacademy.core.extensions.showError
+import com.dmity.androidacademy.core.extensions.showProgress
+import com.dmity.androidacademy.core.extensions.showSnack
+import com.dmity.androidacademy.core.extensions.visible
 import com.dmity.androidacademy.features.about.AboutActivity
 import com.dmity.androidacademy.features.newsList.adapter.NewsAdapter
 import com.dmity.androidacademy.features.newsList.model.DisplayableItem
 import com.dmity.androidacademy.features.newsList.model.NewsEntity
 import com.dmity.androidacademy.utils.DisplayMetricsUtils.isPhone
 import com.dmity.androidacademy.utils.DisplayMetricsUtils.isPortrait
-import com.dmity.androidacademy.utils.addOnClickListener
-import com.dmity.androidacademy.utils.showSnack
-import com.dmity.androidacademy.utils.visible
 import kotlinx.android.synthetic.main.fragment_news_list.*
-import kotlinx.android.synthetic.main.view_error_stub.*
-import kotlinx.android.synthetic.main.view_progress_stub.*
 
 class NewListFragment : BaseFragment() {
 
@@ -58,7 +59,7 @@ class NewListFragment : BaseFragment() {
             viewModel.getNews(retry = true)
         }
 
-        btnRetry.setOnClickListener(clickListener)
+        setRetryListener(clickListener)
         fab?.setOnClickListener(clickListener)
         aboutBtn?.setOnClickListener {
             AboutActivity.display(requireContext())
@@ -71,18 +72,9 @@ class NewListFragment : BaseFragment() {
         inflater.inflate(R.menu.menu_list, menu)
     }
 
-    override fun showProgress(show: Boolean) = progress?.visible(show)
-
     override fun onDetach() {
         clickListener = null
         super.onDetach()
-    }
-
-    private fun showError(errorMessage: String, show: Boolean) {
-        if(errorMessage.isNotBlank()) {
-            tvErrorMessage.text = errorMessage
-        }
-        errorStub.visible(show)
     }
 
     private fun showSnackBar(text: String, show: Boolean) {

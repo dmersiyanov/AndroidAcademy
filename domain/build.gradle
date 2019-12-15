@@ -4,6 +4,9 @@ apply plugin: 'kotlin'
 dependencies {
     implementation kotlin
     implementation dagger2.jsr330
+
+    api rx.java
+    api rx.kotlin
 }
 
 sourceCompatibility = "8"

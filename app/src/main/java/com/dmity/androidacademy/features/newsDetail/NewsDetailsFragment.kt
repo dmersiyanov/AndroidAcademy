@@ -6,11 +6,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.dmity.androidacademy.R
-import com.dmity.androidacademy.base.BaseFragment
+import com.dmity.androidacademy.core.BaseFragment
+import com.dmity.androidacademy.core.extensions.setRetryListener
+import com.dmity.androidacademy.core.extensions.showError
+import com.dmity.androidacademy.core.extensions.showProgress
 import com.dmity.androidacademy.features.newsList.model.NewsEntity
-import com.dmity.androidacademy.utils.visible
 import kotlinx.android.synthetic.main.fragment_news_details.*
-import kotlinx.android.synthetic.main.view_error_stub.*
 
 class NewsDetailsFragment : BaseFragment() {
 
@@ -26,12 +27,8 @@ class NewsDetailsFragment : BaseFragment() {
     }
 
     override fun initUx() {
-        btnRetry.setOnClickListener { requireActivity().onBackPressed() }
+        setRetryListener { requireActivity().onBackPressed() }
         toolbar?.setNavigationOnClickListener { requireActivity().onBackPressed() }
-    }
-
-    fun showError(errorMessage: String, show: Boolean) {
-        errorStub.visible(show)
     }
 
     private fun initObservers() {

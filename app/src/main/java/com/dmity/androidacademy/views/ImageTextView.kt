@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
 import com.dmity.androidacademy.R
-import com.dmity.androidacademy.utils.extractAttrsWithRecycle
+import com.dmity.androidacademy.core.extensions.extractAttrsWithRecycle
 import kotlinx.android.synthetic.main.layout_image_text_view.view.*
 
 

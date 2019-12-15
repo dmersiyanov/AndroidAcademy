@@ -1,21 +1,39 @@
 package com.dmity.androidacademy.di
 
-import com.dmity.androidacademy.features.onboarding.OnBoardingActivity
-import com.dmity.androidacademy.features.onboarding.OnBoardingViewModel
-import com.dmity.androidacademy.features.onboarding.di.OnBoardingModule
+import android.app.Application
+import android.content.Context
+import com.dmity.androidacademy.core.di.AppProvider
+
+import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
 @Component(
-    modules = [
-        ContextModule::class,
-        OnBoardingModule::class,
-        ViewModelModule::class]
+    modules = [AppModule::class]
 )
-interface AppComponent {
+interface AppComponent : AppProvider {
 
-    fun inject(onBoardingViewModel: OnBoardingViewModel)
-    fun inject(onBoardingActivity: OnBoardingActivity)
+    companion object {
 
+        private var appComponent: AppProvider? = null
+
+        fun create(application: Application): AppProvider {
+            return appComponent ?: DaggerAppComponent
+                .builder()
+                .application(application.applicationContext)
+                .build().also {
+                    appComponent = it
+                }
+        }
+    }
+
+    @Component.Builder
+    interface Builder {
+
+        @BindsInstance
+        fun application(context: Context): Builder
+
+        fun build(): AppComponent
+    }
 }

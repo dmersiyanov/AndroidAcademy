@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="onboarding_image">300dp</dimen>
+    <dimen name="onboarding_image_margin">50dp</dimen>
+    <dimen name="circle_indicator_height">48dp</dimen>
+    <dimen name="circle_indicator_margin">20dp</dimen>
+</resources>

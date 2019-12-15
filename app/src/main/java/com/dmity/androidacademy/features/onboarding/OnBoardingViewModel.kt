@@ -5,7 +5,7 @@ import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.dmity.androidacademy.NewsApp
-import com.dmity.androidacademy.base.SubscriptionsHolder
+import com.dmity.androidacademy.core.SubscriptionsHolder
 import com.dmity.androidacademy.domain.interactor.GetOnboardingVisibilityInteractor
 import com.dmity.androidacademy.features.newsList.MainActivity
 import io.reactivex.Completable

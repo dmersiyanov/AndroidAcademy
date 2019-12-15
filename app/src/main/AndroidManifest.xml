@@ -24,7 +24,7 @@
         <activity android:name=".features.newsDetail.NewsDetailsActivity" />
 
         <activity
-            android:name=".features.onboarding.OnBoardingActivity"
+            android:name=".feature_onboarding.view.OnBoardingActivity"
             android:theme="@style/AppThemeNoActionBar"
             android:noHistory="true">
             <intent-filter>

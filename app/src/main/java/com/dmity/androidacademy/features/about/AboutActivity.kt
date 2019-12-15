@@ -3,8 +3,8 @@ package com.dmity.androidacademy.features.about
 import android.content.Context
 import android.content.Intent
 import com.dmity.androidacademy.R
-import com.dmity.androidacademy.base.BaseActivity
-import com.dmity.androidacademy.base.Layout
+import com.dmity.androidacademy.core.BaseActivity
+import com.dmity.androidacademy.core.Layout
 import com.dmity.androidacademy.utils.ThirdPartyIntentUtils
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.content_activity_about.*
