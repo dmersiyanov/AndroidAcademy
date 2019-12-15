@@ -1,4 +1,4 @@
-package com.dmity.androidacademy.features.onboarding
+package com.dmity.androidacademy.feature_onboarding.view
 
 
 import android.os.Bundle
@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.dmity.androidacademy.R
+import com.dmity.androidacademy.feature_onboarding.R
 import kotlinx.android.synthetic.main.fragment_onboarding.*
 
 private const val ARG_IMAGE_ID = "image_id"

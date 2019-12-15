@@ -26,5 +26,7 @@ dependencies {
 
     // Other
     implementation 'me.relex:circleindicator:2.1.4'
+    kapt dagger2.daggerCompiler
+
 
 }

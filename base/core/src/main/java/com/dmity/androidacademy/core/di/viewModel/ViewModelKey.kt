@@ -1,4 +1,4 @@
-package com.dmity.androidacademy.di.utils
+package com.dmity.androidacademy.core.di.viewModel
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

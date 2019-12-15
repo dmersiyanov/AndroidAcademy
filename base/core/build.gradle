@@ -28,9 +28,11 @@ dependencies {
     api timber
     api lifecycleExtensions
 
+    // Google
     api appcompat
     api coreKtx
     api material
+    api fragmentKtx
 
     // Dagger 2
     api dagger2.core

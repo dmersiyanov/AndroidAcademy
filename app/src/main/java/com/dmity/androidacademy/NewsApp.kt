@@ -3,29 +3,28 @@ package com.dmity.androidacademy
 import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
-import android.util.Log
-import com.dmity.androidacademy.di.AppComponent
-import com.dmity.androidacademy.di.ContextModule
-import com.dmity.androidacademy.di.DaggerAppComponent
+import com.dmity.androidacademy.core.di.AppWithFacade
+import com.dmity.androidacademy.core.di.ProvidersFacade
+import com.dmity.androidacademy.di.FacadeComponent
 import io.reactivex.plugins.RxJavaPlugins
+import timber.log.Timber
 
 
-class NewsApp: Application() {
-
-    lateinit var appComponent: AppComponent
+class NewsApp : Application(), AppWithFacade {
 
     override fun onCreate() {
         super.onCreate()
         context = this
 
-
-        appComponent = DaggerAppComponent
-            .builder()
-            .contextModule(ContextModule(this))
-            .build()
-
+        (getFacade() as FacadeComponent).inject(this)
 
         setGlobalRxJavaErrorHandler()
+    }
+
+    override fun getFacade(): ProvidersFacade {
+        return facadeComponent ?: FacadeComponent.init(this).also {
+            facadeComponent = it
+        }
     }
 
     @SuppressLint("LongLogTag")
@@ -40,15 +39,13 @@ class NewsApp: Application() {
                 Thread.currentThread().uncaughtExceptionHandler.uncaughtException(Thread.currentThread(), e)
             }
 
-            Log.w("Undeliverable exception received", e.message)
+            Timber.w(e)
         }
     }
 
     companion object {
 
-
-        fun getAppComponent() = (context as NewsApp).appComponent
-
+        private var facadeComponent: FacadeComponent? = null
 
         @SuppressLint("StaticFieldLeak")
         lateinit var context: Context

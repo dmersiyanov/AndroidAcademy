@@ -3,16 +3,12 @@ package com.dmity.androidacademy.core
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.dmity.androidacademy.core.extensions.visible
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.view_progress_stub.*
-import javax.inject.Inject
 
-abstract class BaseActivity: AppCompatActivity(), SubscriptionsHolder {
-
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+abstract class BaseActivity(private val layoutId: Int = 0) : AppCompatActivity(),
+    SubscriptionsHolder {
 
     override val disposables: CompositeDisposable = CompositeDisposable()
 
@@ -20,6 +16,7 @@ abstract class BaseActivity: AppCompatActivity(), SubscriptionsHolder {
         super.onCreate(savedInstanceState)
 
         initLayout()
+        initLayoutFromConstructor()
         initUi()
         initUi(savedInstanceState)
         initUx()
@@ -36,7 +33,7 @@ abstract class BaseActivity: AppCompatActivity(), SubscriptionsHolder {
     protected open fun showProgress(show: Boolean) = progress?.visible(show)
     protected open fun showError(errorMessage: String = "", show: Boolean) {}
 
-    private fun initLayout(){
+    private fun initLayout() {
         var layoutId = 0
         val annotation = javaClass.getAnnotation(Layout::class.java)
         if (annotation != null) {
@@ -48,12 +45,19 @@ abstract class BaseActivity: AppCompatActivity(), SubscriptionsHolder {
         }
     }
 
+    /** Для использования в feature модулях */
+    private fun initLayoutFromConstructor() {
+        if (layoutId != 0) {
+            setContentView(layoutId)
+        }
+    }
+
     protected fun replaceFragment(container: Int, fragment: Fragment, addToBackStack: Boolean) {
         val transaction = supportFragmentManager
-                .beginTransaction()
-                .replace(container, fragment)
+            .beginTransaction()
+            .replace(container, fragment)
 
-        if(addToBackStack) {
+        if (addToBackStack) {
             transaction.addToBackStack(null)
         }
 
