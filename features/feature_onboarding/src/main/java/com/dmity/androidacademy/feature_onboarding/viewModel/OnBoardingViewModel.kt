@@ -8,16 +8,19 @@ import androidx.lifecycle.MutableLiveData
 import com.dmity.androidacademy.core.SubscriptionsHolder
 import com.dmity.androidacademy.domain.interactor.GetOnboardingVisibilityInteractor
 import com.dmity.androidacademy.domain.repo.OnBoardingRepo
+import com.dmity.androidacademy.navigation.AppRouter
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import ru.terrakok.cicerone.Router
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class OnBoardingViewModel @Inject constructor(
     application: Application,
     private val getOnboardingVisibilityInteractor: GetOnboardingVisibilityInteractor,
-    private val onBoardingRepo: OnBoardingRepo
+    private val onBoardingRepo: OnBoardingRepo,
+    private val appRouter: Router
 ) :
     AndroidViewModel(application),
     SubscriptionsHolder {
@@ -27,7 +30,6 @@ class OnBoardingViewModel @Inject constructor(
     val showOnBoarding = MutableLiveData<Boolean>()
 
     init {
-//        NewsApp.getAppComponent().inject(this)
         setupOnBoarding()
     }
 
@@ -47,13 +49,14 @@ class OnBoardingViewModel @Inject constructor(
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
                     Toast.makeText(context, "Навигация на MainActivity", Toast.LENGTH_LONG).show()
+                    // TODO add feature navigation
 //                    MainActivity.display(context)
                 }
                 .bind()
         } else {
             showOnBoarding.value = false
             Toast.makeText(context, "Навигация на MainActivity", Toast.LENGTH_LONG).show()
-
+            // TODO add feature navigation
 //            MainActivity.display(context)
         }
 

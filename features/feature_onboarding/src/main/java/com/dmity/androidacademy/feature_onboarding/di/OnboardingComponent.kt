@@ -13,7 +13,7 @@ import javax.inject.Singleton
     dependencies = [ProvidersFacade::class, ViewModelsProvider::class]
 )
 interface OnboardingComponent :
-    ViewModelsProvider {
+    ViewModelsProvider, com.dmity.androidacademy.navigation.NavigationProvider {
 
     companion object {
 

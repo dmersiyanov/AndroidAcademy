@@ -24,33 +24,17 @@ android {
 
 dependencies {
 
-    api project(":domain")
-    implementation project(':base:navigation')
-
-    api timber
-    api lifecycleExtensions
+    implementation timber
 
     // Google
-    api appcompat
-    api coreKtx
-    api material
-    api fragmentKtx
+    implementation appcompat
 
     // Dagger 2
-    api dagger2.core
+    implementation dagger2.core
     kapt dagger2.daggerCompiler
-    api dagger2.jsr330
-
-    // Rx
-    api rx.android
-
-    // Glide
-    api 'com.github.bumptech.glide:glide:4.10.0'
-
-    // AdapterDelegates
-    implementation 'com.hannesdorfmann:adapterdelegates4:4.0.0'
+    implementation dagger2.jsr330
 
     // Navigation
-    implementation 'ru.terrakok.cicerone:cicerone:5.0.0'
+    api 'ru.terrakok.cicerone:cicerone:5.0.0'
 
 }

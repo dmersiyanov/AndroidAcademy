@@ -7,9 +7,11 @@ import com.dmity.androidacademy.domain.interactor.GetOnboardingVisibilityInterac
 import com.dmity.androidacademy.domain.repo.OnBoardingRepo
 import com.dmity.androidacademy.feature_onboarding.repo.OnBoardingRepoImpl
 import com.dmity.androidacademy.feature_onboarding.viewModel.OnBoardingViewModel
+import com.dmity.androidacademy.navigation.AppRouter
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
+import ru.terrakok.cicerone.Router
 import javax.inject.Singleton
 
 @Module
@@ -30,11 +32,13 @@ abstract class OnboardingModule {
             map: @JvmSuppressWildcards MutableMap<Class<out ViewModel>, ViewModel>,
             getOnboardingVisibilityInteractor: GetOnboardingVisibilityInteractor,
             context: Context,
-            onBoardingRepo: OnBoardingRepo
+            onBoardingRepo: OnBoardingRepo,
+            appRouter: Router
         ): ViewModel = OnBoardingViewModel(
             application = context as Application,
             getOnboardingVisibilityInteractor = getOnboardingVisibilityInteractor,
-            onBoardingRepo = onBoardingRepo
+            onBoardingRepo = onBoardingRepo,
+            appRouter = appRouter
         ).also {
             map[OnBoardingViewModel::class.java] = it
         }
