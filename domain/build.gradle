@@ -7,6 +7,10 @@ dependencies {
 
     api rx.java
     api rx.kotlin
+
+    implementation tests.junit4
+    implementation tests.mockito
+    implementation tests.mockitoKotlin
 }
 
 sourceCompatibility = "8"

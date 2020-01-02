@@ -24,6 +24,8 @@ android {
                 arg("room.schemaLocation", "$projectDir/schemas".toString())
             }
         }
+
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -93,5 +95,8 @@ dependencies {
     implementation dagger2.core
     kapt dagger2.daggerCompiler
     implementation dagger2.jsr330
+
+    implementation 'com.android.support:multidex:1.0.3'
+
 
 }
