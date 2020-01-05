@@ -63,7 +63,7 @@ class OnBoardingActivity : BaseActivity(layoutId = R.layout.activity_onboarding)
         indicator.setViewPager(viewpager)
     }
 
-    private inner class OnBoardingPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
+    inner class OnBoardingPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
         val images = listOf(
             R.drawable.ic_onboarding,
