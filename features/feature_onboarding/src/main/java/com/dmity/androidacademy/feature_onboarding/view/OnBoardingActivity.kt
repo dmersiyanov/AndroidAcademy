@@ -30,6 +30,7 @@ class OnBoardingActivity : BaseActivity(layoutId = R.layout.activity_onboarding)
         super.onCreate(savedInstanceState)
         OnboardingComponent.create((application as AppWithFacade).getFacade()).inject(this)
         initObserver()
+        viewModel.setupOnBoarding()
     }
 
     override fun onBackPressed() {

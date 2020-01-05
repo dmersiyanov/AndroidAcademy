@@ -28,11 +28,9 @@ abstract class OnboardingModule {
         fun provideOnBoardingViewModel(
             map: @JvmSuppressWildcards MutableMap<Class<out ViewModel>, ViewModel>,
             getOnboardingVisibilityInteractor: GetOnboardingVisibilityInteractor,
-            onBoardingRepo: OnBoardingRepo,
             androidPlatformProxy: AndroidPlatformProxy
         ): ViewModel = OnBoardingViewModel(
             getOnboardingVisibilityInteractor = getOnboardingVisibilityInteractor,
-            onBoardingRepo = onBoardingRepo,
             androidPlatformProxy = androidPlatformProxy
         ).also {
             map[OnBoardingViewModel::class.java] = it

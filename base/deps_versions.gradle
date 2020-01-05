@@ -74,6 +74,10 @@ ext {
                     'location' : "16.0.1",
                     'auth'     : "16.0.1",
                     'flexBox'  : "1.0.0"
+            ],
+
+            'testing'         : [
+                    'androidxCoreTesting': '2.1.0'
             ]
     ]
 
@@ -133,10 +137,11 @@ ext {
     timber = "com.jakewharton.timber:timber:$timberVersion"
 
     tests = [
-            'junit4'      : "junit:junit:4.12",
-            'mockito'   : "org.mockito:mockito-core:${versions.mockito}",
-            'inliner'   : "org.mockito:mockito-inline:${versions.mockito}",
-            'mockitoKotlin'    : "com.nhaarman.mockitokotlin2:mockito-kotlin:${versions.mockitoKotlin}"
+            'junit4'             : "junit:junit:4.12",
+            'mockito'            : "org.mockito:mockito-core:${versions.mockito}",
+            'inliner'            : "org.mockito:mockito-inline:${versions.mockito}",
+            'mockitoKotlin'      : "com.nhaarman.mockitokotlin2:mockito-kotlin:${versions.mockitoKotlin}",
+            'androidxCoreTesting': "androidx.arch.core:core-testing:${versions.testing.androidxCoreTesting}",
     ]
 
 }
