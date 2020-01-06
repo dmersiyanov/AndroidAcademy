@@ -21,8 +21,6 @@
             android:name=".features.newsList.MainActivity"
             android:theme="@style/AppThemeNoActionBar" />
 
-        <activity android:name=".features.newsDetail.NewsDetailsActivity" />
-
         <activity
             android:name=".feature_onboarding.view.OnBoardingActivity"
             android:theme="@style/AppTheme"
