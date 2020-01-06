@@ -1,3 +1,5 @@
 package com.dmity.androidacademy.core.di
 
-interface ProvidersFacade : AppProvider
+import com.dmity.androidacademy.navigation.di.NavigationProvider
+
+interface ProvidersFacade : AppProvider, NavigationProvider

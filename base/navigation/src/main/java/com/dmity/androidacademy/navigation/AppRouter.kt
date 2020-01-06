@@ -1,9 +1,18 @@
 package com.dmity.androidacademy.navigation
 
+import android.util.Log
 import ru.terrakok.cicerone.Router
+import ru.terrakok.cicerone.Screen
+import javax.inject.Inject
 
 
-class AppRouter : Router() {
+class AppRouter @Inject constructor() : Router() {
+
+
+    override fun navigateTo(screen: Screen?) {
+        Log.i("navigateTo", screen?.screenKey)
+        super.navigateTo(screen)
+    }
 
 //    fun navigateToDialog(screenKey: String, tag: String = screenKey, data: Any? = null) {
 //        executeCommands(ShowDialog(screenKey, tag, data))

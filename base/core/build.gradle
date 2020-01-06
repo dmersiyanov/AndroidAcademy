@@ -25,6 +25,7 @@ android {
 dependencies {
 
     api project(":domain")
+    api project(":base:navigation")
     api timber
     api lifecycleExtensions
 
