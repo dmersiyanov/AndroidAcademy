@@ -92,9 +92,9 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-common-java8:2.1.0"
 
     // Room
-    implementation "androidx.room:room-runtime:2.2.2"
-    kapt "androidx.room:room-compiler:2.2.2"
-    implementation "androidx.room:room-rxjava2:2.2.2"
+    implementation room.core
+    kapt room.compiler
+    implementation room.rx
 
     // Other
     implementation 'me.relex:circleindicator:2.1.4'
