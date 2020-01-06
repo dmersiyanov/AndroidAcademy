@@ -59,8 +59,8 @@ dependencies {
 
     implementation project(':domain')
     implementation project(':base:core')
+    implementation project(':base:navigation')
     implementation project(':features:feature_onboarding')
-
 
     // Google libs
     implementation 'androidx.appcompat:appcompat:1.1.0'

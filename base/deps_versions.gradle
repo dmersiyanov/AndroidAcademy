@@ -47,6 +47,7 @@ ext {
             'webim'           : '3.26.0',
             'fabric'          : '1.31.2',
             'roomDb'          : '2.2.2',
+            'cicerone'          : '5.0.0',
 
             'analytics'       : [
                     'crashlytics'    : [
@@ -147,5 +148,8 @@ ext {
             'mockitoKotlin'      : "com.nhaarman.mockitokotlin2:mockito-kotlin:${versions.mockitoKotlin}",
             'androidxCoreTesting': "androidx.arch.core:core-testing:${versions.testing.androidxCoreTesting}",
     ]
+
+    cicerone = "ru.terrakok.cicerone:cicerone:${versions.cicerone}"
+
 
 }
