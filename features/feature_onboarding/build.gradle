@@ -26,9 +26,7 @@ android {
         minSdkVersion config.minSDK
         targetSdkVersion config.currentSDK
         multiDexEnabled true
-//        testInstrumentationRunner "com.android.test.runner.MultiDexTestRunner"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
     }
 }
 

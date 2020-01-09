@@ -3,8 +3,6 @@
     package="com.dmity.androidacademy.feature_onboarding">
 
     <application>
-        android:name=".AppWithFacade"
-
         <activity
             android:name=".view.OnBoardingActivity"
             android:theme="@style/AppTheme" />
