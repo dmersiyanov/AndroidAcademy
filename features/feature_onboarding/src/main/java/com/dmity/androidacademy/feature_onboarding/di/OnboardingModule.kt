@@ -6,6 +6,7 @@ import com.dmity.androidacademy.domain.repo.OnBoardingRepo
 import com.dmity.androidacademy.domain.system.AndroidPlatformProxy
 import com.dmity.androidacademy.feature_onboarding.repo.OnBoardingRepoImpl
 import com.dmity.androidacademy.feature_onboarding.viewModel.OnBoardingViewModel
+import com.dmity.androidacademy.navigation.AppRouter
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -28,10 +29,12 @@ abstract class OnboardingModule {
         fun provideOnBoardingViewModel(
             map: @JvmSuppressWildcards MutableMap<Class<out ViewModel>, ViewModel>,
             getOnboardingVisibilityInteractor: GetOnboardingVisibilityInteractor,
-            androidPlatformProxy: AndroidPlatformProxy
+            androidPlatformProxy: AndroidPlatformProxy,
+            appRouter: AppRouter
         ): ViewModel = OnBoardingViewModel(
             getOnboardingVisibilityInteractor = getOnboardingVisibilityInteractor,
-            androidPlatformProxy = androidPlatformProxy
+            androidPlatformProxy = androidPlatformProxy,
+            appRouter = appRouter
         ).also {
             map[OnBoardingViewModel::class.java] = it
         }

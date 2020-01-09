@@ -38,7 +38,6 @@ ext {
             'glide'           : '4.10.0',
             'mockito'         : '3.1.0',
             'mockitoKotlin'   : '2.1.0',
-            'espresso'        : '3.2.0',
             'uiautomator'     : '2.2.0',
             'timber'          : '4.7.1',
             'picasso'         : '2.71828',
@@ -47,6 +46,7 @@ ext {
             'webim'           : '3.26.0',
             'fabric'          : '1.31.2',
             'roomDb'          : '2.2.2',
+            'cicerone'        : '5.0.0',
 
             'analytics'       : [
                     'crashlytics'    : [
@@ -77,7 +77,11 @@ ext {
             ],
 
             'testing'         : [
-                    'androidxCoreTesting': '2.1.0'
+                    'androidxCoreTesting': '2.1.0',
+                    'espresso_core'      : '3.2.0',
+                    'espresso_rules'     : '1.1.1',
+                    'espresso_runner'    : '1.1.1',
+                    'kakao'              : '2.2.0',
             ]
     ]
 
@@ -109,7 +113,7 @@ ext {
     room = [
             'core'    : "androidx.room:room-runtime:$versions.roomDb",
             'compiler': "androidx.room:room-compiler:$versions.roomDb",
-            'rx': "androidx.room:room-rxjava2:$versions.roomDb"
+            'rx'      : "androidx.room:room-rxjava2:$versions.roomDb"
 
     ]
 
@@ -146,6 +150,14 @@ ext {
             'inliner'            : "org.mockito:mockito-inline:${versions.mockito}",
             'mockitoKotlin'      : "com.nhaarman.mockitokotlin2:mockito-kotlin:${versions.mockitoKotlin}",
             'androidxCoreTesting': "androidx.arch.core:core-testing:${versions.testing.androidxCoreTesting}",
+            'espresso_core'      : "androidx.test.espresso:espresso-core:${versions.testing.espresso_core}",
+            'espresso_rules'     : "androidx.test:runner:${versions.testing.espresso_rules}",
+            'espresso_runner'    : "androidx.test:rules:${versions.testing.espresso_runner}",
+            'kakao'              : "com.agoda.kakao:kakao:${versions.testing.kakao}"
+
     ]
+
+    cicerone = "ru.terrakok.cicerone:cicerone:${versions.cicerone}"
+
 
 }

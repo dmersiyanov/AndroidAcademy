@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.dmity.androidacademy.feature_onboarding">
+
+    <application>
+        <activity
+            android:name=".view.OnBoardingActivity"
+            android:theme="@style/AppTheme" />
+    </application>
+
+</manifest>

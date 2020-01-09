@@ -26,6 +26,9 @@ android {
         }
 
         multiDexEnabled true
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
     }
     buildTypes {
         release {
@@ -43,7 +46,6 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-
     testOptions {
         unitTests {
             includeAndroidResources = true
@@ -59,8 +61,8 @@ dependencies {
 
     implementation project(':domain')
     implementation project(':base:core')
+    implementation project(':base:navigation')
     implementation project(':features:feature_onboarding')
-
 
     // Google libs
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -104,7 +106,12 @@ dependencies {
     kapt dagger2.daggerCompiler
     implementation dagger2.jsr330
 
-    implementation 'com.android.support:multidex:1.0.3'
+    // Kakao
+    androidTestImplementation tests.kakao
+    androidTestImplementation tests.espresso_core
+    androidTestImplementation tests.espresso_rules
+    androidTestImplementation tests.espresso_runner
+
 
 
 }

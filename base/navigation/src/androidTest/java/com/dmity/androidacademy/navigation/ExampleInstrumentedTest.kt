@@ -1,4 +1,5 @@
-package com.dmity.androidacademy.feature_onboarding
+package com.dmity.androidacademy.navigation
+
 
 /**
  * Instrumented test, which will execute on an Android device.

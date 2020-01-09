@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.dmity.androidacademy.core.SubscriptionsHolder
 import com.dmity.androidacademy.domain.interactor.GetOnboardingVisibilityInteractor
 import com.dmity.androidacademy.domain.system.AndroidPlatformProxy
+import com.dmity.androidacademy.navigation.AppRouter
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -13,7 +14,8 @@ import javax.inject.Inject
 
 class OnBoardingViewModel @Inject constructor(
     private val getOnboardingVisibilityInteractor: GetOnboardingVisibilityInteractor,
-    private val androidPlatformProxy: AndroidPlatformProxy
+    private val androidPlatformProxy: AndroidPlatformProxy,
+    private val appRouter: AppRouter
 ) : ViewModel(), SubscriptionsHolder {
 
     override val disposables: CompositeDisposable = CompositeDisposable()
@@ -34,14 +36,14 @@ class OnBoardingViewModel @Inject constructor(
                 .delay(DELAY_IN_SECONDS, TimeUnit.SECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
-                    androidPlatformProxy.showToast("Навигация на MainActivity")
-//                    MainActivity.display(context)
+                    androidPlatformProxy.showToast("Navigate to MainActivity")
+//                    appRouter.navigateTo(NewsListScreen())
                 }
                 .bind()
         } else {
             showOnBoarding.value = false
-            androidPlatformProxy.showToast("Навигация на MainActivity")
-//            MainActivity.display(context)
+            androidPlatformProxy.showToast("Navigate to MainActivity")
+//                    appRouter.navigateTo(NewsListScreen())
         }
     }
 
