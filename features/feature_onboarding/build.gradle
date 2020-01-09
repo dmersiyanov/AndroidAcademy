@@ -14,11 +14,21 @@ android {
     compileSdkVersion config.currentSDK
     testOptions.unitTests.includeAndroidResources = true
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+
     defaultConfig {
         versionCode config.versionCode
         versionName config.versionName
         minSdkVersion config.minSDK
         targetSdkVersion config.currentSDK
+        multiDexEnabled true
+//        testInstrumentationRunner "com.android.test.runner.MultiDexTestRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
     }
 }
 
@@ -31,6 +41,13 @@ dependencies {
 
     // Robolectric
     testImplementation "org.robolectric:robolectric:4.3.1"
+
+    // Kakao
+    androidTestImplementation tests.kakao
+    androidTestImplementation tests.espresso_core
+    androidTestImplementation tests.espresso_rules
+    androidTestImplementation tests.espresso_runner
+
 
 
 }
