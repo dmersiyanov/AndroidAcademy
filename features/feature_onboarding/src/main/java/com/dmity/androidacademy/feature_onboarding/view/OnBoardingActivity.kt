@@ -30,6 +30,7 @@ class OnBoardingActivity : BaseActivity(layoutId = R.layout.activity_onboarding)
         super.onCreate(savedInstanceState)
         OnboardingComponent.create((application as AppWithFacade).getFacade()).inject(this)
         initObserver()
+        viewModel.setupOnBoarding()
     }
 
     override fun onBackPressed() {
@@ -62,7 +63,7 @@ class OnBoardingActivity : BaseActivity(layoutId = R.layout.activity_onboarding)
         indicator.setViewPager(viewpager)
     }
 
-    private inner class OnBoardingPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
+    inner class OnBoardingPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
         val images = listOf(
             R.drawable.ic_onboarding,

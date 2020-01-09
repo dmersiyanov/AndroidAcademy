@@ -12,6 +12,7 @@ androidExtensions {
 
 android {
     compileSdkVersion config.currentSDK
+    testOptions.unitTests.includeAndroidResources = true
 
     defaultConfig {
         versionCode config.versionCode
@@ -27,6 +28,9 @@ dependencies {
     // Other
     implementation 'me.relex:circleindicator:2.1.4'
     kapt dagger2.daggerCompiler
+
+    // Robolectric
+    testImplementation "org.robolectric:robolectric:4.3.1"
 
 
 }

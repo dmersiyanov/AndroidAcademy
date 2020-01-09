@@ -1,10 +1,9 @@
 package com.dmity.androidacademy.feature_onboarding.di
 
-import android.app.Application
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import com.dmity.androidacademy.domain.interactor.GetOnboardingVisibilityInteractor
 import com.dmity.androidacademy.domain.repo.OnBoardingRepo
+import com.dmity.androidacademy.domain.system.AndroidPlatformProxy
 import com.dmity.androidacademy.feature_onboarding.repo.OnBoardingRepoImpl
 import com.dmity.androidacademy.feature_onboarding.viewModel.OnBoardingViewModel
 import dagger.Binds
@@ -29,12 +28,10 @@ abstract class OnboardingModule {
         fun provideOnBoardingViewModel(
             map: @JvmSuppressWildcards MutableMap<Class<out ViewModel>, ViewModel>,
             getOnboardingVisibilityInteractor: GetOnboardingVisibilityInteractor,
-            context: Context,
-            onBoardingRepo: OnBoardingRepo
+            androidPlatformProxy: AndroidPlatformProxy
         ): ViewModel = OnBoardingViewModel(
-            application = context as Application,
             getOnboardingVisibilityInteractor = getOnboardingVisibilityInteractor,
-            onBoardingRepo = onBoardingRepo
+            androidPlatformProxy = androidPlatformProxy
         ).also {
             map[OnBoardingViewModel::class.java] = it
         }

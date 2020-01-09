@@ -9,7 +9,9 @@ class GetOnboardingVisibilityInteractor @Inject constructor(
 ) {
 
     fun execute(): Boolean {
-        return onBoardingRepo.getCounter() % 2 == 0
+        val showOnBoarding = onBoardingRepo.getCounter() % 2 == 0
+        onBoardingRepo.incrementCounter()
+        return showOnBoarding
     }
 
 }

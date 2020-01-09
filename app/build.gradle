@@ -24,6 +24,8 @@ android {
                 arg("room.schemaLocation", "$projectDir/schemas".toString())
             }
         }
+
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -40,6 +42,14 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+
 }
 
 dependencies {
@@ -82,9 +92,9 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-common-java8:2.1.0"
 
     // Room
-    implementation "androidx.room:room-runtime:2.2.2"
-    kapt "androidx.room:room-compiler:2.2.2"
-    implementation "androidx.room:room-rxjava2:2.2.2"
+    implementation room.core
+    kapt room.compiler
+    implementation room.rx
 
     // Other
     implementation 'me.relex:circleindicator:2.1.4'
@@ -93,5 +103,8 @@ dependencies {
     implementation dagger2.core
     kapt dagger2.daggerCompiler
     implementation dagger2.jsr330
+
+    implementation 'com.android.support:multidex:1.0.3'
+
 
 }

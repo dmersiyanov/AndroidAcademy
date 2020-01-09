@@ -2,7 +2,6 @@ ext {
     retrofitVersion = '2.6.1'
     jsr330Version = '1'
     daggerVersion = '2.25.2'
-    roomVersion = "2.1.0"
     appcompatVersion = "1.1.0"
     coreKtxVersion = "1.1.0"
     constraintLayoutVersion = "1.1.3"
@@ -47,6 +46,7 @@ ext {
             'ktlint'          : '9.0.0',
             'webim'           : '3.26.0',
             'fabric'          : '1.31.2',
+            'roomDb'          : '2.2.2',
 
             'analytics'       : [
                     'crashlytics'    : [
@@ -74,6 +74,10 @@ ext {
                     'location' : "16.0.1",
                     'auth'     : "16.0.1",
                     'flexBox'  : "1.0.0"
+            ],
+
+            'testing'         : [
+                    'androidxCoreTesting': '2.1.0'
             ]
     ]
 
@@ -94,16 +98,20 @@ ext {
     paperDb = "io.paperdb:paperdb:$paperVersion"
 
     dagger2 = [
-            'core': "com.google.dagger:dagger:$daggerVersion",
-            'daggerCompiler': "com.google.dagger:dagger-compiler:$daggerVersion",
-            'androidSupport': "com.google.dagger:dagger-android-support:$daggerVersion",
+            'core'           : "com.google.dagger:dagger:$daggerVersion",
+            'daggerCompiler' : "com.google.dagger:dagger-compiler:$daggerVersion",
+            'androidSupport' : "com.google.dagger:dagger-android-support:$daggerVersion",
             'androidCompiler': "com.google.dagger:dagger-android-processor:$daggerVersion",
-            'jsr330': "javax.inject:javax.inject:$jsr330Version"
+            'jsr330'         : "javax.inject:javax.inject:$jsr330Version"
     ]
 
     // Room
-    room = "androidx.room:room-runtime:$roomVersion"
-    roomCompiler = "androidx.room:room-compiler:$roomVersion"
+    room = [
+            'core'    : "androidx.room:room-runtime:$versions.roomDb",
+            'compiler': "androidx.room:room-compiler:$versions.roomDb",
+            'rx': "androidx.room:room-rxjava2:$versions.roomDb"
+
+    ]
 
     // Google
     appcompat = "androidx.appcompat:appcompat:$appcompatVersion"
@@ -131,5 +139,13 @@ ext {
     picasso = "com.squareup.picasso:picasso:$picassoVersion"
 
     timber = "com.jakewharton.timber:timber:$timberVersion"
+
+    tests = [
+            'junit4'             : "junit:junit:4.12",
+            'mockito'            : "org.mockito:mockito-core:${versions.mockito}",
+            'inliner'            : "org.mockito:mockito-inline:${versions.mockito}",
+            'mockitoKotlin'      : "com.nhaarman.mockitokotlin2:mockito-kotlin:${versions.mockitoKotlin}",
+            'androidxCoreTesting': "androidx.arch.core:core-testing:${versions.testing.androidxCoreTesting}",
+    ]
 
 }

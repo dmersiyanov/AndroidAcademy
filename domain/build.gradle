@@ -7,6 +7,13 @@ dependencies {
 
     api rx.java
     api rx.kotlin
+
+    api tests.junit4
+    api tests.mockito
+    api tests.mockitoKotlin
+    api tests.inliner
+    api tests.androidxCoreTesting
+
 }
 
 sourceCompatibility = "8"
