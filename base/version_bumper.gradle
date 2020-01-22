@@ -1,0 +1,60 @@
+def getVersionName = { getVersionProps()['appVersionName'] }
+
+def getVersionProps() {
+    def versionPropsFile = file("$rootDir/base/app_version.properties")
+    if (!versionPropsFile.exists()) {
+        versionPropsFile.createNewFile()
+    }
+    def versionProps = new Properties()
+    versionProps.load(new FileInputStream(versionPropsFile))
+    return versionProps
+}
+
+def getVersionNamePatch = { (getVersionName() =~ /\d+/)[2].toInteger() }
+
+def getVersionNameMinor = { (getVersionName() =~ /\d+/)[1].toInteger() }
+
+def getVersionNameMajor = { (getVersionName() =~ /\d+/)[0].toInteger() }
+
+private def getAppVersionCode() { getVersionProps()['appVersionCode'].toInteger() }
+
+private void save(major, minor, patch, versionCode) {
+    save("${major}.${minor}.${patch}".toString(), versionCode.toString())
+}
+
+private void save(versionName, versionCode) {
+    def versionProps = getVersionProps()
+    versionProps['appVersionName'] = versionName
+    versionProps['appVersionCode'] = versionCode
+    versionProps.store(file("$rootDir/base/app_version.properties").newWriter(), null)
+}
+
+task bumperInit() {
+    group = 'bumper'
+    doLast {
+        def versionName = project.hasProperty('bumperVersionName') ? bumperVersionName : '1.0.0'
+        def versionCode = project.hasProperty('bumperVersionCode') ? bumperVersionCode : '1'
+        save(versionName, versionCode)
+    }
+}
+
+task bumperVersionPatch () {
+    group = 'bumper'
+    doLast {
+        save(getVersionNameMajor(), getVersionNameMinor(), getVersionNamePatch() + 1, getAppVersionCode() + 1)
+    }
+}
+
+task bumperVersionMinor () {
+    group = 'bumper'
+    doLast {
+        save(getVersionNameMajor(), getVersionNameMinor() + 1, 0, getAppVersionCode() + 1)
+    }
+}
+
+task bumperVersionMajor () {
+    group = 'bumper'
+    doLast {
+        save(getVersionNameMajor() + 1, 0, 0, getAppVersionCode() + 1)
+    }
+}

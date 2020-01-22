@@ -1,5 +1,6 @@
 apply from: "$rootDir/base/deps_versions.gradle"
 apply from: "$rootDir/base/config.gradle"
+apply from: "$rootDir/base/version_bumper.gradle"
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'

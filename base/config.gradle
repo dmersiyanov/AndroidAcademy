@@ -1,7 +1,10 @@
+def props = new Properties()
+file("$rootDir/base/app_version.properties").withInputStream { props.load(it) }
+
 ext {
     config = [
-            'versionCode': 2,
-            'versionName': "1.0",
+            'versionCode': props.getProperty("appVersionCode").toInteger(),
+            'versionName': props.getProperty("appVersionName"),
             'minSDK': 19,
             'currentSDK': 28
     ]
