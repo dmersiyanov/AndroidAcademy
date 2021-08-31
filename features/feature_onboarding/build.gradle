@@ -21,8 +21,6 @@ android {
 
 
     defaultConfig {
-        versionCode config.versionCode
-        versionName config.versionName
         minSdkVersion config.minSDK
         targetSdkVersion config.currentSDK
         multiDexEnabled true

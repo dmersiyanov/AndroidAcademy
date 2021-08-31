@@ -6,6 +6,6 @@ ext {
             'versionCode': props.getProperty("appVersionCode").toInteger(),
             'versionName': props.getProperty("appVersionName"),
             'minSDK': 19,
-            'currentSDK': 28
+            'currentSDK': 30
     ]
 }

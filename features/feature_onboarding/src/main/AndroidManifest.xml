@@ -1,5 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.dmity.androidacademy.feature_onboarding">
 
-    <application android:name="com.dmity.androidacademy.core.testing.TestApplication" />
+
+    <application
+        android:name="com.dmity.androidacademy.core.testing.TestApplication"
+        tools:replace="android:name" />
 </manifest>
