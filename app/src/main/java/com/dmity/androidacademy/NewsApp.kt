@@ -40,7 +40,7 @@ class NewsApp: Application() {
                 Thread.currentThread().uncaughtExceptionHandler.uncaughtException(Thread.currentThread(), e)
             }
 
-            Log.w("Undeliverable exception received", e.message)
+            Log.w("Undeliverable exception received", e.message.toString())
         }
     }
 

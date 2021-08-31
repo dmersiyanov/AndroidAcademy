@@ -54,7 +54,7 @@ class NewsViewModel(application: Application) : AndroidViewModel(application), S
                     }
 
                 }, {
-                    Log.e(TAG, it.message)
+                    Log.e(TAG, it.message.toString())
                 })
                 .bind()
     }
@@ -88,7 +88,7 @@ class NewsViewModel(application: Application) : AndroidViewModel(application), S
     }
 
     private fun handleError(error: Throwable) {
-        Log.e(TAG, error.message)
+        Log.e(TAG, error.message.toString())
         showProgress.postValue(false)
         showError.postValue(true)
         showSnackBar.postValue(true)
