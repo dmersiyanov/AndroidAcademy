@@ -10,7 +10,7 @@ class AppRouter @Inject constructor() : Router() {
 
 
     override fun navigateTo(screen: Screen?) {
-        Log.i("navigateTo", screen?.screenKey)
+        Log.i("navigateTo", screen?.screenKey.toString())
         super.navigateTo(screen)
     }
 
